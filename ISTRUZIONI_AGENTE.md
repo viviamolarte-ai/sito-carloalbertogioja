@@ -4,9 +4,9 @@ Sito: https://carloalbertogioja.com (Netlify, progetto starlit-sfogliatella-201c
 
 ## Cosa aggiornare
 - **index.html**
-  - Hero `.h-news`: solo eventi FUTURI, max 4, in ordine cronologico crescente.
-  - `#appuntamenti`: eventi futuri in `.event-row` (testi IT + EN con classe `en-s` e `style="display:none"`).
-  - Archivio eventi passati: righe compatte `opacity:.6`, ordine cronologico DECRESCENTE; quando un evento passa, spostalo qui.
+  - Hero `.h-news`: sempre 4 voci, ordine cronologico DECRESCENTE: prima gli eventi futuri, poi i più recenti passati fino ad arrivare a 4.
+  - `#appuntamenti` ("In scena"): tutti gli eventi futuri + SEMPRE almeno gli 8 eventi passati più recenti, righe complete `.event-row` (testi IT + EN con classe `en-s` e `style="display:none"`), ordine cronologico DECRESCENTE.
+  - Archivio eventi passati (a scomparsa): solo gli eventi più vecchi oltre quegli 8, righe compatte `opacity:.6`, ordine DECRESCENTE.
   - Bio, premi, teatri, media: solo con fatti verificati (email di Carlo, articoli, CV).
 - **direttore.html** "Direzioni selezionate": aggiungere i concerti in cui Carlo dirige.
 - **cantante.html** repertorio: aggiungere ruoli nuovi.
