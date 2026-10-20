@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direttore — Carlo Alberto Gioja</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--white:#FFFFFF;--off:#F8F7F5;--light:#EFEFED;--grey:#9A9690;--dg:#4A4744;--black:#1C1A18;--rule:#E0DED9}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);height:64px;display:flex;align-items:center;padding:0 3rem;justify-content:space-between}
+.nav-name{font-family:'Playfair Display',serif;font-size:1rem}.nav-name span{font-style:italic;color:var(--grey)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.08em;color:var(--dg);text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--black);transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--black)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-lang{display:flex;gap:.25rem}
+.lang-btn{font-size:.7rem;font-weight:500;letter-spacing:.1em;background:none;border:none;cursor:pointer;color:var(--grey);text-transform:uppercase;padding:.2rem .4rem}
+.lang-btn.active{color:var(--black);border-bottom:1px solid var(--black)}
+
+.page-header{padding-top:64px;border-bottom:1px solid var(--rule)}
+.page-header-inner{max-width:1100px;margin:0 auto;padding:4rem 3rem 3rem}
+.back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:2rem;transition:color .2s}
+.back-link:hover{color:var(--black)}
+.page-num{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:var(--light);line-height:1;margin-bottom:.4rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:400;line-height:1.05}
+.page-title em{font-style:italic;color:var(--dg)}
+
+/* NAVIGATION TABS */
+.section-tabs{background:var(--white);border-bottom:2px solid var(--rule);position:sticky;top:64px;z-index:50}
+.section-tabs-inner{max-width:1100px;margin:0 auto;padding:0 3rem;display:flex;gap:0}
+.tab-link{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;padding:1.2rem 2.5rem 1.2rem 0;margin-right:1rem;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(--grey);transition:color .2s,border-color .2s;cursor:pointer}
+.tab-link:hover,.tab-link.active{color:var(--black);border-bottom-color:var(--black)}
+
+.sw{max-width:1100px;margin:0 auto;padding:5rem 3rem}
+.s-label{font-size:.62rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--grey);display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.s-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;line-height:1.15;margin-bottom:2rem}
+.s-title em{font-style:italic;color:var(--dg)}
+section{border-top:1px solid var(--rule)}
+
+/* PHOTO GRIDS — smaller */
+.gal3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.gal2{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.gal-main2{display:grid;grid-template-columns:2fr 1fr;gap:4px}
+.gal img{width:100%;object-fit:cover;display:block;cursor:pointer;transition:transform .3s}
+.gal img:hover{transform:scale(1.02)}
+.gal3 img{aspect-ratio:4/3;max-height:220px}
+.gal2 img{aspect-ratio:4/3;max-height:280px}
+.gal-main2 img{aspect-ratio:4/3;max-height:300px}
+.caption{font-size:.65rem;color:var(--grey);font-style:italic;margin-top:.5rem}
+
+.orch-list,.tl-list{display:flex;flex-direction:column}
+.orch-row,.tl-row{display:grid;gap:2rem;padding:1.5rem 0;border-top:1px solid var(--rule)}
+.orch-row{grid-template-columns:110px 1fr}
+.tl-row{grid-template-columns:140px 1fr}
+.orch-row:last-child,.tl-row:last-child{border-bottom:1px solid var(--rule)}
+.orch-date,.tl-years{font-family:'Playfair Display',serif;font-style:italic;font-size:.88rem;color:var(--grey);padding-top:.1rem}
+.orch-title,.tl-name{font-size:.95rem;color:var(--black);margin-bottom:.25rem}
+.orch-sub,.tl-sub{font-size:.8rem;color:var(--grey);line-height:1.6}
+
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lb-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;cursor:pointer;opacity:.7}
+.lb-close:hover{opacity:1}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.reveal.up{opacity:1;transform:none}
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-name{font-family:'Playfair Display',serif;font-size:.88rem;color:rgba(255,255,255,.35)}
+.f-copy{font-size:.68rem;color:rgba(255,255,255,.18)}
+body.en .it{display:none!important}
+body.en .en-s{display:block!important}
+@media(max-width:900px){nav{padding:0 1.5rem}.nav-links{display:none}.sw{padding:3.5rem 1.5rem}.gal3{grid-template-columns:1fr 1fr}.gal-main2{grid-template-columns:1fr}.orch-row,.tl-row{grid-template-columns:1fr;gap:.4rem}.section-tabs-inner{padding:0 1.5rem}.tab-link{padding:1rem 1.5rem 1rem 0;font-size:.95rem}}
+</style>
+</head>
+<body>
+<div class="lb" id="lb" onclick="closeLB()"><span class="lb-close">×</span><img id="lb-img" src="" alt=""></div>
+
+<nav>
+  <a href="index.html" class="nav-name">Carlo Alberto <span>Gioja</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#bio" class="it">Biografia</a><a href="index.html#bio" class="en-s" style="display:none">Biography</a></li>
+    <li><a href="cantante.html" class="it">Cantante</a><a href="cantante.html" class="en-s" style="display:none">Singer</a></li>
+    <li><a href="direttore.html" class="active it">Direttore</a><a href="direttore.html" class="active en-s" style="display:none">Conductor</a></li>
+    <li><a href="regista.html" class="it">Regista</a><a href="regista.html" class="en-s" style="display:none">Director</a></li>
+    <li><a href="docente.html" class="it">Docenza</a><a href="docente.html" class="en-s" style="display:none">Teaching</a></li>
+    <li><a href="index.html#contatti" class="it">Contatti</a><a href="index.html#contatti" class="en-s" style="display:none">Contact</a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('it')">IT</button>
+    <span style="color:#ccc;font-size:.7rem">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a href="index.html" class="back-link">← <span class="it">Torna alla home</span><span class="en-s" style="display:none">Back to home</span></a>
+    <div class="page-num">02 · 03</div>
+    <h1 class="page-title it">Direttore di Coro<br>e <em>d'Orchestra</em></h1>
+    <h1 class="page-title en-s" style="display:none">Choral & Orchestra <em>Conductor</em></h1>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="section-tabs">
+  <div class="section-tabs-inner">
+    <a href="#orchestra" class="tab-link active it">Direttore d'Orchestra</a>
+    <a href="#orchestra" class="tab-link active en-s" style="display:none">Orchestra Conductor</a>
+    <a href="#coro" class="tab-link it">Direttore di Coro</a>
+    <a href="#coro" class="tab-link en-s" style="display:none">Choral Conductor</a>
+  </div>
+</div>
+
+<!-- ORCHESTRA -->
+<section id="orchestra">
+  <div class="sw">
+    <p class="s-label reveal it">Direttore d'Orchestra</p>
+    <p class="s-label reveal en-s" style="display:none">Orchestra Conductor</p>
+    <h2 class="s-title reveal it">Sul <em>podio</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">On the <em>podium</em></h2>
+
+    <div class="gal3 gal reveal" style="margin-bottom:4px">
+      <img src="dir_orch5.jpg" alt="Direttore d'Orchestra" onclick="openLB(this)">
+      <img src="dir_orch6.jpg" alt="Direttore d'Orchestra" onclick="openLB(this)">
+      <img src="dir_orch7.jpg" alt="Direttore d'Orchestra" onclick="openLB(this)">
+    </div>
+    <div class="gal3 gal reveal" style="margin-bottom:1rem">
+      <img src="dir_orch1.jpg" alt="Direttore d'Orchestra" onclick="openLB(this)">
+      <img src="dir_orch3.jpg" alt="Direttore d'Orchestra" onclick="openLB(this)">
+      <img src="dir_orch4.jpg" alt="Direttore d'Orchestra" onclick="openLB(this)">
+    </div>
+    <p class="caption reveal">Ph: Riccardo Romagnoli Photography · Gianmarco Ciccotti</p>
+
+    <div style="margin-top:3.5rem">
+      <p class="s-label reveal it">Direzioni selezionate</p>
+      <p class="s-label reveal en-s" style="display:none">Selected engagements</p>
+      <div class="orch-list">
+        <div class="orch-row reveal"><span class="orch-date">Ago 2026</span><div><p class="orch-title">Don Giovanni — W.A. Mozart</p><p class="orch-sub it">Piazza San Biagio · Sacrofano (Roma) · 30/08/2026 · ore 21:00 · Ingresso libero<br>Regia: Fratelli Picone · Cembalo: Alessia Capoccia · Colosseum Chamber Orchestra<br>Ensemble Corale: VeioInCanto, Coro Mascagni, Coro Opera Project<br>Don Giovanni: Marco Severin · Leporello: Aurelio Palmieri · Donna Anna: Mariko Iizuka<br>Don Ottavio: Fabrizio Giovinazzi · Donna Elvira: Myoko Hirakawa · Zerlina: Laura Orlandi · Commendatore: Federico Masi<br>Patrocinio: Comune di Sacrofano · Regione Lazio · Parco di Veio</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Lug 2026</span><div><p class="orch-title">Don Giovanni — W.A. Mozart</p><p class="orch-sub it">Teatro DOMMA · Acilia (Roma) · 24/07/2026<br>Regia: Fratelli Picone · Cembalo: Hiroko Sato · Colosseum Chamber Orchestra<br>Ensemble Corale: VeioInCanto, Coro Mascagni, Coro Opera Project<br>Don Giovanni: Marco Severin · Leporello: Aurelio Palmieri · Donna Anna: Mariko Iizuka<br>Don Ottavio: Fabrizio Giovinazzi · Donna Elvira: Myoko Hirakawa · Zerlina: Laura Orlandi<br>Masetto: Andrea Jin Chen · Commendatore: Adalberto Prossedi</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Gen 2026</span><div><p class="orch-title">"Sotto al neve del mondo" — Concerto Natalizio</p><p class="orch-sub it">Coro Cantica Jubilate · Colosseum Symphony Orchestra · Piano: Enrica Ruggiero · Comune di Formello</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Dic 2025</span><div><p class="orch-title">"Voci di Luce" — II edizione</p><p class="orch-sub it">Basilica di San Giuseppe al Trionfale · Roma · oltre 100 coristi · Colosseum Chamber Orchestra · Federici's Band · Con Roberta Ammendola · Lega del Filo d'oro</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Lug 2025</span><div><p class="orch-title">La Traviata — G. Verdi</p><p class="orch-sub it">Piazza San Biagio · Sacrofano · Colosseum Chamber Orchestra · Coro VeioInCanto · Regia: Fratelli Picone<br>Violetta: Naho Yokohama · Alfredo: Fabrizio Giovinazzi · Germont: Marco Severin</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Set 2024</span><div><p class="orch-title">Stabat Mater (Pergolesi) · Mozart · Rossini</p><p class="orch-sub it">Orchestra del Conservatorio S. Cecilia di Roma · Fondazione Consiglio Nazionale degli Ingegneri</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Lug 2024</span><div><p class="orch-title">L'Elisir d'Amore — G. Donizetti</p><p class="orch-sub">Colosseum Symphony Orchestra · Teatro DOMMA · Acilia (Roma)</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Ago 2023</span><div><p class="orch-title">Cavalleria Rusticana — P. Mascagni</p><p class="orch-sub">Palazzo Rospigliosi · Zagarolo · Orchestra Millenium</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Lug 2023</span><div><p class="orch-title">"Sotto la brezza dell'amore"</p><p class="orch-sub">Piazza San Lorenzo · Formello · Colosseum Chamber Orchestra · Con Fabio Serani, Michela Vavaro, Roberta Ammendola · Luca Ward in audio</p></div></div>
+        <div class="orch-row reveal"><span class="orch-date">Apr 2018</span><div><p class="orch-title">Cavalleria Rusticana — P. Mascagni</p><p class="orch-sub">Rocca Colonna · Castelnuovo di Porto · Orchestra I.O.S. Rome</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORO -->
+<section id="coro" style="background:var(--off)">
+  <div class="sw">
+    <p class="s-label reveal it">Direttore di Coro</p>
+    <p class="s-label reveal en-s" style="display:none">Choral Conductor</p>
+    <h2 class="s-title reveal it">La <em>voce del coro</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">The <em>choral voice</em></h2>
+
+    <div class="gal-main2 gal reveal" style="margin-bottom:4px">
+      <img src="dir_coro4.jpg" alt="Voci di Luce" onclick="openLB(this)">
+      <img src="dir_coro1.jpg" alt="Festival della Vita Consacrata" onclick="openLB(this)">
+    </div>
+    <div class="gal3 gal reveal" style="margin-bottom:4px">
+      <img src="dir_coro2.jpg" alt="Festival della Vita Consacrata" onclick="openLB(this)">
+      <img src="dir_coro3.jpg" alt="Festival della Vita Consacrata" onclick="openLB(this)">
+      <img src="dir_premio.jpg" alt="Con Roberta Ammendola" onclick="openLB(this)">
+    </div>
+    <p class="caption reveal it">Festival della Vita Consacrata · "Voci di Luce" · con Roberta Ammendola · Premio Lega del Filo d'Oro</p>
+
+    <div style="margin-top:3.5rem">
+      <p class="s-label reveal it">Cori diretti</p>
+      <p class="s-label reveal en-s" style="display:none">Choirs directed</p>
+      <div class="tl-list">
+        <div class="tl-row reveal"><span class="tl-years">2025 – oggi</span><div><p class="tl-name">Coro Gocce di Luce — UICI Roma</p><p class="tl-sub it">Progetto corale inclusivo · debutto giugno 2025 · Mediterranean Choral Festival of Albania (Tirana e Shkodra, novembre 2025)</p></div></div>
+        <div class="tl-row reveal"><span class="tl-years">2023 – oggi</span><div><p class="tl-name">Coro Cantica Jubilate</p><p class="tl-sub it">Composto da artisti di Enti e Fondazioni musicali romane</p></div></div>
+        <div class="tl-row reveal"><span class="tl-years">2012 – oggi</span><div><p class="tl-name">Coro VeioInCanto</p><p class="tl-sub it">Repertorio lirico e sinfonico-corale · territorio romano</p></div></div>
+        <div class="tl-row reveal"><span class="tl-years">2007 – oggi</span><div><p class="tl-name">AM Gospel Choir</p><p class="tl-sub it">Repertorio gospel, operistico e classico · concerti in tutta Italia</p></div></div>
+        <div class="tl-row reveal"><span class="tl-years">2014 – 2019</span><div><p class="tl-name it">Direttore dei Cori — PeepArrow Entertainment / Teatro Sistina</p><p class="tl-sub it">Tutti Insieme Appassionatamente · Billy Elliot · Evita · Mamma Mia! · Accademia Teatro Sistina</p></div></div>
+        <div class="tl-row reveal"><span class="tl-years">2014 – 2017</span><div><p class="tl-name">I Cantori di Pietralata</p><p class="tl-sub it">S. Messa con Papa Francesco · diretta Vatican Media – CTV</p></div></div>
+        <div class="tl-row reveal"><span class="tl-years">2005 – 2010</span><div><p class="tl-name">LUMSA Gospel Singers</p><p class="tl-sub it">Vice Direttore · Concerto in presenza di S.S. Benedetto XVI · Sala Nervi (Vaticano) in mondovisione</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Carlo Alberto Gioja</span>
+  <span class="f-copy">© 2026 · Tutti i diritti riservati</span>
+</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target)}}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function openLB(img){document.getElementById('lb-img').src=img.src;document.getElementById('lb').classList.add('open')}
+function closeLB(){document.getElementById('lb').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+document.querySelectorAll('.tab-link').forEach(t=>t.addEventListener('click',function(){document.querySelectorAll('.tab-link').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+function setLang(l){document.body.classList.toggle('en',l==='en');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
+const saved=localStorage.getItem('lang');if(saved==='en')setLang('en');
+</script>
+</body>
+</html>

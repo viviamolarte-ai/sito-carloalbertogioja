@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlo Alberto Gioja — Basso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --white: #FFFFFF; --off: #F8F7F5; --light: #EFEFED;
+  --grey: #9A9690; --dg: #4A4744; --black: #1C1A18; --rule: #E0DED9; --hover: #F2F0EC;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px; background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; padding: 0 3rem; justify-content: space-between;
+}
+.nav-name { font-family: 'Playfair Display', serif; font-size: 1rem; }
+.nav-name span { font-style: italic; color: var(--grey); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: .78rem; font-weight: 400; letter-spacing: .08em; color: var(--dg); text-transform: uppercase; transition: color .2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--black); transform: scaleX(0); transition: transform .25s; }
+.nav-links a:hover { color: var(--black); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-lang { display: flex; gap: .25rem; align-items: center; }
+.lang-btn { font-size: .7rem; font-weight: 500; letter-spacing: .1em; background: none; border: none; cursor: pointer; color: var(--grey); text-transform: uppercase; padding: .2rem .4rem; transition: color .2s; }
+.lang-btn.active { color: var(--black); border-bottom: 1px solid var(--black); }
+
+/* HERO — mobile: stacked. Desktop: two columns via explicit widths */
+#hero { margin-top: 64px; }
+
+.h-left {
+  padding: 4rem 2.5rem 3.5rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+}
+.h-eyebrow { font-size: .63rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 2rem; }
+.h-name { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 13vw, 6rem); font-weight: 700; line-height: .92; color: var(--black); }
+.h-name-i { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 13vw, 6rem); font-weight: 400; font-style: italic; line-height: .92; color: var(--dg); margin-bottom: 2.5rem; }
+.h-voice { display: inline-flex; align-items: center; gap: .8rem; font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--black); margin-bottom: 1.8rem; }
+.h-voice::before { content: ''; width: 26px; height: 1px; background: var(--black); }
+.h-desc { font-size: 1rem; line-height: 1.75; color: var(--dg); margin-bottom: 2.5rem; }
+.h-cta { display: inline-flex; align-items: center; gap: .9rem; font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--black); border-bottom: 1px solid var(--black); padding-bottom: .28rem; transition: gap .3s; }
+.h-cta:hover { gap: 1.4rem; }
+.h-cta svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+.h-right { background: var(--off); padding: 2.5rem; }
+.h-roles-label { font-size: .6rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 1rem; }
+.h-roles { display: flex; flex-direction: column; }
+.h-role { display: flex; align-items: center; justify-content: space-between; padding: .85rem 0; border-top: 1px solid var(--rule); color: var(--black); transition: background .2s; }
+.h-role:last-child { border-bottom: 1px solid var(--rule); }
+.h-role:hover { background: var(--hover); padding: .85rem .8rem; margin: 0 -.8rem; }
+.h-role-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+.h-role:hover .h-role-name { font-style: italic; }
+.h-role-arr { width: 16px; height: 16px; color: var(--grey); transition: transform .3s, color .2s; flex-shrink: 0; }
+.h-role:hover .h-role-arr { transform: translateX(5px); color: var(--black); }
+.h-news { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+.h-news-label { font-size: .58rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: .8rem; }
+.h-news-item { display: grid; grid-template-columns: 42px 1fr; gap: .8rem; align-items: start; padding: .65rem 0; border-top: 1px solid var(--rule); }
+.h-news-item:last-child { border-bottom: 1px solid var(--rule); }
+.h-news-date { background: var(--black); color: var(--white); text-align: center; padding: .35rem .2rem; }
+.h-news-day { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; display: block; line-height: 1; }
+.h-news-month { font-size: .48rem; font-weight: 500; letter-spacing: .1em; color: rgba(255,255,255,.55); display: block; }
+.h-news-title { font-size: .82rem; color: var(--black); line-height: 1.3; margin-bottom: .15rem; }
+.h-news-sub { font-size: .68rem; color: var(--grey); }
+
+/* DESKTOP HERO */
+@media (min-width: 900px) {
+  #hero { display: flex; min-height: calc(100vh - 64px); }
+  .h-left { width: 50%; flex-shrink: 0; padding: 7rem 5rem; border-bottom: none; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: center; }
+  .h-right { width: 50%; flex-shrink: 0; padding: 3rem 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .h-name { font-size: clamp(3rem, 5vw, 5.5rem); }
+  .h-name-i { font-size: clamp(3rem, 5vw, 5.5rem); }
+  .h-role-name { font-size: 1.35rem; }
+  .h-role:hover { padding: 1rem 1.5rem; margin: 0 -1.5rem; }
+}
+
+/* SECTIONS */
+.sw { max-width: 1100px; margin: 0 auto; padding: 7rem 3rem; }
+.s-label { font-size: .62rem; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--grey); display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
+.s-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.s-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 4rem; }
+.s-title em { font-style: italic; color: var(--dg); }
+
+/* BIO */
+#bio { border-top: 1px solid var(--rule); }
+.bio-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
+.bio-photo { background: var(--light); border: 1px solid var(--rule); aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; color: var(--grey); font-size: .63rem; letter-spacing: .08em; }
+.bio-photo svg { width: 44px; height: 44px; opacity: .35; }
+.bio-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+.bio-tag { font-size: .6rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--dg); border: 1px solid var(--rule); padding: .28rem .65rem; background: var(--off); }
+.bio-lead { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--dg); margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+.bio-body p { font-size: .97rem; line-height: 1.8; color: var(--dg); margin-bottom: 1.1rem; }
+.bio-body p:last-child { margin-bottom: 0; }
+
+/* COMPETENZE */
+#comp { background: var(--off); border-top: 1px solid var(--rule); }
+.comp-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; border: 1px solid var(--rule); background: var(--rule); }
+.comp-card { background: var(--white); padding: 2.2rem 1.8rem; display: flex; flex-direction: column; gap: 1.2rem; transition: background .2s; }
+.comp-card:hover { background: var(--off); }
+.comp-n { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--light); line-height: 1; }
+.comp-icon { font-size: 1.5rem; }
+.comp-t { font-family: 'Playfair Display', serif; font-size: 1rem; line-height: 1.3; }
+.comp-d { font-size: .8rem; line-height: 1.6; color: var(--grey); flex: 1; }
+.comp-link { font-size: .6rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--dg); transition: color .2s; }
+.comp-card:hover .comp-link { color: var(--black); }
+
+/* PREMI */
+#premi { border-top: 1px solid var(--rule); }
+.premio { display: grid; grid-template-columns: 80px 1fr auto; gap: 3rem; align-items: baseline; padding: 2rem 0; border-top: 1px solid var(--rule); }
+.premio:last-child { border-bottom: 1px solid var(--rule); }
+.premio-y { font-family: 'Playfair Display', serif; font-style: italic; color: var(--grey); font-size: .95rem; }
+.premio-t { font-size: .97rem; color: var(--black); margin-bottom: .25rem; }
+.premio-s { font-size: .8rem; color: var(--grey); }
+.premio-b { font-size: .58rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--dg); border: 1px solid var(--rule); padding: .28rem .6rem; white-space: nowrap; }
+
+/* TEATRI */
+#teatri { background: var(--off); border-top: 1px solid var(--rule); }
+.teatri-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.t-label { font-size: .6rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); margin-bottom: 1.5rem; padding-bottom: .8rem; border-bottom: 1px solid var(--rule); }
+.t-list { list-style: none; }
+.t-list li { font-size: .9rem; color: var(--dg); padding: .55rem 0; border-bottom: 1px solid var(--rule); }
+.t-list li:first-child { border-top: 1px solid var(--rule); }
+
+/* MEDIA */
+#media-sec { border-top: 1px solid var(--rule); }
+.media-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--rule); }
+.media-cell { background: var(--white); padding: 2.5rem; transition: background .2s; }
+.media-cell:hover { background: var(--off); }
+.media-ch { font-size: .58rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); margin-bottom: 1rem; }
+.media-tt { font-family: 'Playfair Display', serif; font-size: .97rem; font-style: italic; color: var(--black); margin-bottom: .5rem; line-height: 1.4; }
+.media-nt { font-size: .78rem; color: var(--grey); }
+
+/* APPUNTAMENTI */
+#appuntamenti { border-top: 1px solid var(--rule); }
+.event-row { display: grid; grid-template-columns: 120px 1fr; gap: 3rem; align-items: start; padding: 2.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.event-date-box { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--black); color: var(--white); padding: 1.5rem 1rem; text-align: center; }
+.event-day { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; line-height: 1; }
+.event-month { font-size: .62rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-top: .4rem; }
+.event-label { font-size: .6rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); margin-bottom: .6rem; }
+.event-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; font-style: italic; color: var(--black); margin-bottom: 1rem; }
+.event-sub { font-size: .92rem; line-height: 1.75; color: var(--dg); }
+@media (max-width: 899px) { .event-row { grid-template-columns: 80px 1fr; gap: 1.5rem; } .event-day { font-size: 2rem; } }
+
+/* CONTATTI */
+#contatti { background: var(--black); border-top: 1px solid var(--rule); }
+#contatti .s-label { color: rgba(255,255,255,.3); }
+#contatti .s-label::after { background: rgba(255,255,255,.08); }
+#contatti .s-title { color: #fff; }
+#contatti .s-title em { color: rgba(255,255,255,.45); }
+.c-row { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid rgba(255,255,255,.1); }
+.c-cell { padding: 2.5rem 3rem; border-right: 1px solid rgba(255,255,255,.1); transition: background .2s; }
+.c-cell:last-child { border-right: none; }
+.c-cell:hover { background: rgba(255,255,255,.03); }
+.c-label { font-size: .58rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: .8rem; }
+.c-val { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; }
+.c-val a { color: #fff; transition: opacity .2s; }
+.c-val a:hover { opacity: .6; }
+
+footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.08); padding: 1.8rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+.f-name { font-family: 'Playfair Display', serif; font-size: .88rem; color: rgba(255,255,255,.35); }
+.f-copy { font-size: .68rem; color: rgba(255,255,255,.18); letter-spacing: .05em; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s, transform .7s; }
+.reveal.up { opacity: 1; transform: none; }
+
+/* LANG */
+body.en .it { display: none !important; }
+body.en .en-s { display: block !important; }
+body.en span.en-s { display: inline !important; }
+
+/* RESPONSIVE */
+@media (max-width: 899px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .sw { padding: 4rem 1.5rem; }
+  .bio-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .comp-grid { grid-template-columns: 1fr 1fr; }
+  .teatri-2 { grid-template-columns: 1fr; gap: 3rem; }
+  .media-grid { grid-template-columns: 1fr; }
+  .c-row { grid-template-columns: 1fr; }
+  .premio { grid-template-columns: 1fr; gap: .4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Carlo Alberto <span>Gioja</span></a>
+  <ul class="nav-links">
+    <li><a href="#bio" class="it">Biografia</a><a href="#bio" class="en-s" style="display:none">Biography</a></li>
+    <li><a href="cantante.html" class="it">Cantante</a><a href="cantante.html" class="en-s" style="display:none">Singer</a></li>
+    <li><a href="direttore.html" class="it">Direttore</a><a href="direttore.html" class="en-s" style="display:none">Conductor</a></li>
+    <li><a href="regista.html" class="it">Regista</a><a href="regista.html" class="en-s" style="display:none">Director</a></li>
+    <li><a href="docente.html" class="it">Docenza</a><a href="docente.html" class="en-s" style="display:none">Teaching</a></li>
+    <li><a href="#appuntamenti" class="it">Agenda</a><a href="#appuntamenti" class="en-s" style="display:none">Events</a></li>
+    <li><a href="#contatti" class="it">Contatti</a><a href="#contatti" class="en-s" style="display:none">Contact</a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('it')">IT</button>
+    <span style="color:#ccc;font-size:.7rem">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div id="hero">
+  <div class="h-left">
+    <p class="h-eyebrow it">Artista del Coro · Teatro dell'Opera di Roma</p>
+    <p class="h-eyebrow en-s" style="display:none">Choir Artist · Teatro dell'Opera di Roma</p>
+    <h1 class="h-name">Carlo Alberto</h1>
+    <h1 class="h-name-i">Gioja</h1>
+    <p class="h-voice it">Basso</p>
+    <p class="h-voice en-s" style="display:none">Bass</p>
+    <p class="h-desc it">Artista lirico poliedrico con oltre vent'anni di carriera internazionale nei più importanti teatri d'opera, sale da concerto e festival in Italia, Europa, Asia e Africa.</p>
+    <p class="h-desc en-s" style="display:none">A versatile lyric artist with over twenty years of international career in the most important opera houses, concert halls and festivals in Italy, Europe, Asia and Africa.</p>
+    <a href="#bio" class="h-cta it">Scopri la biografia <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="8" x2="12" y2="8"/><polyline points="7,3 12,8 7,13"/></svg></a>
+    <a href="#bio" class="h-cta en-s" style="display:none">Read biography <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="8" x2="12" y2="8"/><polyline points="7,3 12,8 7,13"/></svg></a>
+  </div>
+  <div class="h-right">
+    <p class="h-roles-label it">Aree di attività</p>
+    <p class="h-roles-label en-s" style="display:none">Areas of activity</p>
+    <div class="h-roles">
+      <a href="cantante.html" class="h-role"><span class="h-role-name it">Cantante Lirico</span><span class="h-role-name en-s" style="display:none">Lyric Singer</span><svg class="h-role-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="10" x2="16" y2="10"/><polyline points="10,4 16,10 10,16"/></svg></a>
+      <a href="direttore.html" class="h-role"><span class="h-role-name it">Direttore di Coro</span><span class="h-role-name en-s" style="display:none">Choral Conductor</span><svg class="h-role-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="10" x2="16" y2="10"/><polyline points="10,4 16,10 10,16"/></svg></a>
+      <a href="direttore.html" class="h-role"><span class="h-role-name it">Direttore d'Orchestra</span><span class="h-role-name en-s" style="display:none">Orchestra Conductor</span><svg class="h-role-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="10" x2="16" y2="10"/><polyline points="10,4 16,10 10,16"/></svg></a>
+      <a href="regista.html" class="h-role"><span class="h-role-name it">Regista d'Opera</span><span class="h-role-name en-s" style="display:none">Opera Director</span><svg class="h-role-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="10" x2="16" y2="10"/><polyline points="10,4 16,10 10,16"/></svg></a>
+      <a href="docente.html" class="h-role"><span class="h-role-name it">Docenza</span><span class="h-role-name en-s" style="display:none">Teaching</span><svg class="h-role-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="10" x2="16" y2="10"/><polyline points="10,4 16,10 10,16"/></svg></a>
+    </div>
+    <div class="h-news">
+      <p class="h-news-label it">Prossimi appuntamenti</p>
+      <p class="h-news-label en-s" style="display:none">Upcoming events</p>
+      <div class="h-news-item">
+        <div class="h-news-date"><span class="h-news-day">30</span><span class="h-news-month it">AGO</span><span class="h-news-month en-s" style="display:none">AUG</span></div>
+        <div><p class="h-news-title it"><em>Don Giovanni</em> — Sacrofano</p><p class="h-news-title en-s" style="display:none"><em>Don Giovanni</em> — Sacrofano</p><p class="h-news-sub it">Direttore d'Orchestra · Piazza San Biagio</p><p class="h-news-sub en-s" style="display:none">Orchestra Conductor · Piazza San Biagio</p></div>
+      </div>
+      <div class="h-news-item">
+        <div class="h-news-date"><span class="h-news-day">24</span><span class="h-news-month it">LUG</span><span class="h-news-month en-s" style="display:none">JUL</span></div>
+        <div><p class="h-news-title it"><em>Don Giovanni</em> — Teatro DOMMA</p><p class="h-news-title en-s" style="display:none"><em>Don Giovanni</em> — Teatro DOMMA</p><p class="h-news-sub it">Direttore d'Orchestra · Acilia (Roma)</p><p class="h-news-sub en-s" style="display:none">Orchestra Conductor · Acilia (Roma)</p></div>
+      </div>
+      <div class="h-news-item">
+        <div class="h-news-date"><span class="h-news-day">19</span><span class="h-news-month it">LUG</span><span class="h-news-month en-s" style="display:none">JUL</span></div>
+        <div><p class="h-news-title it"><em>Luciano &amp; Friends</em> — Formello</p><p class="h-news-title en-s" style="display:none"><em>Luciano &amp; Friends</em> — Formello</p><p class="h-news-sub">Formello Chigi Festival · ore 21:00</p></div>
+      </div>
+      <div class="h-news-item">
+        <div class="h-news-date"><span class="h-news-day">21</span><span class="h-news-month it">GIU</span><span class="h-news-month en-s" style="display:none">JUN</span></div>
+        <div><p class="h-news-title it"><em>La Traviata</em> — Teatro dell'Opera di Roma</p><p class="h-news-title en-s" style="display:none"><em>La Traviata</em> — Teatro dell'Opera di Roma</p><p class="h-news-sub">📻 Radio RAI · 21, 24, 26, 30 giu</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="bio">
+  <div class="sw">
+    <p class="s-label reveal it">Biografia</p>
+    <p class="s-label reveal en-s" style="display:none">Biography</p>
+    <div class="bio-grid">
+      <div class="reveal">
+        <div class="bio-photo" style="padding:0;overflow:hidden"><img src="foto_ufficiale.jpg" alt="Carlo Alberto Gioja" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div class="bio-tags"><span class="bio-tag">Conservatorio S. Cecilia</span><span class="bio-tag">Teatro dell'Opera di Roma</span><span class="bio-tag">Cappella Sistina</span><span class="bio-tag">RAI · SKY · Vatican Media</span></div>
+      </div>
+      <div class="reveal">
+        <p class="bio-lead it">Basso di formazione accademica d'eccellenza, artista poliedrico che fonde tecnica vocale raffinata, direzione d'orchestra e visione registica in una carriera di respiro internazionale.</p>
+        <p class="bio-lead en-s" style="display:none">A bass of outstanding academic formation, a versatile artist who combines refined vocal technique, orchestral conducting and operatic vision in a career of international scope.</p>
+        <div class="bio-body">
+          <p class="it">Vincitore del Concorso Pubblico Internazionale presso il <strong>Teatro dell'Opera di Roma</strong> come Artista del Coro (2024), ha collaborato con direttori di fama mondiale quali Rinaldo Alessandrini, James Conlon e Jader Bignamini, e con registi come Pierre Audi e Davide Livermore.</p>
+          <p class="en-s" style="display:none">Winner of the International Public Competition at the <strong>Teatro dell'Opera di Roma</strong> as Choir Artist (2024), he has worked with conductors such as Rinaldo Alessandrini, James Conlon and Jader Bignamini, and directors Pierre Audi and Davide Livermore.</p>
+          <p class="it">Ha studiato Canto Lirico e Direzione d'Orchestra presso il <strong>Conservatorio di Santa Cecilia</strong> con il M° Carlo Desideri e il M° Maurizio Ciampi. Nel luglio 2025 si è laureato con <strong>lode e menzione d'onore</strong> nel Biennio Specialistico in Direzione d'Orchestra di musica vocale e sacra, portando in tesi la <em>Cavalleria Rusticana</em> di Mascagni.</p>
+          <p class="en-s" style="display:none">He studied at the <strong>Santa Cecilia Conservatory</strong> with M° Carlo Desideri and M° Maurizio Ciampi, graduating <strong>cum laude with special distinction</strong> in July 2025 in the Specialist Biennium in Conducting of Vocal and Sacred Music, presenting Mascagni's <em>Cavalleria Rusticana</em> as his thesis.</p>
+          <p class="it">Ha partecipato con la <strong>Cappella Musicale Pontificia Sistina</strong> a messe trasmesse in diretta mondiale. La sua attività è stata diffusa da RAI, SKY Classica HD, Vatican Media e CRTV Cameroon.</p>
+          <p class="en-s" style="display:none">He has performed with the <strong>Pontifical Sistine Chapel Choir</strong> in masses broadcast worldwide, and his work has been broadcast by RAI, SKY Classica HD, Vatican Media and CRTV Cameroon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comp">
+  <div class="sw">
+    <p class="s-label reveal it">Competenze</p>
+    <p class="s-label reveal en-s" style="display:none">Expertise</p>
+    <h2 class="s-title reveal it">Cinque <em>ambiti</em> di attività artistica</h2>
+    <h2 class="s-title reveal en-s" style="display:none">Five <em>fields</em> of artistic activity</h2>
+    <div class="comp-grid reveal">
+      <a href="cantante.html" class="comp-card"><span class="comp-n">01</span><span class="comp-icon">🎤</span><div class="comp-t it">Cantante Lirico</div><div class="comp-t en-s" style="display:none">Lyric Singer</div><p class="comp-d it">Basso. Repertorio Mozart, Rossini, Donizetti, Verdi, Puccini.</p><p class="comp-d en-s" style="display:none">Bass. Mozart, Rossini, Donizetti, Verdi, Puccini repertoire.</p><span class="comp-link">Scopri →</span></a>
+      <a href="direttore.html" class="comp-card"><span class="comp-n">02</span><span class="comp-icon">🎼</span><div class="comp-t it">Direttore di Coro</div><div class="comp-t en-s" style="display:none">Choral Conductor</div><p class="comp-d it">Cori lirici, gospel e polifonici. Vocal coach al Teatro Sistina.</p><p class="comp-d en-s" style="display:none">Lyric, gospel and polyphonic choirs. Vocal coach at Teatro Sistina.</p><span class="comp-link">Scopri →</span></a>
+      <a href="direttore.html" class="comp-card"><span class="comp-n">03</span><span class="comp-icon">🎻</span><div class="comp-t it">Direttore d'Orchestra</div><div class="comp-t en-s" style="display:none">Orchestra Conductor</div><p class="comp-d it">Opere liriche e concerti sinfonico-corali. Colosseum Symphony Orchestra.</p><p class="comp-d en-s" style="display:none">Operas and symphonic-choral concerts.</p><span class="comp-link">Scopri →</span></a>
+      <a href="regista.html" class="comp-card"><span class="comp-n">04</span><span class="comp-icon">🎭</span><div class="comp-t it">Regista d'Opera</div><div class="comp-t en-s" style="display:none">Opera Director</div><p class="comp-d it">Regie in Italia e all'estero. Camerun 2022 per la Settimana della Lingua Italiana.</p><p class="comp-d en-s" style="display:none">Productions in Italy and abroad. Cameroon 2022.</p><span class="comp-link">Scopri →</span></a>
+      <a href="docente.html" class="comp-card"><span class="comp-n">05</span><span class="comp-icon">📖</span><div class="comp-t it">Docenza</div><div class="comp-t en-s" style="display:none">Teaching</div><p class="comp-d it">Canto lirico, direzione di coro, arte scenica. Accademie e conservatori.</p><p class="comp-d en-s" style="display:none">Lyric singing, choral direction, stage craft.</p><span class="comp-link">Scopri →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="premi">
+  <div class="sw">
+    <p class="s-label reveal it">Premi & Riconoscimenti</p>
+    <p class="s-label reveal en-s" style="display:none">Awards & Recognition</p>
+    <h2 class="s-title reveal it">Una carriera <em>premiata</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">An <em>award-winning</em> career</h2>
+    <div>
+      <div class="premio reveal"><span class="premio-y">2024</span><div><p class="premio-t it">Concorso Pubblico Internazionale — Teatro dell'Opera di Roma</p><p class="premio-t en-s" style="display:none">International Public Competition — Teatro dell'Opera di Roma</p><p class="premio-s it">Artista del Coro, sezione Bassi</p><p class="premio-s en-s" style="display:none">Choir Artist, Bass section</p></div><span class="premio-b it">Vincitore</span><span class="premio-b en-s" style="display:none">Winner</span></div>
+      <div class="premio reveal"><span class="premio-y">2020</span><div><p class="premio-t">1° Concorso Lirico Virtuale SOI — Fiorenza Cedolins</p><p class="premio-s it">Premio Speciale Fondazione Victoria de Los Angeles</p><p class="premio-s en-s" style="display:none">Special Prize Victoria de Los Angeles Foundation</p></div><span class="premio-b">1° Premio + Speciale</span></div>
+      <div class="premio reveal"><span class="premio-y">2019</span><div><p class="premio-t">Lirica sul Tevere — Presidente: Katia Ricciarelli</p><p class="premio-s">Premio Speciale Korea Opera Association — Seoul</p></div><span class="premio-b it">Vincitore</span><span class="premio-b en-s" style="display:none">Winner</span></div>
+      <div class="premio reveal"><span class="premio-y">2019</span><div><p class="premio-t">Premio Fausto Ricci — Presidente: Fiorenza Cedolins</p><p class="premio-s it">Ruolo Zio Bonzo in Madama Butterfly</p><p class="premio-s en-s" style="display:none">Role of Zio Bonzo in Madama Butterfly</p></div><span class="premio-b it">Vincitore a Ruoli</span><span class="premio-b en-s" style="display:none">Role Prize</span></div>
+      <div class="premio reveal"><span class="premio-y">2018</span><div><p class="premio-t">Concorso Lirico Internazionale "Rolando Nicolosi"</p></div><span class="premio-b">1° Premio</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="teatri">
+  <div class="sw">
+    <p class="s-label reveal it">Teatri & Sale da Concerto</p>
+    <p class="s-label reveal en-s" style="display:none">Theatres & Concert Halls</p>
+    <h2 class="s-title reveal it">Si è esibito in <em>Italia</em> e nel <em>mondo</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">Performed across <em>Italy</em> and the <em>world</em></h2>
+    <div class="teatri-2 reveal">
+      <div><p class="t-label it">Italia</p><p class="t-label en-s" style="display:none">Italy</p><ul class="t-list"><li>Teatro dell'Opera di Roma</li><li>Teatro Sistina — Roma</li><li>Teatro Argentina — Roma</li><li>Teatro Regio — Parma</li><li>Teatro Massimo — Palermo</li><li>Teatro Verdi — Firenze</li><li>Reggia di Caserta — Teatro Reale</li><li>Teatro Nuovo — Milano</li><li>Teatro Alfieri — Torino</li><li>Teatro Comunale L. Pavarotti — Modena</li><li>Teatro Politeama — Genova</li><li>Teatro Metropolitan — Catania</li><li>Musei Capitolini, Centrale Montemartini — Roma</li></ul></div>
+      <div><p class="t-label it">Estero</p><p class="t-label en-s" style="display:none">Abroad</p><ul class="t-list"><li>National Concert Hall — Pechino, Cina</li><li>Aula Paolo VI (Sala Nervi) — Città del Vaticano</li><li>Opera Varna Theatre — Bulgaria</li><li>Theater De Spiegel — Zwolle, Olanda</li><li>Theater Capitole — Gent, Belgio</li><li>De Flint Theater — Amersfoort, Olanda</li><li>Theater de Veste — Delft, Olanda</li><li>De Schouwburg — Leuven, Belgio</li><li>Kinneksbond Centre Culturel — Lussemburgo</li><li>Palazzo del Governo — Bastia, Corsica</li><li>Università Nazionale di Liegi — Belgio</li><li>Académie Sainte Cécile — Yaoundé, Camerun</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="media-sec">
+  <div class="sw">
+    <p class="s-label reveal it">Media & Discografia</p>
+    <p class="s-label reveal en-s" style="display:none">Media & Recordings</p>
+    <h2 class="s-title reveal it">Presenze <em>televisive</em> e discografia</h2>
+    <h2 class="s-title reveal en-s" style="display:none"><em>Television</em> appearances and recordings</h2>
+    <div class="media-grid reveal">
+      <div class="media-cell"><p class="media-ch">SKY Classica HD · 2020</p><p class="media-tt">"Miei Rampolli Femmini" — La Cenerentola</p><p class="media-nt">Don Magnifico — Carlo Alberto Gioja</p></div>
+      <div class="media-cell"><p class="media-ch">Vatican Media – CTV · 2015</p><p class="media-tt it">Santa Messa presieduta da Papa Francesco</p><p class="media-tt en-s" style="display:none">Holy Mass presided by Pope Francis</p><p class="media-nt it">Direttore del Coro</p><p class="media-nt en-s" style="display:none">Chorus Master</p></div>
+      <div class="media-cell"><p class="media-ch">RAI · 2023</p><p class="media-tt">DOC — Nelle tue mani, 3ª edizione</p><p class="media-nt it">Pianista e Preparatore Coro Bambini</p><p class="media-nt en-s" style="display:none">Pianist & Children's Choir Trainer</p></div>
+      <div class="media-cell"><p class="media-ch">CRTV Cameroon · 2022</p><p class="media-tt it">Don Giovanni — Regia e messa in scena</p><p class="media-tt en-s" style="display:none">Don Giovanni — Stage Production</p><p class="media-nt">Yaoundé · Settimana della Lingua Italiana</p></div>
+      <div class="media-cell"><p class="media-ch">CD · Teatro Sistina / PeepArrow</p><p class="media-tt">"Billy Elliot" — Il Musical</p><p class="media-nt it">Maestro del Coro</p><p class="media-nt en-s" style="display:none">Chorus Master</p></div>
+      <div class="media-cell"><p class="media-ch">CD · Regione Lazio</p><p class="media-tt">"Glory to the Lord" — LUMSA Gospel Singers</p><p class="media-nt it">Solista e Vice Direttore</p><p class="media-nt en-s" style="display:none">Soloist and Assistant Director</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="appuntamenti">
+  <div class="sw">
+    <p class="s-label reveal it">Prossimi appuntamenti</p>
+    <p class="s-label reveal en-s" style="display:none">Upcoming events</p>
+    <h2 class="s-title reveal it">In <em>scena</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">On <em>stage</em></h2>
+    <div class="reveal">
+      <div class="event-row">
+        <div class="event-date-box"><span class="event-day">30</span><span class="event-month it">AGO 2026</span><span class="event-month en-s" style="display:none">AUG 2026</span></div>
+        <div class="event-body">
+          <p class="event-label it">Direttore d'Orchestra · Lirica in Piazza</p><p class="event-label en-s" style="display:none">Orchestra Conductor</p>
+          <h3 class="event-title" style="font-style:italic">Don Giovanni — W.A. Mozart</h3>
+          <p class="event-sub it">Piazza San Biagio · Sacrofano (Roma) · ore 21:00 · Ingresso libero<br>Regia: Fratelli Picone · Cembalo: Alessia Capoccia · Colosseum Chamber Orchestra<br>Don Giovanni: Marco Severin · Leporello: Aurelio Palmieri · Donna Anna: Mariko Iizuka<br>Don Ottavio: Fabrizio Giovinazzi · Donna Elvira: Myoko Hirakawa · Zerlina: Laura Orlandi<br>Commendatore: Federico Masi · Patrocinio: Comune di Sacrofano · Regione Lazio · Parco di Veio</p>
+          <p class="event-sub en-s" style="display:none">Piazza San Biagio · Sacrofano (Roma) · 9:00 PM · Free admission<br>Director: Fratelli Picone · Colosseum Chamber Orchestra · Don Giovanni: Marco Severin</p>
+        </div>
+      </div>
+      <div class="event-row" style="border-top:none">
+        <div class="event-date-box"><span class="event-day">24</span><span class="event-month it">LUG 2026</span><span class="event-month en-s" style="display:none">JUL 2026</span></div>
+        <div class="event-body">
+          <p class="event-label it">Direttore d'Orchestra</p><p class="event-label en-s" style="display:none">Orchestra Conductor</p>
+          <h3 class="event-title" style="font-style:italic">Don Giovanni — W.A. Mozart</h3>
+          <p class="event-sub it">Teatro DOMMA · Acilia (Roma)</p>
+          <p class="event-sub en-s" style="display:none">Teatro DOMMA · Acilia (Roma)</p>
+        </div>
+      </div>
+      <div class="event-row" style="border-top:none">
+        <div class="event-date-box"><span class="event-day">19</span><span class="event-month it">LUG 2026</span><span class="event-month en-s" style="display:none">JUL 2026</span></div>
+        <div class="event-body">
+          <p class="event-label">Formello Chigi Festival</p>
+          <h3 class="event-title">Luciano &amp; Friends</h3>
+          <p class="event-sub it">Concerto di arie e duetti d'opera · ore 21:00<br>Piazza San Lorenzo · Formello (Roma)<br>Con Luciano Ganci · Courtney Mills · Marco Severin · Carlo Alberto Gioja<br>Direttore: M° Nicola Marasco · Colosseum Symphony Orchestra</p>
+          <p class="event-sub en-s" style="display:none">Concert of opera arias and duets · 9:00 PM · Piazza San Lorenzo · Formello<br>With Luciano Ganci · Courtney Mills · Marco Severin · Conductor: M° Nicola Marasco</p>
+        </div>
+      </div>
+      <div class="event-row" style="border-top:none">
+        <div class="event-date-box"><span class="event-day">21</span><span class="event-month it">GIU 2026</span><span class="event-month en-s" style="display:none">JUN 2026</span></div>
+        <div class="event-body">
+          <p class="event-label">Teatro dell'Opera di Roma</p>
+          <h3 class="event-title" style="font-style:italic">La Traviata — G. Verdi</h3>
+          <p class="event-sub it">Teatro Costanzi · Recite: 21, 24, 26, 30 giugno 2026<br>Ruolo: Un Commissionario · Dir: Francesco Ivan Ciampa · Regia: Sofia Coppola<br>📻 Recita del 21 giugno in diretta su Radio RAI</p>
+          <p class="event-sub en-s" style="display:none">Teatro Costanzi · 21, 24, 26, 30 June 2026 · Role: A Messenger<br>📻 21 June broadcast live on Radio RAI</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('svg').style.transform=this.nextElementSibling.style.display==='block'?'rotate(180deg)':'rotate(0deg)'" style="display:flex;align-items:center;gap:.8rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);padding:.5rem 0;border-bottom:1px solid var(--rule);width:100%;justify-content:space-between">
+        <span class="it">▸ Archivio eventi passati</span><span class="en-s" style="display:none">▸ Past events archive</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="transition:transform .3s"><polyline points="4,6 8,10 12,6"/></svg>
+      </button>
+      <div style="display:none">
+        <div class="event-row" style="opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">15</span><span class="event-month it">GEN 2026</span></div><div class="event-body"><p class="event-label">Teatro dell'Opera di Roma</p><h3 class="event-title" style="font-style:italic">La Bohème — G. Puccini</h3><p class="event-sub it">Recite: 15, 16, 21, 23, 24 gen 2026 · Ruolo: Un Doganiere<br>Dir: Jader Bignamini / A. Palumbo · Regia: Davide Livermore · Rodolfo: F. Demuro / R. Barbera</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">05</span><span class="event-month it">GEN 2026</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra · Comune di Formello</p><h3 class="event-title">"Sotto al neve del mondo"</h3><p class="event-sub it">Concerto natalizio · Coro Cantica Jubilate · Colosseum Symphony Orchestra</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">14</span><span class="event-month it">DIC 2025</span></div><div class="event-body"><p class="event-label it">Direttore di Coro — Voci di Luce · II edizione</p><h3 class="event-title" style="font-style:italic">Concerto Gospel per la Solidarietà</h3><p class="event-sub it">Basilica di San Giuseppe al Trionfale · Roma · Lega del Filo d'oro · Con Roberta Ammendola</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">1</span><span class="event-month it">NOV 2025</span></div><div class="event-body"><p class="event-label it">Direttore di Coro — Mediterranean Choral Festival of Albania</p><h3 class="event-title" style="font-style:italic">Coro Gocce di Luce — UICI Roma</h3><p class="event-sub it">Cattedrale di San Stefano · Shkodra, Albania · con cori da Bulgaria, Grecia, Israele e Albania</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">9</span><span class="event-month it">MAG 2025</span></div><div class="event-body"><p class="event-label">Teatro dell'Opera di Roma</p><h3 class="event-title" style="font-style:italic">Tosca — G. Puccini</h3><p class="event-sub it">Recite: 9, 11, 13 mag 2025 · Ruolo: Un Carceriere · Dir: James Conlon · Tosca: Anna Pirozzi · Scarpia: Ariunbaatar Ganbaatar</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">18</span><span class="event-month it">MAR 2025</span></div><div class="event-body"><p class="event-label">Teatro dell'Opera di Roma</p><h3 class="event-title" style="font-style:italic">Alcina — G.F. Händel</h3><p class="event-sub it">Recite: 18, 23, 26 mar 2025 · Dir: Rinaldo Alessandrini · Regia: Pierre Audi · Alcina: Mariangela Sicilia</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">10</span><span class="event-month it">SET 2024</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra</p><h3 class="event-title">Stabat Mater · Mozart · Rossini</h3><p class="event-sub it">Orchestra del Conservatorio S. Cecilia · Fondazione Consiglio Nazionale degli Ingegneri</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">6</span><span class="event-month it">LUG 2024</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra</p><h3 class="event-title" style="font-style:italic">L'Elisir d'Amore — G. Donizetti</h3><p class="event-sub it">Colosseum Symphony Orchestra · Teatro DOMMA · Acilia (Roma)</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">6</span><span class="event-month it">LUG 2025</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra</p><h3 class="event-title" style="font-style:italic">La Traviata — G. Verdi</h3><p class="event-sub it">Piazza San Biagio · Sacrofano · Colosseum Chamber Orchestra · Regia: Fratelli Picone<br>Violetta: Naho Yokohama · Alfredo: Fabrizio Giovinazzi · Germont: Marco Severin</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">25</span><span class="event-month it">AGO 2023</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra</p><h3 class="event-title">Cavalleria Rusticana — P. Mascagni</h3><p class="event-sub it">Palazzo Rospigliosi · Zagarolo (RM) · Orchestra Millenium</p></div></div>
+        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">30</span><span class="event-month it">LUG 2023</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra</p><h3 class="event-title">"Sotto la brezza dell'amore"</h3><p class="event-sub it">Piazza San Lorenzo · Formello · Colosseum Chamber Orchestra · Con Fabio Serani, Michela Vavaro, Roberta Ammendola</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="contatti">
+  <div class="sw">
+    <p class="s-label reveal">Booking & Contact</p>
+    <h2 class="s-title reveal it">Per <em>collaborazioni</em> e informazioni</h2>
+    <h2 class="s-title reveal en-s" style="display:none">For <em>collaborations</em> and enquiries</h2>
+    <div class="c-row reveal">
+      <div class="c-cell"><p class="c-label">Email</p><p class="c-val"><a href="mailto:carloalbertogio@gmail.com">carloalbertogio@gmail.com</a></p></div>
+      <div class="c-cell"><p class="c-label">Mobile</p><p class="c-val"><a href="tel:+393927692354">+39 392 769 2354</a></p></div>
+      <div class="c-cell"><p class="c-label it">Sede</p><p class="c-label en-s" style="display:none">Base</p><p class="c-val">Formello (Roma), Italia</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Carlo Alberto Gioja</span>
+  <span class="f-copy">© 2026 · Tutti i diritti riservati</span>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => { nav.style.boxShadow = window.scrollY > 10 ? '0 1px 20px rgba(0,0,0,.06)' : 'none'; });
+  const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('up'); io.unobserve(x.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  function setLang(l) {
+    document.body.classList.toggle('en', l==='en');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent===l.toUpperCase()));
+    localStorage.setItem('lang', l);
+  }
+  const saved = localStorage.getItem('lang');
+  if(saved === 'en') setLang('en');
+</script>
+</body>
+</html>

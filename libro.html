@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mozart e la Massoneria — Carlo Alberto Gioja</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--white:#FFFFFF;--off:#F8F7F5;--light:#EFEFED;--grey:#9A9690;--dg:#4A4744;--black:#1C1A18;--rule:#E0DED9}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);height:64px;display:flex;align-items:center;padding:0 3rem;justify-content:space-between}
+.nav-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400}
+.nav-name span{font-style:italic;color:var(--grey)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.08em;color:var(--dg);text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--black);transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover{color:var(--black)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-lang{display:flex;gap:.25rem}
+.lang-btn{font-size:.7rem;font-weight:500;letter-spacing:.1em;background:none;border:none;cursor:pointer;color:var(--grey);text-transform:uppercase;padding:.2rem .4rem}
+.lang-btn.active{color:var(--black);border-bottom:1px solid var(--black)}
+
+/* PAGE HEADER */
+.page-header{padding-top:64px;border-bottom:1px solid var(--rule);background:var(--off)}
+.page-header-inner{max-width:1100px;margin:0 auto;padding:4rem 3rem 3.5rem}
+.back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:2rem;transition:color .2s}
+.back-link:hover{color:var(--black)}
+.page-eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-bottom:.8rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);font-weight:400;line-height:1.05}
+.page-title em{font-style:italic;color:var(--dg)}
+
+/* BOOK SECTION */
+.sw{max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.book-grid{display:grid;grid-template-columns:320px 1fr;gap:6rem;align-items:start}
+
+.book-cover-wrap{position:relative}
+.book-cover{width:100%;display:block;border:1px solid var(--rule);box-shadow:8px 12px 40px rgba(0,0,0,.15)}
+.book-buy-btn{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-top:1.5rem;background:var(--black);color:var(--white);padding:1rem 1.5rem;font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;transition:opacity .2s;width:100%}
+.book-buy-btn:hover{opacity:.85}
+.book-buy-btn svg{width:18px;height:18px;flex-shrink:0}
+.book-meta{margin-top:1rem;display:flex;flex-direction:column;gap:.4rem}
+.book-meta-row{display:flex;gap:.8rem;font-size:.78rem;color:var(--grey);border-top:1px solid var(--rule);padding:.5rem 0}
+.book-meta-row:last-child{border-bottom:1px solid var(--rule)}
+.book-meta-label{font-weight:500;color:var(--dg);min-width:80px}
+
+.book-info{}
+.book-label{font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.book-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.book-desc{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;line-height:1.65;color:var(--dg);margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--rule)}
+.book-body p{font-size:.97rem;line-height:1.85;color:var(--dg);margin-bottom:1.2rem}
+.book-body p:last-child{margin-bottom:0}
+
+/* ESTRATTO */
+.estratto{background:var(--off);border-left:3px solid var(--black);padding:2rem 2.5rem;margin:3rem 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--dg)}
+.estratto-fonte{font-family:'DM Sans',sans-serif;font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:1rem}
+
+/* SECTION TEMI */
+.temi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);background:var(--rule);margin-top:4rem}
+.tema-card{background:var(--white);padding:2rem 1.8rem;transition:background .2s}
+.tema-card:hover{background:var(--off)}
+.tema-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--light);margin-bottom:.8rem}
+.tema-title{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.6rem}
+.tema-desc{font-size:.82rem;line-height:1.6;color:var(--grey)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.up{opacity:1;transform:none}
+
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-name{font-family:'Playfair Display',serif;font-size:.88rem;color:rgba(255,255,255,.35)}
+.f-copy{font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
+.f-links{display:flex;gap:1.5rem}
+.f-links a{font-size:.68rem;color:rgba(255,255,255,.3);letter-spacing:.05em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.6)}
+
+body.en .it{display:none!important}
+body.en .en-s{display:block!important}
+body.en span.en-s{display:inline!important}
+
+@media(max-width:900px){nav{padding:0 1.5rem}.nav-links{display:none}.sw{padding:4rem 1.5rem}.book-grid{grid-template-columns:1fr;gap:3rem}.book-cover{max-width:300px}.temi-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-name">Carlo Alberto <span>Gioja</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#bio" class="it">Biografia</a><a href="index.html#bio" class="en-s" style="display:none">Biography</a></li>
+    <li><a href="cantante.html" class="it">Cantante</a><a href="cantante.html" class="en-s" style="display:none">Singer</a></li>
+    <li><a href="direttore.html" class="it">Direttore</a><a href="direttore.html" class="en-s" style="display:none">Conductor</a></li>
+    <li><a href="regista.html" class="it">Regista</a><a href="regista.html" class="en-s" style="display:none">Director</a></li>
+    <li><a href="docente.html" class="it">Docenza</a><a href="docente.html" class="en-s" style="display:none">Teaching</a></li>
+    <li><a href="index.html#contatti" class="it">Contatti</a><a href="index.html#contatti" class="en-s" style="display:none">Contact</a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('it')">IT</button>
+    <span style="color:#ccc;font-size:.7rem">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a href="index.html" class="back-link">← <span class="it">Torna alla home</span><span class="en-s" style="display:none">Back to home</span></a>
+    <p class="page-eyebrow it">Pubblicazione · Officine Culturali Romane · Collana Ermes</p>
+    <p class="page-eyebrow en-s" style="display:none">Publication · Officine Culturali Romane · Ermes Series</p>
+    <h1 class="page-title it">Mozart e la Massoneria<br><em>Armonia e Simbolismo Universale</em></h1>
+    <h1 class="page-title en-s" style="display:none">Mozart and Freemasonry<br><em>Harmony and Universal Symbolism</em></h1>
+  </div>
+</div>
+
+<div class="sw">
+  <div class="book-grid reveal">
+
+    <div class="book-cover-wrap">
+      <img src="libro_cover.jpg" alt="Mozart e la Massoneria — Carlo Alberto Gioja" class="book-cover">
+      <a href="https://www.amazon.it/Mozart-Massoneria-Armonia-simbolismo-universale/dp/B0FBTCMPFN/" target="_blank" rel="noopener" class="book-buy-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>
+        <span class="it">Acquista su Amazon</span>
+        <span class="en-s" style="display:none">Buy on Amazon</span>
+      </a>
+      <div class="book-meta">
+        <div class="book-meta-row"><span class="book-meta-label it">Autore</span><span class="book-meta-label en-s" style="display:none">Author</span><span>Carlo Alberto Gioja</span></div>
+        <div class="book-meta-row"><span class="book-meta-label it">Editore</span><span class="book-meta-label en-s" style="display:none">Publisher</span><span>Officine Culturali Romane</span></div>
+        <div class="book-meta-row"><span class="book-meta-label it">Collana</span><span class="book-meta-label en-s" style="display:none">Series</span><span>Ermes</span></div>
+        <div class="book-meta-row"><span class="book-meta-label">ISBN</span><span>979-12-808-0771-7</span></div>
+        <div class="book-meta-row"><span class="book-meta-label it">Prefazione</span><span class="book-meta-label en-s" style="display:none">Preface</span><span>Gian Filippo Santi<br><span style="font-size:.72rem;color:var(--grey)" class="it">Sindaco di Formello</span><span style="font-size:.72rem;color:var(--grey)" class="en-s" style="display:none">Mayor of Formello</span></span></div>
+      </div>
+    </div>
+
+    <div class="book-info">
+      <p class="book-label it">Il libro</p>
+      <p class="book-label en-s" style="display:none">The book</p>
+
+      <p class="book-desc it">Wolfgang Amadeus Mozart non è stato solo un compositore di straordinario genio: fu anche un uomo profondamente immerso in una corrente spirituale e iniziatica che ha lasciato tracce indelebili nella sua opera — la Massoneria.</p>
+      <p class="book-desc en-s" style="display:none">Wolfgang Amadeus Mozart was not only a composer of extraordinary genius: he was also a man deeply immersed in a spiritual and initiatory current that left indelible traces in his work — Freemasonry.</p>
+
+      <div class="book-body">
+        <p class="it">Questo volume offre un viaggio affascinante nell'universo interiore di Mozart, rivelando come i princìpi di fratellanza, uguaglianza e conoscenza abbiano permeato ogni aspetto della sua produzione artistica — dalle opere più celebri alle composizioni massoniche meno note, fino alle ultime, misteriose creazioni.</p>
+        <p class="en-s" style="display:none">This volume offers a fascinating journey into Mozart's inner universe, revealing how the principles of brotherhood, equality and knowledge permeated every aspect of his artistic output — from his most celebrated works to lesser-known Masonic compositions, through to his final, mysterious creations.</p>
+
+        <p class="it">Attraverso un'analisi approfondita e rigorosa, il testo esplora il dialogo tra Mozart e i grandi compositori massoni suoi contemporanei — Haydn, Beethoven, Liszt — e le figure dei pensatori illuminati che ne influenzarono il pensiero. Un'opera che intreccia storia, filosofia, simbologia e musicologia in una narrazione avvincente, accessibile tanto agli specialisti quanto agli appassionati.</p>
+        <p class="en-s" style="display:none">Through rigorous and in-depth analysis, the text explores the dialogue between Mozart and the great Masonic composers of his time — Haydn, Beethoven, Liszt — and the Enlightenment thinkers who influenced his thought. A work that weaves together history, philosophy, symbolism and musicology in a compelling narrative, accessible to specialists and enthusiasts alike.</p>
+
+        <div class="estratto">
+          <p class="it">«La musica di Mozart non è soltanto suono: è geometria dell'anima, architettura del pensiero, codice di un linguaggio universale che trascende il tempo e la cultura. Comprendere la sua relazione con la Massoneria significa cogliere la profondità di un genio che cercò, attraverso le note, di esprimere l'inesprimibile.»</p>
+          <p class="en-s" style="display:none">«Mozart's music is not merely sound: it is the geometry of the soul, the architecture of thought, a code of universal language that transcends time and culture. To understand his relationship with Freemasonry is to grasp the depth of a genius who sought, through music, to express the inexpressible.»</p>
+          <p class="estratto-fonte">— Carlo Alberto Gioja</p>
+        </div>
+
+        <p class="it">Un libro che parla a musicisti, storici, filosofi e a chiunque ami l'arte di un compositore che ha saputo trasformare la ricerca spirituale in bellezza sonora senza tempo. Con la prefazione del Sindaco di Formello Gian Filippo Santi, il volume è inserito nella Collana Ermes delle Officine Culturali Romane.</p>
+        <p class="en-s" style="display:none">A book that speaks to musicians, historians, philosophers and anyone who loves the art of a composer who transformed spiritual inquiry into timeless beauty. With a preface by the Mayor of Formello Gian Filippo Santi, the volume is part of the Ermes series published by Officine Culturali Romane.</p>
+      </div>
+
+      <div class="temi-grid">
+        <div class="tema-card">
+          <div class="tema-num">I</div>
+          <div class="tema-title it">Mozart e la Loggia</div>
+          <div class="tema-title en-s" style="display:none">Mozart and the Lodge</div>
+          <p class="tema-desc it">L'iniziazione massonica di Mozart nel 1784 e il suo rapporto con la Loggia "Zur Wohltätigkeit" di Vienna.</p>
+          <p class="tema-desc en-s" style="display:none">Mozart's Masonic initiation in 1784 and his relationship with the "Zur Wohltätigkeit" Lodge in Vienna.</p>
+        </div>
+        <div class="tema-card">
+          <div class="tema-num">II</div>
+          <div class="tema-title it">Il Simbolismo nelle Opere</div>
+          <div class="tema-title en-s" style="display:none">Symbolism in the Works</div>
+          <p class="tema-desc it">Il Flauto Magico, la Musica Massonica K. 477 e i codici nascosti nel linguaggio musicale mozartiano.</p>
+          <p class="tema-desc en-s" style="display:none">The Magic Flute, the Masonic Music K. 477 and the hidden codes in Mozart's musical language.</p>
+        </div>
+        <div class="tema-card">
+          <div class="tema-num">III</div>
+          <div class="tema-title it">L'Armonia Universale</div>
+          <div class="tema-title en-s" style="display:none">Universal Harmony</div>
+          <p class="tema-desc it">Il dialogo tra musica, filosofia illuminista e ideali massonici di fratellanza, libertà e conoscenza.</p>
+          <p class="tema-desc en-s" style="display:none">The dialogue between music, Enlightenment philosophy and Masonic ideals of brotherhood, freedom and knowledge.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="f-name">Carlo Alberto Gioja</span>
+  <div class="f-links">
+    <a href="cookies.html" class="it">Cookie Policy</a>
+    <a href="cookies.html" class="en-s" style="display:none">Cookie Policy</a>
+    <a href="privacy.html" class="it">Privacy</a>
+    <a href="privacy.html" class="en-s" style="display:none">Privacy</a>
+  </div>
+  <span class="f-copy">© 2026 · Tutti i diritti riservati</span>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function setLang(l){document.body.classList.toggle('en',l==='en');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
+  const saved=localStorage.getItem('lang');if(saved==='en')setLang('en');
+</script>
+</body>
+</html>

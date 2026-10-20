@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cantante Lirico — Carlo Alberto Gioja</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--white:#FFFFFF;--off:#F8F7F5;--light:#EFEFED;--grey:#9A9690;--dg:#4A4744;--black:#1C1A18;--rule:#E0DED9;--hover:#F2F0EC}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);height:64px;display:flex;align-items:center;padding:0 3rem;justify-content:space-between}
+.nav-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400}
+.nav-name span{font-style:italic;color:var(--grey)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.08em;color:var(--dg);text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--black);transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--black)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-lang{display:flex;gap:.25rem}
+.lang-btn{font-size:.7rem;font-weight:500;letter-spacing:.1em;background:none;border:none;cursor:pointer;color:var(--grey);text-transform:uppercase;padding:.2rem .4rem;transition:color .2s}
+.lang-btn.active{color:var(--black);border-bottom:1px solid var(--black)}
+
+/* PAGE HEADER */
+.page-header{padding-top:64px;border-bottom:1px solid var(--rule)}
+.page-header-inner{max-width:1100px;margin:0 auto;padding:5rem 3rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end}
+.back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:2.5rem;transition:color .2s}
+.back-link:hover{color:var(--black)}
+.page-num{font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;color:var(--light);line-height:1;margin-bottom:.5rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:400;line-height:1.05}
+.page-title em{font-style:italic;color:var(--dg)}
+.page-desc{font-size:1rem;line-height:1.8;color:var(--dg);max-width:440px;align-self:end}
+
+/* SECTIONS */
+.sw{max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.s-label{font-size:.62rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--grey);display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
+.s-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;line-height:1.15;color:var(--black);margin-bottom:3rem}
+.s-title em{font-style:italic;color:var(--dg)}
+section{border-top:1px solid var(--rule)}
+
+/* OPERA BLOCKS — photo left, info right */
+.opera-block{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;padding:3rem 0;border-top:1px solid var(--rule)}
+.opera-block:first-child{border-top:none}
+.opera-block.reverse{direction:rtl}
+.opera-block.reverse > *{direction:ltr}
+
+/* Photo gallery within each block */
+.opera-gallery{display:grid;gap:6px}
+.opera-gallery.g1{grid-template-columns:1fr}
+.opera-gallery.g2{grid-template-columns:1fr 1fr}
+.opera-gallery.g3{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+.opera-gallery.g3 .main-img{grid-column:1/-1}
+.opera-gallery.g4{grid-template-columns:1fr 1fr}
+
+.opera-gallery img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .4s;cursor:pointer;
+}
+.opera-gallery img:hover{transform:scale(1.02)}
+.g1 img{aspect-ratio:4/3}
+.g2 img,.g4 img{aspect-ratio:3/4}
+.g3 .main-img img{aspect-ratio:16/9}
+.g3 .sub-img img{aspect-ratio:4/3}
+
+.opera-info{}
+.opera-composer{font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-bottom:.6rem}
+.opera-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic;color:var(--black);margin-bottom:.3rem}
+.opera-role{font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--black);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+.opera-role::before{content:'';width:20px;height:1px;background:var(--black)}
+.opera-detail{font-size:.88rem;line-height:1.75;color:var(--dg);padding-bottom:1.2rem;border-bottom:1px solid var(--rule);margin-bottom:1.2rem}
+.opera-detail:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.opera-detail strong{color:var(--black);font-weight:500}
+.opera-credit{font-size:.72rem;color:var(--grey);margin-top:1.5rem;font-style:italic}
+
+/* REPERTORIO TABLE */
+.rep-table{width:100%;border-collapse:collapse}
+.rep-table th{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);padding:.8rem 1.2rem;border-bottom:1px solid var(--rule);text-align:left}
+.rep-table td{padding:1rem 1.2rem;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--dg);vertical-align:top}
+.rep-table tr:hover td{background:var(--off)}
+.rep-opera-name{font-family:'Playfair Display',serif;font-style:italic;font-size:.98rem;color:var(--black)}
+
+/* MUSICAL */
+.musical-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--rule);background:var(--rule)}
+.musical-card{background:var(--white);padding:2.5rem;transition:background .2s}
+.musical-card:hover{background:var(--off)}
+.musical-label{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:.7rem}
+.musical-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;margin-bottom:.4rem}
+.musical-sub{font-size:.82rem;color:var(--grey);line-height:1.5}
+
+/* CONCERTI */
+.concert-list{display:flex;flex-direction:column}
+.concert-row{display:grid;grid-template-columns:120px 1fr;gap:2.5rem;padding:1.5rem 0;border-top:1px solid var(--rule)}
+.concert-row:last-child{border-bottom:1px solid var(--rule)}
+.concert-date{font-family:'Playfair Display',serif;font-style:italic;font-size:.88rem;color:var(--grey);padding-top:.1rem}
+.concert-title{font-size:.93rem;color:var(--black);margin-bottom:.25rem}
+.concert-sub{font-size:.8rem;color:var(--grey);line-height:1.6}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:999;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lb-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s}
+.lb-close:hover{opacity:1}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.up{opacity:1;transform:none}
+
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-name{font-family:'Playfair Display',serif;font-size:.88rem;color:rgba(255,255,255,.35)}
+.f-copy{font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
+
+body.en .it{display:none!important}
+body.en .en-s{display:block!important}
+body.en span.en-s{display:inline!important}
+
+@media(max-width:900px){
+  nav{padding:0 1.5rem}.nav-links{display:none}
+  .page-header-inner{grid-template-columns:1fr;gap:2rem}
+  .sw{padding:4rem 1.5rem}
+  .opera-block{grid-template-columns:1fr;gap:2.5rem}
+  .opera-block.reverse{direction:ltr}
+  .musical-grid{grid-template-columns:1fr}
+  .concert-row{grid-template-columns:1fr;gap:.5rem}
+  .g2,.g4{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLB()">
+  <span class="lb-close">×</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<nav>
+  <a href="index.html" class="nav-name">Carlo Alberto <span>Gioja</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#bio" class="it">Biografia</a><a href="index.html#bio" class="en-s" style="display:none">Biography</a></li>
+    <li><a href="cantante.html" class="active it">Cantante</a><a href="cantante.html" class="active en-s" style="display:none">Singer</a></li>
+    <li><a href="direttore.html" class="it">Direttore</a><a href="direttore.html" class="en-s" style="display:none">Conductor</a></li>
+    <li><a href="regista.html" class="it">Regista</a><a href="regista.html" class="en-s" style="display:none">Director</a></li>
+    <li><a href="docente.html" class="it">Docenza</a><a href="docente.html" class="en-s" style="display:none">Teaching</a></li>
+    <li><a href="index.html#contatti" class="it">Contatti</a><a href="index.html#contatti" class="en-s" style="display:none">Contact</a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('it')">IT</button>
+    <span style="color:#ccc;font-size:.7rem">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <a href="index.html" class="back-link">← <span class="it">Torna alla home</span><span class="en-s" style="display:none">Back to home</span></a>
+      <div class="page-num">01</div>
+      <h1 class="page-title it">Cantante <em>Lirico</em></h1>
+      <h1 class="page-title en-s" style="display:none">Lyric <em>Singer</em></h1>
+    </div>
+    <p class="page-desc it">Basso con un repertorio che spazia da Mozart a Puccini. Ruoli principali nei maggiori teatri d'opera italiani e internazionali, con collaborazioni con artisti e direttori di fama mondiale.</p>
+    <p class="page-desc en-s" style="display:none">Bass with a repertoire spanning from Mozart to Puccini. Principal roles in the leading Italian and international opera houses, alongside internationally acclaimed artists and conductors.</p>
+  </div>
+</div>
+
+<!-- TEATRO DELL'OPERA DI ROMA -->
+<section>
+  <div class="sw">
+    <p class="s-label reveal it">Teatro dell'Opera di Roma — Ruoli solistici</p>
+    <p class="s-label reveal en-s" style="display:none">Teatro dell'Opera di Roma — Solo roles</p>
+    <h2 class="s-title reveal it">Sul palco del <em>Costanzi</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">On the <em>Costanzi</em> stage</h2>
+
+    <!-- TRAVIATA -->
+    <div class="opera-block reveal">
+      <div class="opera-gallery g1" style="background:var(--light);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:.7rem;letter-spacing:.1em;text-align:center;padding:2rem">
+        <span class="it">Foto in arrivo</span><span class="en-s" style="display:none">Photos coming soon</span>
+      </div>
+      <div class="opera-info">
+        <p class="opera-composer">G. Verdi</p>
+        <h3 class="opera-title">La Traviata</h3>
+        <p class="opera-role it">Ruolo: Un Commissionario</p>
+        <p class="opera-role en-s" style="display:none">Role: A Messenger</p>
+        <div class="opera-detail it">
+          <strong>Teatro Costanzi · 21, 24, 26, 30 giugno 2026</strong><br>
+          📻 Recita del 21 giugno in diretta su Radio RAI<br><br>
+          Direttore: Francesco Ivan Ciampa<br>
+          Regia: Sofia Coppola<br>
+          Maestro del Coro: Ciro Visco<br>
+          Scene: Nathan Crowley · Scenografo collaboratore: Leila Fteita<br>
+          Costumi: Valentino Garavani, Maria Grazia Chiuri e Pierpaolo Piccioli<br>
+          Coreografia: Stéphane Phavorin · Luci: Vinicio Cheli<br>
+          Video: Officine K · Regista collaboratore: Marina Bianchi
+        </div>
+        <div class="opera-detail it">
+          Violetta Valéry: Ermonela Jaho (21, 26, 30) / Nadine Sierra (24)<br>
+          Alfredo Germont: Dmitry Korchak (21, 30) / Xabier Anduaga (24, 26)<br>
+          Giorgio Germont: Amartuvshin Enkbath (21, 30) / Luca Salsi (24) / Ludovic Tézier (26)<br>
+          Flora: Maria Elena Pepi · Annina: Sofia Barbashova<br>
+          Barone di Douphol: Arturo Espinosa<br>
+          Un commissionario: <strong>Carlo Alberto Gioja</strong> (21, 24, 26, 30)
+        </div>
+        <div class="opera-detail en-s" style="display:none">
+          <strong>Teatro Costanzi · 21, 24, 26, 30 June 2026</strong><br>
+          📻 21 June broadcast live on Radio RAI<br><br>
+          Conductor: Francesco Ivan Ciampa · Director: Sofia Coppola<br>
+          Chorus Master: Ciro Visco · Sets: Nathan Crowley<br>
+          Costumes: Valentino Garavani, Maria Grazia Chiuri & Pierpaolo Piccioli
+        </div>
+        <div class="opera-detail en-s" style="display:none">
+          Violetta: Ermonela Jaho (21, 26, 30) / Nadine Sierra (24)<br>
+          Alfredo: Dmitry Korchak (21, 30) / Xabier Anduaga (24, 26)<br>
+          A messenger: <strong>Carlo Alberto Gioja</strong> (21, 24, 26, 30)
+        </div>
+      </div>
+    </div>
+
+    <!-- BOHÈME -->
+    <div class="opera-block reverse reveal">
+      <div class="opera-info">
+        <p class="opera-composer">G. Puccini</p>
+        <h3 class="opera-title">La Bohème</h3>
+        <p class="opera-role it">Ruolo: Un Doganiere</p>
+        <p class="opera-role en-s" style="display:none">Role: A Customs Officer</p>
+        <div class="opera-detail it">
+          <strong>Teatro Costanzi · 15, 16, 21, 23, 24 gennaio 2026</strong><br>
+          Direttore: Jader Bignamini / Alessandro Palumbo<br>
+          Regia e Scene: Davide Livermore<br>
+          Maestro del Coro: Ciro Visco
+        </div>
+        <div class="opera-detail it">
+          Rodolfo: Francesco Demuro / René Barbera<br>
+          Mimì: Maria Agresta / Roberta Mantegna<br>
+          Musetta: Elisa Balbo
+        </div>
+        <div class="opera-detail en-s" style="display:none">
+          <strong>Teatro Costanzi · 15, 16, 21, 23, 24 January 2026</strong><br>
+          Conductors: Jader Bignamini / Alessandro Palumbo · Director & Set: Davide Livermore<br>
+          Rodolfo: Francesco Demuro / René Barbera · Mimì: Maria Agresta / Roberta Mantegna
+        </div>
+        <p class="opera-credit it">Allestimento in collaborazione con Palau de les Arts Reina Sofía, Valencia</p>
+        <p class="opera-credit en-s" style="display:none">Production in collaboration with Palau de les Arts Reina Sofía, Valencia</p>
+      </div>
+      <div class="opera-gallery g1" style="background:var(--light);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:.7rem;letter-spacing:.1em;text-align:center;padding:2rem">
+        <span class="it">Foto in arrivo</span><span class="en-s" style="display:none">Photos coming soon</span>
+      </div>
+    </div>
+
+    <!-- TOSCA -->
+    <div class="opera-block reveal">
+      <div class="opera-gallery g3">
+        <div class="main-img"><img src="tosca1.jpg" alt="Tosca — Teatro dell'Opera di Roma" onclick="openLB(this)"></div>
+        <div class="sub-img"><img src="tosca2.jpg" alt="Tosca — con Luciano Ganci" onclick="openLB(this)"></div>
+        <div class="sub-img"><img src="tosca3.jpg" alt="Tosca — con il M° James Conlon" onclick="openLB(this)"></div>
+      </div>
+      <div class="opera-info">
+        <p class="opera-composer">G. Puccini</p>
+        <h3 class="opera-title">Tosca</h3>
+        <p class="opera-role it">Ruolo: Un Carceriere</p>
+        <p class="opera-role en-s" style="display:none">Role: A Gaoler</p>
+        <div class="opera-detail it">
+          <strong>Teatro Costanzi · 9, 11, 13 maggio 2025</strong><br>
+          Direttore: James Conlon<br>
+          Regia: Alessandro Talevi<br>
+          Maestro del Coro: Ciro Visco
+        </div>
+        <div class="opera-detail it">
+          Floria Tosca: Anna Pirozzi<br>
+          Mario Cavaradossi: Luciano Ganci<br>
+          Barone Scarpia: Ariunbaatar Ganbaatar<br>
+          Cesare Angelotti: Luciano Leoni<br>
+          Sagrestano: Domenico Colaianni
+        </div>
+        <div class="opera-detail en-s" style="display:none">
+          <strong>Teatro Costanzi · 9, 11, 13 May 2025</strong><br>
+          Conductor: James Conlon · Director: Alessandro Talevi<br>
+          Floria Tosca: Anna Pirozzi · Cavaradossi: Luciano Ganci · Baron Scarpia: Ariunbaatar Ganbaatar
+        </div>
+        <p class="opera-credit it">Ricostruzione storica dell'allestimento originale del 1900</p>
+        <p class="opera-credit en-s" style="display:none">Historical reconstruction of the original 1900 production</p>
+      </div>
+    </div>
+
+    <!-- ALCINA -->
+    <div class="opera-block reverse reveal">
+      <div class="opera-info">
+        <p class="opera-composer">G. F. Händel</p>
+        <h3 class="opera-title">Alcina</h3>
+        <p class="opera-role it">Ruolo: Mr. Leveridge</p>
+        <p class="opera-role en-s" style="display:none">Role: Mr. Leveridge</p>
+        <div class="opera-detail it">
+          <strong>Teatro Costanzi · 18, 23, 26 marzo 2025</strong><br>
+          Direttore: Rinaldo Alessandrini<br>
+          Regia: Pierre Audi<br>
+          Maestro del Coro: Ciro Visco<br>
+          Scene e Costumi: Patrick Kinmonth
+        </div>
+        <div class="opera-detail it">
+          Alcina: Mariangela Sicilia<br>
+          Ruggiero: Carlo Vistoli / Tamar Ugrekhelidze<br>
+          Bradamante: Caterina Piva<br>
+          Oronte: Anthony Gregory<br>
+          Morgana: Mary Bevan
+        </div>
+        <div class="opera-detail en-s" style="display:none">
+          <strong>Teatro Costanzi · 18, 23, 26 March 2025</strong><br>
+          Conductor: Rinaldo Alessandrini · Director: Pierre Audi<br>
+          Alcina: Mariangela Sicilia · Ruggiero: Carlo Vistoli / Tamar Ugrekhelidze
+        </div>
+        <p class="opera-credit it">Nuovo allestimento in collaborazione con De Nationale Opera, Amsterdam</p>
+        <p class="opera-credit en-s" style="display:none">New production in collaboration with De Nationale Opera, Amsterdam</p>
+      </div>
+      <div class="opera-gallery g1">
+        <img src="foto_profilo.jpg" alt="Carlo Alberto Gioja — Alcina" onclick="openLB(this)" style="aspect-ratio:3/4;object-fit:cover">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERIA PER OPERA -->
+<section style="background:var(--off)">
+  <div class="sw">
+    <p class="s-label reveal it">Galleria di scena</p>
+    <p class="s-label reveal en-s" style="display:none">Stage gallery</p>
+    <h2 class="s-title reveal it">Repertorio in <em>immagini</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">Repertoire in <em>images</em></h2>
+
+    <!-- DON GIOVANNI -->
+    <div class="opera-block reveal">
+      <div class="opera-gallery g2">
+        <img src="dg1.jpg" alt="Don Giovanni" onclick="openLB(this)">
+        <img src="dg3.jpg" alt="Don Giovanni" onclick="openLB(this)">
+      </div>
+      <div class="opera-info">
+        <p class="opera-composer">W. A. Mozart</p>
+        <h3 class="opera-title">Don Giovanni</h3>
+        <p class="opera-role it">Ruolo: Don Giovanni</p>
+        <p class="opera-role en-s" style="display:none">Role: Don Giovanni</p>
+        <div class="opera-detail it">International OperaStudio · Formello<br>Foto: Emanuela Gizzi</div>
+        <div class="opera-detail en-s" style="display:none">International OperaStudio · Formello<br>Photo: Emanuela Gizzi</div>
+      </div>
+    </div>
+
+    <!-- NOZZE DI FIGARO -->
+    <div class="opera-block reverse reveal">
+      <div class="opera-info">
+        <p class="opera-composer">W. A. Mozart</p>
+        <h3 class="opera-title">Le nozze di Figaro</h3>
+        <p class="opera-role it">Ruolo: Figaro</p>
+        <p class="opera-role en-s" style="display:none">Role: Figaro</p>
+        <div class="opera-detail it">International OperaStudio · Formello<br>Foto: Emanuela Gizzi / PhotoRomanza</div>
+        <div class="opera-detail en-s" style="display:none">International OperaStudio · Formello<br>Photo: Emanuela Gizzi / PhotoRomanza</div>
+      </div>
+      <div class="opera-gallery g2">
+        <img src="figaro1.jpg" alt="Le nozze di Figaro" onclick="openLB(this)">
+        <img src="figaro2.jpg" alt="Le nozze di Figaro" onclick="openLB(this)">
+      </div>
+    </div>
+
+    <!-- CENERENTOLA -->
+    <div class="opera-block reveal">
+      <div class="opera-gallery g4">
+        <img src="cene2.jpg" alt="La Cenerentola — Don Magnifico" onclick="openLB(this)">
+        <img src="cene3.jpg" alt="La Cenerentola — Don Magnifico" onclick="openLB(this)">
+        <img src="cene4.jpg" alt="La Cenerentola — Don Magnifico" onclick="openLB(this)">
+        <img src="cene1.jpg" alt="La Cenerentola — Don Magnifico" onclick="openLB(this)">
+      </div>
+      <div class="opera-info">
+        <p class="opera-composer">G. Rossini</p>
+        <h3 class="opera-title">La Cenerentola</h3>
+        <p class="opera-role it">Ruolo: Don Magnifico</p>
+        <p class="opera-role en-s" style="display:none">Role: Don Magnifico</p>
+        <div class="opera-detail it">International OperaStudio · Formello<br>Direttore: Stephen Kramer<br>Foto: Emanuela Gizzi</div>
+        <div class="opera-detail en-s" style="display:none">International OperaStudio · Formello<br>Conductor: Stephen Kramer<br>Photo: Emanuela Gizzi</div>
+      </div>
+    </div>
+
+    <!-- SERVA PADRONA -->
+    <div class="opera-block reverse reveal">
+      <div class="opera-info">
+        <p class="opera-composer">G. B. Pergolesi</p>
+        <h3 class="opera-title">La Serva Padrona</h3>
+        <p class="opera-role it">Ruolo: Uberto</p>
+        <p class="opera-role en-s" style="display:none">Role: Uberto</p>
+        <div class="opera-detail it">Teatro Comunale J.P. Velly · Formello · 18/04/2015<br>Foto: Emanuela Gizzi</div>
+        <div class="opera-detail en-s" style="display:none">Teatro Comunale J.P. Velly · Formello · 18/04/2015<br>Photo: Emanuela Gizzi</div>
+      </div>
+      <div class="opera-gallery g4">
+        <img src="serva4.jpg" alt="La Serva Padrona — Uberto" onclick="openLB(this)">
+        <img src="serva1.jpg" alt="La Serva Padrona — Uberto" onclick="openLB(this)">
+        <img src="serva2.jpg" alt="La Serva Padrona — Uberto" onclick="openLB(this)">
+        <img src="serva3.jpg" alt="La Serva Padrona — Uberto" onclick="openLB(this)">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REPERTORIO COMPLETO -->
+<section>
+  <div class="sw">
+    <p class="s-label reveal it">Repertorio completo</p>
+    <p class="s-label reveal en-s" style="display:none">Full repertoire</p>
+    <h2 class="s-title reveal it">I ruoli <em>interpretati</em></h2>
+    <h2 class="s-title reveal en-s" style="display:none">Roles <em>performed</em></h2>
+    <div class="reveal" style="overflow-x:auto">
+    <table class="rep-table">
+      <thead>
+        <tr>
+          <th class="it">Compositore</th><th class="en-s" style="display:none">Composer</th>
+          <th class="it">Opera</th><th class="en-s" style="display:none">Opera</th>
+          <th class="it">Ruoli</th><th class="en-s" style="display:none">Roles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>W. A. Mozart</td><td><span class="rep-opera-name">Don Giovanni</span></td><td>Don Giovanni · Leporello</td></tr>
+        <tr><td>W. A. Mozart</td><td><span class="rep-opera-name">Le nozze di Figaro</span></td><td>Figaro · Don Bartolo · Antonio</td></tr>
+        <tr><td>W. A. Mozart</td><td><span class="rep-opera-name">Così fan tutte</span></td><td>Don Alfonso</td></tr>
+        <tr><td>W. A. Mozart</td><td><span class="rep-opera-name">Il Flauto Magico</span></td><td>Oratore</td></tr>
+        <tr><td>G. F. Händel</td><td><span class="rep-opera-name">Alcina</span></td><td>Mr. Leveridge</td></tr>
+        <tr><td>G. Rossini</td><td><span class="rep-opera-name">Il Barbiere di Siviglia</span></td><td>Don Bartolo · Don Basilio · Ufficiale</td></tr>
+        <tr><td>G. Rossini</td><td><span class="rep-opera-name">La Cenerentola</span></td><td>Don Magnifico · Alidoro</td></tr>
+        <tr><td>G. Rossini</td><td><span class="rep-opera-name">La scala di seta</span></td><td>Blansac</td></tr>
+        <tr><td>G. Donizetti</td><td><span class="rep-opera-name">L'Elisir d'Amore</span></td><td>Dulcamara</td></tr>
+        <tr><td>G. Donizetti</td><td><span class="rep-opera-name">Don Pasquale</span></td><td>Don Pasquale</td></tr>
+        <tr><td>G. Verdi</td><td><span class="rep-opera-name">Rigoletto</span></td><td>Sparafucile</td></tr>
+        <tr><td>G. Verdi</td><td><span class="rep-opera-name">La Traviata</span></td><td>Marchese · Barone</td></tr>
+        <tr><td>G. Verdi</td><td><span class="rep-opera-name">Il Trovatore</span></td><td>Ferrando</td></tr>
+        <tr><td>G. Verdi</td><td><span class="rep-opera-name">Aida</span></td><td>Ramfis</td></tr>
+        <tr><td>G. Verdi</td><td><span class="rep-opera-name">Attila</span></td><td>Papa Leone</td></tr>
+        <tr><td>G. Puccini</td><td><span class="rep-opera-name">Tosca</span></td><td>Angelotti · Sciarrone · Carceriere</td></tr>
+        <tr><td>G. Puccini</td><td><span class="rep-opera-name">La Bohème</span></td><td>Doganiere</td></tr>
+        <tr><td>G. B. Pergolesi</td><td><span class="rep-opera-name">La Serva Padrona</span></td><td>Uberto</td></tr>
+        <tr><td>A. Piazzolla</td><td><span class="rep-opera-name">Maria de Buenos Aires</span></td><td>Ladrones</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- MUSICAL -->
+<section style="background:var(--off)">
+  <div class="sw">
+    <p class="s-label reveal it">Musical — Teatro Sistina · PeepArrow Entertainment</p>
+    <p class="s-label reveal en-s" style="display:none">Musical — Teatro Sistina · PeepArrow Entertainment</p>
+    <h2 class="s-title reveal it">Il grande <em>musical</em> italiano</h2>
+    <h2 class="s-title reveal en-s" style="display:none">Italian <em>musical</em> theatre</h2>
+    <div class="musical-grid reveal">
+      <div class="musical-card">
+        <p class="musical-label it">Regia: Massimo Romeo Piparo</p>
+        <p class="musical-label en-s" style="display:none">Director: Massimo Romeo Piparo</p>
+        <p class="musical-title">Evita — il Musical</p>
+        <p class="musical-sub it">Con Malika Ayane e Filippo Strocchi<br>Ruolo: Ammiraglio · Vocal Coach · Direttore dei Cori</p>
+        <p class="musical-sub en-s" style="display:none">With Malika Ayane and Filippo Strocchi<br>Role: Admiral · Vocal Coach · Chorus Director</p>
+      </div>
+      <div class="musical-card">
+        <p class="musical-label it">Regia: Massimo Romeo Piparo</p>
+        <p class="musical-label en-s" style="display:none">Director: Massimo Romeo Piparo</p>
+        <p class="musical-title">Billy Elliot — Il Musical</p>
+        <p class="musical-sub it">Con Luca Biagini, Cristina Noci<br>Ruolo: Minatore · Vocal Coach · Direttore dei Cori</p>
+        <p class="musical-sub en-s" style="display:none">With Luca Biagini, Cristina Noci<br>Role: Miner · Vocal Coach · Chorus Director</p>
+      </div>
+      <div class="musical-card">
+        <p class="musical-label it">Regia: Massimo Romeo Piparo</p>
+        <p class="musical-label en-s" style="display:none">Director: Massimo Romeo Piparo</p>
+        <p class="musical-title">Tutti Insieme Appassionatamente</p>
+        <p class="musical-sub it">Con Luca Ward, Vittoria Belvedere<br>Ruolo: Franz, il maggiordomo · Vocal Coach · Direttore dei Cori</p>
+        <p class="musical-sub en-s" style="display:none">With Luca Ward, Vittoria Belvedere<br>Role: Franz the Butler · Vocal Coach · Chorus Director</p>
+      </div>
+      <div class="musical-card">
+        <p class="musical-label it">Regia: Massimo Romeo Piparo</p>
+        <p class="musical-label en-s" style="display:none">Director: Massimo Romeo Piparo</p>
+        <p class="musical-title">My Fair Lady</p>
+        <p class="musical-sub it">Con Luca Ward, Vittoria Belvedere, Aldo Ralli<br>Ruolo: Barista</p>
+        <p class="musical-sub en-s" style="display:none">With Luca Ward, Vittoria Belvedere, Aldo Ralli<br>Role: Barista</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCERTI -->
+<section>
+  <div class="sw">
+    <p class="s-label reveal it">Concerti selezionati</p>
+    <p class="s-label reveal en-s" style="display:none">Selected concerts</p>
+    <div class="concert-list">
+      <div class="concert-row reveal">
+        <span class="concert-date">2020–2021</span>
+        <div>
+          <p class="concert-title it">Cappella Musicale Pontificia Sistina — Cantore</p>
+          <p class="concert-title en-s" style="display:none">Pontifical Sistine Chapel Choir — Singer</p>
+          <p class="concert-sub it">Sante Messe in diretta mondiale · RAI · Vatican Media – CTV</p>
+          <p class="concert-sub en-s" style="display:none">Masses broadcast worldwide · RAI · Vatican Media – CTV</p>
+        </div>
+      </div>
+      <div class="concert-row reveal">
+        <span class="concert-date">Ago 2019</span>
+        <div>
+          <p class="concert-title it">Notte dell'Opera — Macerata Opera Festival</p>
+          <p class="concert-title en-s" style="display:none">Night of the Opera — Macerata Opera Festival</p>
+          <p class="concert-sub">Macerata</p>
+        </div>
+      </div>
+      <div class="concert-row reveal">
+        <span class="concert-date">Mag 2018</span>
+        <div>
+          <p class="concert-title it">Concerto SIAE "Saranno Famosi" — con Pamela Villoresi</p>
+          <p class="concert-title en-s" style="display:none">SIAE Concert "Saranno Famosi" — with Pamela Villoresi</p>
+          <p class="concert-sub it">Teatro Il Sistina · Direttore Emanuele Friello</p>
+          <p class="concert-sub en-s" style="display:none">Teatro Il Sistina · Conductor Emanuele Friello</p>
+        </div>
+      </div>
+      <div class="concert-row reveal">
+        <span class="concert-date">2018</span>
+        <div>
+          <p class="concert-title it">"Una Donna Decomposta" — con Fioretta Mari</p>
+          <p class="concert-title en-s" style="display:none">"Una Donna Decomposta" — with Fioretta Mari</p>
+        </div>
+      </div>
+      <div class="concert-row reveal">
+        <span class="concert-date">2018</span>
+        <div>
+          <p class="concert-title it">"New York New York" — con Ugo Pagliai</p>
+          <p class="concert-title en-s" style="display:none">"New York New York" — with Ugo Pagliai</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Carlo Alberto Gioja</span>
+  <span class="f-copy">© 2026 · Tutti i diritti riservati</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function openLB(img){ document.getElementById('lb-img').src=img.src; document.getElementById('lb').classList.add('open'); }
+  function closeLB(){ document.getElementById('lb').classList.remove('open'); }
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLB(); });
+
+  function setLang(l){document.body.classList.toggle('en',l==='en');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
+  const saved=localStorage.getItem('lang');if(saved==='en')setLang('en');
+</script>
+</body>
+</html>
