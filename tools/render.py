@@ -5,7 +5,7 @@ Spec: {"post": "p04", "slides": [ {...}, ... ]}
 
 Tipi di slide (tutti i campi testo sono facoltativi tranne "title"):
   cover    foto a tutto schermo + eyebrow + title          campi: image, eyebrow, title
-  photo    foto in alto, testo sotto su avorio             campi: image, focus ("center", "top", "50% 30%"...), eyebrow, title, text
+  photo    foto in alto, testo sotto su avorio             campi: image, focus ("center", "top", "50% 30%"...), img_height (px, default 690), eyebrow, title, text
   text     fondo prugna, solo testo                        campi: eyebrow, title, text
   list     fondo avorio, elenco puntato numerato           campi: eyebrow, title, items[]
   question fondo prugna, domanda grande e opzioni          campi: eyebrow, title, options[]
@@ -98,9 +98,10 @@ def slide_html(s, i, n, workdir):
         return '<div class="s cover" style="background-image:url(\'%s\')"><div class="txt">%s<h1>%s</h1></div>%s</div>' % (
             img_url(s.get("image"), workdir), eye, e(s["title"]), foot)
     if t == "photo":
-        return ('<div class="s photo"><div class="img" style="background-image:url(\'%s\');background-position:%s"></div>'
-                '<div class="txt">%s<h2>%s</h2><div class="rule"></div>%s</div>%s</div>') % (
-            img_url(s.get("image"), workdir), s.get("focus", "center"), eye, e(s["title"]), text, foot)
+        rule = '<div class="rule"></div>' if text else ""
+        return ('<div class="s photo"><div class="img" style="background-image:url(\'%s\');background-position:%s;height:%dpx"></div>'
+                '<div class="txt">%s<h2>%s</h2>%s%s</div>%s</div>') % (
+            img_url(s.get("image"), workdir), s.get("focus", "center"), int(s.get("img_height", 690)), eye, e(s["title"]), rule, text, foot)
     if t == "list":
         items = "".join("<div>%s</div>" % e(x) for x in s.get("items", []))
         return '<div class="s list"><div class="txt">%s<h2>%s</h2><div class="items">%s</div></div>%s</div>' % (eye, e(s["title"]), items, foot)
