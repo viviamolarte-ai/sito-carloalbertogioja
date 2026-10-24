@@ -1,5 +1,1 @@
-{"post":"post03","slides":[
-{"type":"text","eyebrow":"Musica","title":"La vostra colonna sonora","text":"Dal sì all'ultimo ballo, la musica accompagna ogni momento."},
-{"type":"list","eyebrow":"Ogni momento la sua musica","title":"Quattro tempi","items":["Cerimonia","Aperitivo","Cena","Festa"]},
-{"type":"list","eyebrow":"Scegliamo insieme","title":"La formazione","items":["Quartetto d'archi","Band","Voce solista","DJ set"]},
-{"type":"cta","eyebrow":"Ditecelo nei commenti","title":"Qual è la vostra canzone?","text":"Quella che al vostro matrimonio non può mancare."}]}
+{"post": "post03", "slides": [{"type": "photo", "image": "photos/p03_quartetto.png", "focus": "center 80%", "img_height": 840, "eyebrow": "Musica", "title": "La vostra colonna sonora", "text": ""}, {"type": "list", "eyebrow": "Ogni momento la sua musica", "title": "Quattro tempi", "items": ["Cerimonia", "Aperitivo", "Cena", "Festa"]}, {"type": "list", "eyebrow": "Scegliamo insieme", "title": "La formazione", "items": ["Quartetto d'archi", "Band", "Voce solista", "DJ set"]}, {"type": "cta", "eyebrow": "Ditecelo nei commenti", "title": "Qual è la vostra canzone?", "text": "Quella che al vostro matrimonio non può mancare."}]}
