@@ -111,7 +111,7 @@ def slide_html(s, i, n, workdir):
     if t == "cta":
         return ('<div class="s cta"><div class="txt">%s<h2>%s</h2>%s<div class="ctab"><strong>%s</strong><span>%s</span></div></div>%s</div>') % (
             eye, e(s["title"]), text, e(s.get("cta", "Un solo referente per ogni servizio.")),
-            e(s.get("contact", "Scriveteci in privato · allyoucan.wedding")), foot)
+            e(s.get("contact", "Scriveteci a info@allyoucan.wedding")), foot)
     return '<div class="s dark"><div class="txt">%s<h2>%s</h2><div class="rule"></div>%s</div>%s</div>' % (eye, e(s["title"]), text, foot)
 
 
