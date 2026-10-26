@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musica dal vivo — AllYouCanWedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf8f5;
+      --dark: #1a1a1a;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --muted: #7a7065;
+      --white: #ffffff;
+      --salvia-pale: #e8ede8;
+      --salvia-light: #b5c4b5;
+      --warm-dark: #2c2420;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      text-decoration: none;
+      color: var(--dark);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo em { color: var(--gold); font-style: italic; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 4rem 5rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(201,169,110,0.06) 0%, transparent 60%),
+        linear-gradient(to bottom, var(--cream) 0%, #f3ede4 100%);
+    }
+
+    .hero-ornament {
+      position: absolute;
+      top: 12%;
+      right: 6%;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-ornament::before {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(201,169,110,0.15);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 1.8rem;
+      color: var(--warm-dark);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      max-width: 560px;
+      color: var(--muted);
+      margin-bottom: 2.6rem;
+      line-height: 1.95;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 1rem 2.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      transition: all 0.3s;
+    }
+    .btn-gold:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--warm-dark);
+      padding: 1rem 2.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(26,26,26,0.3);
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 7rem 4rem;
+      position: relative;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.6rem;
+      color: var(--warm-dark);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.95;
+    }
+
+    /* ── INTRO SECTION ── */
+    .intro {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .intro-image {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .intro-image::after {
+      content: '';
+      position: absolute;
+      inset: 1.2rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      pointer-events: none;
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      line-height: 1.95;
+    }
+
+    /* ── FORMAZIONI ── */
+    .formazioni {
+      background: linear-gradient(to bottom, #f3ede4 0%, var(--cream) 100%);
+    }
+
+    .formazioni-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .formazioni-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .formazioni-header .section-label {
+      justify-content: center;
+    }
+
+    .formazioni-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .formazione-card {
+      background: var(--white);
+      padding: 2.6rem 2.2rem;
+      border: 1px solid rgba(201,169,110,0.2);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .formazione-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(44,36,32,0.08);
+      border-color: var(--gold);
+    }
+
+    .formazione-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      font-style: italic;
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .formazione-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .formazione-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--warm-dark);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .formazione-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+
+    .formazione-list {
+      list-style: none;
+      padding: 0;
+    }
+    .formazione-list li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 0.4rem 0 0.4rem 1.2rem;
+      position: relative;
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+    }
+    .formazione-list li:last-child { border-bottom: none; }
+    .formazione-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+      top: 0.6rem;
+    }
+
+    /* ── MOMENTI ── */
+    .momenti {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .momenti-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .momenti-header .section-label {
+      justify-content: center;
+    }
+    .momenti-header .section-intro {
+      margin: 0 auto;
+    }
+
+    .momenti-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .momento {
+      padding: 2.4rem;
+      background: var(--white);
+      border-left: 2px solid var(--gold);
+      box-shadow: 0 8px 30px rgba(44,36,32,0.04);
+    }
+
+    .momento-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .momento-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 300;
+      color: var(--warm-dark);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .momento-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    /* ── COVERAGE ── */
+    .coverage {
+      background: var(--warm-dark);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .coverage-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .coverage .section-label {
+      justify-content: center;
+      color: rgba(201,169,110,0.8);
+    }
+    .coverage .section-label::before {
+      background: rgba(201,169,110,0.5);
+    }
+
+    .coverage .section-title {
+      color: var(--cream);
+      margin-bottom: 1.4rem;
+    }
+
+    .coverage-desc {
+      font-size: 1rem;
+      color: rgba(250,248,245,0.7);
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .coverage-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(201,169,110,0.2);
+      border: 1px solid rgba(201,169,110,0.2);
+    }
+
+    .coverage-item {
+      background: var(--warm-dark);
+      padding: 2.2rem 1.4rem;
+    }
+
+    .coverage-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .coverage-item-desc {
+      font-size: 0.82rem;
+      color: rgba(250,248,245,0.6);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    /* ── NOTE TECNICA ── */
+    .nota-tecnica {
+      max-width: 900px;
+      margin: 4rem auto 0;
+      padding: 2rem 2.4rem;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.25);
+      font-size: 0.9rem;
+      color: rgba(250,248,245,0.75);
+      line-height: 1.85;
+      text-align: left;
+    }
+    .nota-tecnica strong {
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, #2c2420 0%, #3d342d 100%);
+      color: var(--cream);
+      padding: 7rem 4rem;
+    }
+
+    .cta-section .section-label {
+      justify-content: center;
+      color: rgba(201,169,110,0.8);
+    }
+    .cta-section .section-label::before {
+      background: rgba(201,169,110,0.5);
+    }
+
+    .cta-section .section-title {
+      color: var(--cream);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+
+    .cta-section .btn-outline {
+      color: var(--cream);
+      border-color: rgba(250,248,245,0.4);
+    }
+    .cta-section .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1612;
+      color: var(--cream);
+      padding: 4rem 4rem 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--cream);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .footer-logo em { color: var(--gold); font-style: italic; }
+
+    .footer-desc {
+      font-size: 0.9rem;
+      color: rgba(250,248,245,0.6);
+      max-width: 320px;
+      line-height: 1.8;
+    }
+
+    .footer-col h4 {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col a {
+      color: rgba(250,248,245,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--gold); }/* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero-ornament { display: none; }
+      section { padding: 5rem 1.5rem; }
+      .intro { grid-template-columns: 1fr; gap: 3rem; }
+      .momenti-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .coverage-list { grid-template-columns: 1fr 1fr; }
+      footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem 2rem; }
+      .cta-section { padding: 5rem 1.5rem; }
+    }
+  </style>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">AllYouCan<em>Wedding</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+    <li><a href="index.html#destinazioni">Destinazioni</a></li>
+    <li><a href="index.html#servizi">Servizi</a></li>
+    <li><a href="index.html#pacchetti">Pacchetti</a></li>
+    <li><a href="index.html#contatti">Contatti</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Musica dal vivo</div>
+    <h1 class="hero-title">Il suono<br>del vostro <em>per sempre</em></h1>
+    <p class="hero-desc">
+      La musica è ciò che resta nei ricordi. È la prima nota che accompagna l'ingresso della sposa,
+      è il sorriso durante l'aperitivo, è la pista da ballo che non vorreste finisse mai.
+      Ogni momento merita la sua voce: noi la troviamo per voi.
+    </p>
+    <div class="hero-buttons">
+      <a href="index.html#contatti" class="btn-gold">Richiedi un preventivo</a>
+      <a href="#formazioni" class="btn-outline">Le nostre formazioni</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section>
+  <div class="intro">
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80" alt="Musicisti dal vivo a un matrimonio">
+    </div>
+    <div class="intro-text">
+      <div class="section-label">La nostra filosofia</div>
+      <h2 class="section-title">Musicisti<br><em>su misura</em></h2>
+      <p>
+        Crediamo che la musica di un matrimonio non si scelga da un catalogo. Si costruisce attorno
+        agli sposi, alla location, all'atmosfera che si vuole creare. Per questo lavoriamo con
+        formazioni flessibili, in grado di adattarsi a ogni momento della giornata.
+      </p>
+      <p>
+        Dal duo intimo per la cerimonia all'ensemble strumentale per l'aperitivo, fino alla band
+        completa o al DJ per il dopo cena: vi proponiamo la combinazione più adatta al vostro evento,
+        senza soluzioni preconfezionate.
+      </p>
+      <p>
+        Tutti i nostri musicisti sono professionisti con esperienza nei matrimoni e negli eventi
+        di alto livello. Portano i propri strumenti e curano ogni dettaglio dell'esecuzione.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAZIONI -->
+<section id="formazioni" class="formazioni">
+  <div class="formazioni-inner">
+    <div class="formazioni-header">
+      <div class="section-label">Le formazioni</div>
+      <h2 class="section-title">Ogni momento,<br>la sua <em>musica</em></h2>
+      <p class="section-intro" style="margin: 0 auto;">
+        Combinazioni strumentali studiate per ogni fase del matrimonio. Ogni formazione è
+        personalizzabile e può essere adattata in base al numero di musicisti, agli strumenti
+        e al repertorio desiderato.
+      </p>
+    </div>
+
+    <div class="formazioni-grid">
+
+      <!-- DUO -->
+      <div class="formazione-card">
+        <div class="formazione-icon">♪</div>
+        <div class="formazione-tag">Cerimonia &amp; Aperitivo</div>
+        <h3 class="formazione-title">Duo intimo</h3>
+        <p class="formazione-desc">
+          La scelta più elegante per la cerimonia o per accompagnare un aperitivo raffinato.
+          Un suono pulito e avvolgente, perfetto per le emozioni più delicate.
+        </p>
+        <ul class="formazione-list">
+          <li>Pianoforte e voce</li>
+          <li>Pianoforte e sax</li>
+          <li>Pianoforte e violino</li>
+          <li>Pianoforte e violoncello</li>
+        </ul>
+      </div>
+
+      <!-- TRIO -->
+      <div class="formazione-card">
+        <div class="formazione-icon">♫</div>
+        <div class="formazione-tag">Aperitivo</div>
+        <h3 class="formazione-title">Trio acustico</h3>
+        <p class="formazione-desc">
+          Una formazione più ricca per arricchire il momento dell'aperitivo con sonorità
+          calde e sofisticate. Repertorio jazz, pop d'autore, lounge.
+        </p>
+        <ul class="formazione-list">
+          <li>Pianoforte, voce e sax</li>
+          <li>Possibilità di altri strumenti su richiesta</li>
+          <li>Repertorio personalizzabile</li>
+          <li>Strumenti acustici inclusi</li>
+        </ul>
+      </div>
+
+      <!-- BAND -->
+      <div class="formazione-card">
+        <div class="formazione-icon">♬</div>
+        <div class="formazione-tag">Aperitivo &amp; Dopo cena</div>
+        <h3 class="formazione-title">La band</h3>
+        <p class="formazione-desc">
+          Cinque elementi per portare energia e movimento dal primo brindisi fino alla pista
+          da ballo. La scelta che consigliamo per chi vuole un evento davvero coinvolgente.
+        </p>
+        <ul class="formazione-list">
+          <li>Voce, pianoforte, sax, basso, batteria</li>
+          <li>Adatta sia all'aperitivo che al dopo cena</li>
+          <li>Repertorio dance, swing, pop, soul</li>
+          <li>Formula completa o parziale</li>
+        </ul>
+      </div>
+
+      <!-- DJ -->
+      <div class="formazione-card">
+        <div class="formazione-icon">◉</div>
+        <div class="formazione-tag">Dopo cena</div>
+        <h3 class="formazione-title">DJ set</h3>
+        <p class="formazione-desc">
+          Per chi vuole una pista da ballo senza pause e una scaletta che attraversa tutti
+          i generi e tutte le età. Selezione musicale curata e mixata in tempo reale.
+        </p>
+        <ul class="formazione-list">
+          <li>Repertorio multigenere</li>
+          <li>Console professionale</li>
+          <li>Adattamento al pubblico in sala</li>
+          <li>Richiede impianto audio già presente</li>
+        </ul>
+      </div>
+
+      <!-- INES SHOW -->
+      <div class="formazione-card">
+        <div class="formazione-icon">★</div>
+        <div class="formazione-tag">Spettacolo &amp; Animazione</div>
+        <h3 class="formazione-title">Lo show di Ines</h3>
+        <p class="formazione-desc">
+          Uno spettacolo musicale su basi che coinvolge attivamente gli invitati. Una formula
+          dinamica che unisce concerto, intrattenimento e partecipazione. Un'esperienza memorabile.
+        </p>
+        <ul class="formazione-list">
+          <li>Performance vocale dal vivo</li>
+          <li>Coinvolgimento degli ospiti</li>
+          <li>Repertorio italiano e internazionale</li>
+          <li>Ideale per il dopo cena</li>
+        </ul>
+      </div>
+
+      <!-- CUSTOM -->
+      <div class="formazione-card">
+        <div class="formazione-icon">✦</div>
+        <div class="formazione-tag">Su misura</div>
+        <h3 class="formazione-title">Combinazione bespoke</h3>
+        <p class="formazione-desc">
+          Avete in mente qualcosa di diverso? Possiamo costruire una formazione personalizzata
+          attorno alle vostre richieste, con strumenti, voci e generi a vostra scelta.
+        </p>
+        <ul class="formazione-list">
+          <li>Quartetto d'archi</li>
+          <li>Coro gospel</li>
+          <li>Ensemble jazz</li>
+          <li>Altre richieste su consultazione</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MOMENTI -->
+<section>
+  <div class="momenti">
+    <div class="momenti-header">
+      <div class="section-label">I momenti</div>
+      <h2 class="section-title">Una colonna sonora<br>per <em>ogni istante</em></h2>
+      <p class="section-intro">
+        Ogni fase della giornata ha un suo carattere e merita una scelta musicale dedicata.
+        Vi guidiamo nella costruzione del programma perfetto.
+      </p>
+    </div>
+
+    <div class="momenti-grid">
+
+      <div class="momento">
+        <div class="momento-num">I.</div>
+        <h3 class="momento-title">Cerimonia</h3>
+        <p class="momento-desc">
+          Per il momento più solenne consigliamo formazioni acustiche e raccolte: un duo o un trio
+          strumentale, magari con voce, capaci di accompagnare l'ingresso, lo scambio delle promesse
+          e l'uscita degli sposi con la giusta intensità.
+        </p>
+      </div>
+
+      <div class="momento">
+        <div class="momento-num">II.</div>
+        <h3 class="momento-title">Aperitivo</h3>
+        <p class="momento-desc">
+          Un'ora e mezza, due ore di musica leggera e raffinata, che accompagna la conversazione
+          senza sovrastarla. Duo, trio o piccola band: la scelta dipende dall'atmosfera e dal
+          numero degli ospiti.
+        </p>
+      </div>
+
+      <div class="momento">
+        <div class="momento-num">III.</div>
+        <h3 class="momento-title">Cena</h3>
+        <p class="momento-desc">
+          Durante la cena la musica fa un passo indietro per lasciare spazio ai discorsi e ai
+          racconti. Un sottofondo curato, magari con momenti dedicati per le sorprese e le dediche.
+        </p>
+      </div>
+
+      <div class="momento">
+        <div class="momento-num">IV.</div>
+        <h3 class="momento-title">Dopo cena</h3>
+        <p class="momento-desc">
+          Il momento della festa. Qui sconsigliamo la musica strumentale d'ascolto: meglio una band
+          completa, un DJ o uno spettacolo coinvolgente, perché il vero matrimonio si misura sulla
+          pista da ballo.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage">
+  <div class="coverage-inner">
+    <div class="section-label">Dove suoniamo</div>
+    <h2 class="section-title">Da Roma<br>a <em>tutto il mondo</em></h2>
+    <p class="coverage-desc">
+      I nostri musicisti sono basati a Roma e operano abitualmente in tutta Italia, in Europa
+      e nelle destinazioni più richieste per i destination wedding. Ovunque vogliate sposarvi,
+      la musica giusta vi raggiunge.
+    </p>
+
+    <div class="coverage-list">
+      <div class="coverage-item">
+        <div class="coverage-item-name">Roma</div>
+        <div class="coverage-item-desc">Tariffe base</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-item-name">Lazio</div>
+        <div class="coverage-item-desc">Piccolo supplemento trasferta</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-item-name">Italia</div>
+        <div class="coverage-item-desc">Quotazione su distanza</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-item-name">Europa &amp; Mondo</div>
+        <div class="coverage-item-desc">Preventivo dedicato</div>
+      </div>
+    </div>
+
+    <div class="nota-tecnica">
+      <strong>Aspetti tecnici</strong>
+      Le tariffe dei musicisti includono i propri strumenti. L'amplificazione, quando necessaria,
+      viene fornita come servizio aggiuntivo e quotata in base al numero di postazioni e alla
+      tipologia di location. Per il DJ set è richiesto un impianto audio già montato sul posto.
+      Tutti i dettagli tecnici vengono concordati in fase di sopralluogo o di briefing con la location.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="section-label" style="justify-content:center;color:rgba(201,169,110,0.7);">Iniziamo</p>
+  <h2 class="section-title">Costruiamo insieme<br><em>la vostra colonna sonora</em></h2>
+  <div class="cta-buttons">
+    <a href="index.html#contatti" class="btn-gold">Richiedi un preventivo</a>
+    <a href="index.html#pacchetti" class="btn-outline">Scopri i pacchetti</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="index.html" class="footer-logo">AllYouCan<em>Wedding</em></a>
+    <p class="footer-desc">Organizziamo matrimoni da sogno nelle destinazioni più belle del mondo. Ogni coppia, una storia unica.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Navigazione</h4>
+    <ul>
+      <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+      <li><a href="index.html#destinazioni">Destinazioni</a></li>
+      <li><a href="index.html#servizi">Servizi</a></li>
+      <li><a href="index.html#pacchetti">Pacchetti</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Azienda</h4>
+    <ul>
+      <li><a href="index.html#lavora">Lavora con noi</a></li>
+      <li><a href="index.html#contatti">Contattaci</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contatti</h4>
+    <ul>
+      <li><a href="mailto:info@allyoucan.wedding">info@allyoucan.wedding</a></li>
+      <li><a href="tel:+390656546234">+39 06 56546234</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="tracking.js" defer></script>
+</body>
+</html>

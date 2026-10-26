@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — AllYouCanWedding</title>
+<meta name="robots" content="noindex, follow">
+<style>
+:root {
+  --avorio: #f7f3ee;
+  --avorio-mid: #ede7dd;
+  --avorio-deep: #e0d5c8;
+  --salvia: #8a9e8a;
+  --salvia-dark: #637063;
+  --salvia-light: #b5c4b5;
+  --terra: #c4a882;
+  --terra-light: #dfd0b8;
+  --testo: #3d3530;
+  --testo-mid: #6b5f58;
+  --testo-light: #9a8e88;
+  --bianco: #fdfbf8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  background: var(--bianco);
+  color: var(--testo);
+  line-height: 1.8;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(253,251,248,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--avorio-deep);
+  padding: 0 4rem; height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: Georgia, serif; font-size: 18px; font-weight: 400; color: var(--testo); text-decoration: none; letter-spacing: 0.5px; }
+.nav-logo em { font-style: italic; color: var(--salvia); }
+.nav-back { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--testo-mid); text-decoration: none; }
+.nav-back:hover { color: var(--salvia); }
+.page-wrap { max-width: 820px; margin: 0 auto; padding: 120px 2rem 6rem; }
+.lang-toggle { display: flex; gap: 1rem; margin-bottom: 3rem; }
+.lang-btn { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px; border: 0.5px solid var(--avorio-deep); background: none; cursor: pointer; color: var(--testo-mid); transition: all 0.3s; }
+.lang-btn.active { background: var(--salvia); color: white; border-color: var(--salvia); }
+.policy-section { display: none; }
+.policy-section.active { display: block; }
+h1 { font-family: Georgia, serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; line-height: 1.2; color: var(--testo); margin-bottom: 0.5rem; }
+h1 em { font-style: italic; color: var(--salvia); }
+.subtitle { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--testo-light); margin-bottom: 3rem; }
+.update-date { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--testo-light); margin-bottom: 3rem; }
+h2 { font-family: Georgia, serif; font-size: 18px; font-weight: 400; color: var(--testo); margin: 2.5rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--avorio-deep); }
+p { font-size: 14px; color: var(--testo-mid); margin-bottom: 1rem; }
+ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { font-size: 14px; color: var(--testo-mid); margin-bottom: 0.4rem; }
+a { color: var(--salvia); }
+a:hover { color: var(--salvia-dark); }
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 13px; }
+th { background: var(--avorio); color: var(--testo); font-weight: 400; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 14px; text-align: left; border-bottom: 0.5px solid var(--avorio-deep); }
+td { padding: 10px 14px; color: var(--testo-mid); border-bottom: 0.5px solid var(--avorio-mid); vertical-align: top; }
+.consent-reset { margin-top: 3rem; background: var(--avorio); border: 0.5px solid var(--avorio-deep); padding: 1.5rem 2rem; }
+.consent-reset p { margin-bottom: 1rem; }
+.btn-reset { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--salvia); color: white; border: none; cursor: pointer; transition: background 0.3s; }
+.btn-reset:hover { background: var(--salvia-dark); }
+footer { background: var(--testo); color: var(--avorio-mid); padding: 2.5rem 4rem; font-size: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+footer a { color: var(--terra-light); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .page-wrap { padding: 100px 1.5rem 4rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+  table { font-size: 12px; }
+  th, td { padding: 8px 10px; }
+}
+</style>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">AllYouCan<em>Wedding</em></a>
+  <a href="index.html" class="nav-back">← Home</a>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="switchLang('it')">🇮🇹 Italiano</button>
+    <button class="lang-btn" onclick="switchLang('en')">🇬🇧 English</button>
+  </div>
+
+  <!-- ======================== ITALIANO ======================== -->
+  <div id="section-it" class="policy-section active">
+    <h1>Cookie <em>Policy</em></h1>
+    <p class="subtitle">Informativa sull'uso dei cookie</p>
+    <p class="update-date">Ultimo aggiornamento: Ottobre 2026</p>
+
+    <h2>Cosa sono i cookie</h2>
+    <p>I cookie sono piccoli file di testo che i siti web salvano nel tuo browser quando li visiti. Vengono utilizzati per far funzionare il sito, ricordare le tue preferenze o raccogliere informazioni statistiche.</p>
+
+    <h2>Cookie utilizzati da questo sito</h2>
+    <p>Il sito <strong>allyoucan.wedding</strong> utilizza un numero molto ridotto di cookie, suddivisi come segue:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Scopo</th>
+          <th>Durata</th>
+          <th>Consenso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>aycw_cookie_consent</code></td>
+          <td>Tecnico / Preferenze</td>
+          <td>Salva la tua scelta riguardo al consenso ai cookie (accettato / rifiutato), per non mostrare il banner a ogni visita.</td>
+          <td>1 anno (localStorage)</td>
+          <td>Non richiede consenso (funzionale)</td>
+        </tr>
+        <tr>
+          <td>Google Fonts</td>
+          <td>Terza parte (Google LLC)</td>
+          <td>Carica i font tipografici Cormorant Garamond e Jost dai server di Google. Comporta la trasmissione dell'indirizzo IP a Google.</td>
+          <td>Sessione / cache browser</td>
+          <td><strong>Richiede consenso</strong></td>
+        </tr>
+        <tr>
+          <td>Google Analytics 4 (<code>_ga</code>, <code>_ga_*</code>)</td>
+          <td>Analisi / Terza parte (Google LLC)</td>
+          <td>Statistiche aggregate sulle visite (pagine viste, provenienza, dispositivo), con indirizzo IP anonimizzato.</td>
+          <td>Fino a 2 anni</td>
+          <td><strong>Richiede consenso</strong></td>
+        </tr>
+        <tr>
+          <td>Meta Pixel (<code>_fbp</code>)</td>
+          <td>Marketing / Terza parte (Meta Platforms Ireland Ltd.)</td>
+          <td>Misura l'efficacia dei nostri annunci su Facebook e Instagram e permette di mostrarli a chi ha visitato il sito.</td>
+          <td>Fino a 3 mesi</td>
+          <td><strong>Richiede consenso</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Cookie non utilizzati</h2>
+    <p>Questo sito <strong>non utilizza</strong>:</p>
+    <ul>
+      <li>Strumenti di analisi diversi da Google Analytics</li>
+      <li>Cookie di profilazione diversi dal Meta Pixel indicato sopra</li>
+      <li>Cookie pubblicitari di alcun tipo</li>
+    </ul>
+
+    <h2>Google Fonts e privacy</h2>
+    <p>Google Fonts è un servizio di Google LLC (USA). Quando viene caricato, il tuo browser invia una richiesta ai server di Google che include il tuo indirizzo IP. Questo avviene solo se hai prestato il consenso tramite il banner cookie presente sul sito. In caso di rifiuto, il sito utilizza font di sistema equivalenti e nessun dato viene trasmesso a Google.</p>
+    <p>Per maggiori informazioni sull'uso dei dati da parte di Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+    <h2>Come gestire o revocare il consenso</h2>
+    <p>Puoi modificare la tua scelta in qualsiasi momento usando il pulsante qui sotto. Il banner cookie si riattiverà e potrai scegliere di nuovo.</p>
+
+    <div class="consent-reset">
+      <p>Preferenze attuali: <span id="consent-status-it">—</span></p>
+      <button class="btn-reset" onclick="resetConsent()">Modifica preferenze cookie</button>
+    </div>
+
+    <p style="margin-top:1.5rem;">Puoi anche gestire i cookie direttamente dalle impostazioni del tuo browser:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/it-it/topic/eliminare-e-gestire-i-cookie-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+
+    <h2>Contatti</h2>
+    <p>Per qualsiasi domanda relativa all'uso dei cookie su questo sito, scrivi a <a href="mailto:info@allyoucan.wedding">info@allyoucan.wedding</a>. Per l'informativa completa sulla privacy, consulta la nostra <a href="privacy-policy.html">Privacy Policy</a>.</p>
+  </div>
+
+  <!-- ======================== ENGLISH ======================== -->
+  <div id="section-en" class="policy-section">
+    <h1>Cookie <em>Policy</em></h1>
+    <p class="subtitle">Information on the use of cookies</p>
+    <p class="update-date">Last updated: October 2026</p>
+
+    <h2>What Are Cookies</h2>
+    <p>Cookies are small text files that websites store in your browser when you visit them. They are used to make the site work, remember your preferences, or collect statistical information.</p>
+
+    <h2>Cookies Used by This Website</h2>
+    <p>The website <strong>allyoucan.wedding</strong> uses a very limited number of cookies, as follows:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+          <th>Consent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>aycw_cookie_consent</code></td>
+          <td>Technical / Preference</td>
+          <td>Saves your cookie consent choice (accepted / declined) so the banner is not shown on every visit.</td>
+          <td>1 year (localStorage)</td>
+          <td>No consent required (functional)</td>
+        </tr>
+        <tr>
+          <td>Google Fonts</td>
+          <td>Third party (Google LLC)</td>
+          <td>Loads the Cormorant Garamond and Jost typefaces from Google servers. Involves transmitting your IP address to Google.</td>
+          <td>Session / browser cache</td>
+          <td><strong>Consent required</strong></td>
+        </tr>
+        <tr>
+          <td>Google Analytics 4 (<code>_ga</code>, <code>_ga_*</code>)</td>
+          <td>Analytics / Third party (Google LLC)</td>
+          <td>Aggregate visit statistics (pages viewed, source, device), with anonymised IP address.</td>
+          <td>Up to 2 years</td>
+          <td><strong>Consent required</strong></td>
+        </tr>
+        <tr>
+          <td>Meta Pixel (<code>_fbp</code>)</td>
+          <td>Marketing / Third party (Meta Platforms Ireland Ltd.)</td>
+          <td>Measures the effectiveness of our ads on Facebook and Instagram and allows us to show them to people who visited the site.</td>
+          <td>Up to 3 months</td>
+          <td><strong>Consent required</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Cookies Not Used</h2>
+    <p>This website does <strong>not use</strong>:</p>
+    <ul>
+      <li>Analytics tools other than Google Analytics</li>
+      <li>Profiling cookies other than the Meta Pixel listed above</li>
+      <li>Advertising cookies of any kind</li>
+    </ul>
+
+    <h2>Google Fonts and Privacy</h2>
+    <p>Google Fonts is a service provided by Google LLC (USA). When loaded, your browser sends a request to Google's servers that includes your IP address. This only occurs if you have given consent via the cookie banner on the site. If you decline, the site uses equivalent system fonts and no data is transmitted to Google.</p>
+    <p>For more information on how Google uses data: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+    <h2>Managing or Withdrawing Consent</h2>
+    <p>You can change your choice at any time using the button below. The cookie banner will reappear and you can make a new selection.</p>
+
+    <div class="consent-reset">
+      <p>Current preference: <span id="consent-status-en">—</span></p>
+      <button class="btn-reset" onclick="resetConsent()">Change cookie preferences</button>
+    </div>
+
+    <p style="margin-top:1.5rem;">You can also manage cookies directly from your browser settings:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/en-us/topic/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>For any questions regarding the use of cookies on this site, write to <a href="mailto:info@allyoucan.wedding">info@allyoucan.wedding</a>. For full privacy information, please read our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 AllYouCanWedding — All rights reserved</span>
+  <span>
+    <a href="privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp;
+    <a href="cookie-policy.html">Cookie Policy</a> &nbsp;|&nbsp;
+    <a href="index.html">Home</a>
+  </span>
+</footer>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('section-it').classList.toggle('active', lang === 'it');
+  document.getElementById('section-en').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('.lang-btn').forEach(function(btn, i) {
+    btn.classList.toggle('active', (i === 0 && lang === 'it') || (i === 1 && lang === 'en'));
+  });
+  updateConsentStatus();
+}
+
+function updateConsentStatus() {
+  const val = localStorage.getItem('aycw_cookie_consent');
+  const labelIt = val === 'accepted' ? 'Accettato ✓' : val === 'declined' ? 'Rifiutato' : 'Non ancora impostato';
+  const labelEn = val === 'accepted' ? 'Accepted ✓' : val === 'declined' ? 'Declined' : 'Not yet set';
+  const elIt = document.getElementById('consent-status-it');
+  const elEn = document.getElementById('consent-status-en');
+  if (elIt) elIt.textContent = labelIt;
+  if (elEn) elEn.textContent = labelEn;
+}
+
+function resetConsent() {
+  localStorage.removeItem('aycw_cookie_consent');
+  window.location.href = 'index.html';
+}
+
+updateConsentStatus();
+</script>
+<script src="tracking.js" defer></script>
+</body>
+</html>

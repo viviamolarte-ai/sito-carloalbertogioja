@@ -1,0 +1,27 @@
+# Vecchie pagine WordPress -> nuove pagine (301 permanente, per non perdere i link e la posizione su Google)
+/matrimonio-chiavi-in-mano  /wedding-planner.html  301
+/matrimonio-chiavi-in-mano/ /wedding-planner.html  301
+/servizi    /#servizi  301
+/servizi/   /#servizi  301
+/privacy-policy   /privacy-policy.html  301
+/privacy-policy/  /privacy-policy.html  301
+/cookie-policy    /cookie-policy.html   301
+/cookie-policy/   /cookie-policy.html   301
+/category/*  /  301
+/tag/*       /  301
+/wp-admin/*  /  301
+/wp-login.php /  301
+/feed/*      /  301
+/298-2/  /  301
+/294-2/  /  301
+/276-2/  /  301
+/hello-world/  /  301
+/matrimoni-da-favola-consigli-pratici-per-realizzarli/  /  301
+/come-trasformare-il-tuo-giorno-speciale-in-unesperienza-unica/  /  301
+/le-ultime-tendenze-per-matrimoni-indimenticabili/  /  301
+/personalizzazione-il-segreto-per-un-matrimonio-unico/  /  301
+/idee-creative-per-temi-e-decorazioni-di-nozze/  /  301
+/limportanza-di-scegliere-il-giusto-team-di-esperti/  /  301
+/i-servizi-che-non-possono-mancare-nel-tuo-matrimonio/  /  301
+/come-pianificare-un-matrimonio-senza-stress/  /  301
+/*sitemap*.xml  /sitemap.xml  301
