@@ -1,0 +1,6 @@
+{"post": "post15", "slides": [
+ {"type": "text", "eyebrow": "Domanda per gli sposi", "title": "Dove vi direte sì?", "text": "Ogni luogo racconta una storia diversa."},
+ {"type": "question", "eyebrow": "Scrivetecelo nei commenti", "title": "La vostra location", "options": ["Chiesa o basilica", "Villa storica", "Castello o borgo", "Casale in campagna", "Giardino o spiaggia"]},
+ {"type": "list", "eyebrow": "Ogni luogo ha il suo stile", "title": "Su misura per la location", "items": ["Musica pensata per l'acustica", "Fiori in armonia con gli spazi", "Foto che seguono la luce", "Intrattenimento adatto agli ambienti", "Un Wedding Website con mappa e indicazioni"]},
+ {"type": "cta", "eyebrow": "Location scelta?", "title": "Iniziamo insieme", "text": "Raccontateci dove vi sposate: al resto pensiamo noi, in armonia con il luogo.", "cta": "Un unico referente per ogni servizio."}
+]}
