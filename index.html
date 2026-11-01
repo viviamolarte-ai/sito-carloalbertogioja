@@ -254,6 +254,7 @@ body.en span.en-s { display: inline !important; }
         <div class="h-news-date"><span class="h-news-day">10</span><span class="h-news-month it">OTT</span><span class="h-news-month en-s" style="display:none">OCT</span></div>
         <div><p class="h-news-title it"><em>A tutto madrigale</em> — Bracciano</p><p class="h-news-title en-s" style="display:none"><em>A tutto madrigale</em> — Bracciano</p><p class="h-news-sub it">Cantica Jubilate Ensemble · Teatro Delia Scala</p><p class="h-news-sub en-s" style="display:none">Cantica Jubilate Ensemble · Teatro Delia Scala</p></div>
       </div>
+      <a href="#archivio" onclick="var d=document.querySelector('#archivio > div');if(d.style.display==='none'){document.querySelector('#archivio > button').click();}" style="display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);text-decoration:none"><span class="it">Archivio eventi passati</span><span class="en-s" style="display:none">Past events archive</span><span>→</span></a>
       </div>
   </div>
 </div>
@@ -391,44 +392,44 @@ body.en span.en-s { display: inline !important; }
           <p class="event-sub en-s" style="display:none">Piazza San Biagio · Sacrofano (Roma) · 9:00 PM · Free admission<br>Director: Fratelli Picone · Colosseum Chamber Orchestra · Don Giovanni: Marco Severin</p>
         </div>
       </div>
+      <div class="event-row" style="border-top:none">
+        <div class="event-date-box"><span class="event-day">24</span><span class="event-month it">LUG 2026</span><span class="event-month en-s" style="display:none">JUL 2026</span></div>
+        <div class="event-body">
+          <p class="event-label it">Direttore d'Orchestra</p><p class="event-label en-s" style="display:none">Orchestra Conductor</p>
+          <h3 class="event-title" style="font-style:italic">Don Giovanni — W.A. Mozart</h3>
+          <p class="event-sub it">Teatro DOMMA · Acilia (Roma)</p>
+          <p class="event-sub en-s" style="display:none">Teatro DOMMA · Acilia (Roma)</p>
+        </div>
+      </div>
+      <div class="event-row" style="border-top:none">
+        <div class="event-date-box"><span class="event-day">19</span><span class="event-month it">LUG 2026</span><span class="event-month en-s" style="display:none">JUL 2026</span></div>
+        <div class="event-body">
+          <p class="event-label">Formello Chigi Festival</p>
+          <h3 class="event-title">Luciano &amp; Friends</h3>
+          <p class="event-sub it">Concerto di arie e duetti d'opera · ore 21:00<br>Piazza San Lorenzo · Formello (Roma)<br>Con Luciano Ganci · Courtney Mills · Marco Severin · Carlo Alberto Gioja<br>Direttore: M° Nicola Marasco · Colosseum Symphony Orchestra</p>
+          <p class="event-sub en-s" style="display:none">Concert of opera arias and duets · 9:00 PM · Piazza San Lorenzo · Formello<br>With Luciano Ganci · Courtney Mills · Marco Severin · Conductor: M° Nicola Marasco</p>
+        </div>
+      </div>
+      <div class="event-row" style="border-top:none">
+        <div class="event-date-box"><span class="event-day">21</span><span class="event-month it">GIU 2026</span><span class="event-month en-s" style="display:none">JUN 2026</span></div>
+        <div class="event-body">
+          <p class="event-label">Teatro dell'Opera di Roma</p>
+          <h3 class="event-title" style="font-style:italic">La Traviata — G. Verdi</h3>
+          <p class="event-sub it">Teatro Costanzi · Recite: 21, 24, 26, 30 giugno 2026<br>Ruolo: Un Commissionario · Dir: Francesco Ivan Ciampa · Regia: Sofia Coppola<br>📻 Recita del 21 giugno in diretta su Radio RAI</p>
+          <p class="event-sub en-s" style="display:none">Teatro Costanzi · 21, 24, 26, 30 June 2026 · Role: A Messenger<br>📻 21 June broadcast live on Radio RAI</p>
+        </div>
+      </div>
+      <div class="event-row" style="border-top:none"><div class="event-date-box"><span class="event-day">15</span><span class="event-month it">GEN 2026</span><span class="event-month en-s" style="display:none">JAN 2026</span></div><div class="event-body"><p class="event-label">Teatro dell'Opera di Roma</p><h3 class="event-title" style="font-style:italic">La Bohème — G. Puccini</h3><p class="event-sub it">Recite: 15, 16, 21, 23, 24 gen 2026 · Ruolo: Un Doganiere<br>Dir: Jader Bignamini / A. Palumbo · Regia: Davide Livermore · Rodolfo: F. Demuro / R. Barbera</p></div></div>
+      <div class="event-row" style="border-top:none"><div class="event-date-box"><span class="event-day">05</span><span class="event-month it">GEN 2026</span><span class="event-month en-s" style="display:none">JAN 2026</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra · Comune di Formello</p><h3 class="event-title">"Sotto al neve del mondo"</h3><p class="event-sub it">Concerto natalizio · Coro Cantica Jubilate · Colosseum Symphony Orchestra</p></div></div>
     </div>
 
-    <div style="margin-top:1.5rem">
+    <div id="archivio" style="margin-top:3rem;scroll-margin-top:90px">
       <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('svg').style.transform=this.nextElementSibling.style.display==='block'?'rotate(180deg)':'rotate(0deg)'" style="display:flex;align-items:center;gap:.8rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);padding:.5rem 0;border-bottom:1px solid var(--rule);width:100%;justify-content:space-between">
         <span class="it">▸ Archivio eventi passati</span><span class="en-s" style="display:none">▸ Past events archive</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="transition:transform .3s"><polyline points="4,6 8,10 12,6"/></svg>
       </button>
       <div style="display:none">
-        <div class="event-row" style="border-top:none;opacity:.6">
-          <div class="event-date-box" style="background:var(--dg)"><span class="event-day">24</span><span class="event-month it">LUG 2026</span><span class="event-month en-s" style="display:none">JUL 2026</span></div>
-          <div class="event-body">
-            <p class="event-label it">Direttore d'Orchestra</p><p class="event-label en-s" style="display:none">Orchestra Conductor</p>
-            <h3 class="event-title" style="font-style:italic">Don Giovanni — W.A. Mozart</h3>
-            <p class="event-sub it">Teatro DOMMA · Acilia (Roma)</p>
-            <p class="event-sub en-s" style="display:none">Teatro DOMMA · Acilia (Roma)</p>
-          </div>
-        </div>
-        <div class="event-row" style="border-top:none;opacity:.6">
-          <div class="event-date-box" style="background:var(--dg)"><span class="event-day">19</span><span class="event-month it">LUG 2026</span><span class="event-month en-s" style="display:none">JUL 2026</span></div>
-          <div class="event-body">
-            <p class="event-label">Formello Chigi Festival</p>
-            <h3 class="event-title">Luciano &amp; Friends</h3>
-            <p class="event-sub it">Concerto di arie e duetti d'opera · ore 21:00<br>Piazza San Lorenzo · Formello (Roma)<br>Con Luciano Ganci · Courtney Mills · Marco Severin · Carlo Alberto Gioja<br>Direttore: M° Nicola Marasco · Colosseum Symphony Orchestra</p>
-            <p class="event-sub en-s" style="display:none">Concert of opera arias and duets · 9:00 PM · Piazza San Lorenzo · Formello<br>With Luciano Ganci · Courtney Mills · Marco Severin · Conductor: M° Nicola Marasco</p>
-          </div>
-        </div>
-        <div class="event-row" style="border-top:none;opacity:.6">
-          <div class="event-date-box" style="background:var(--dg)"><span class="event-day">21</span><span class="event-month it">GIU 2026</span><span class="event-month en-s" style="display:none">JUN 2026</span></div>
-          <div class="event-body">
-            <p class="event-label">Teatro dell'Opera di Roma</p>
-            <h3 class="event-title" style="font-style:italic">La Traviata — G. Verdi</h3>
-            <p class="event-sub it">Teatro Costanzi · Recite: 21, 24, 26, 30 giugno 2026<br>Ruolo: Un Commissionario · Dir: Francesco Ivan Ciampa · Regia: Sofia Coppola<br>📻 Recita del 21 giugno in diretta su Radio RAI</p>
-            <p class="event-sub en-s" style="display:none">Teatro Costanzi · 21, 24, 26, 30 June 2026 · Role: A Messenger<br>📻 21 June broadcast live on Radio RAI</p>
-          </div>
-        </div>
-        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">15</span><span class="event-month it">GEN 2026</span><span class="event-month en-s" style="display:none">JAN 2026</span></div><div class="event-body"><p class="event-label">Teatro dell'Opera di Roma</p><h3 class="event-title" style="font-style:italic">La Bohème — G. Puccini</h3><p class="event-sub it">Recite: 15, 16, 21, 23, 24 gen 2026 · Ruolo: Un Doganiere<br>Dir: Jader Bignamini / A. Palumbo · Regia: Davide Livermore · Rodolfo: F. Demuro / R. Barbera</p></div></div>
-        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">05</span><span class="event-month it">GEN 2026</span><span class="event-month en-s" style="display:none">JAN 2026</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra · Comune di Formello</p><h3 class="event-title">"Sotto al neve del mondo"</h3><p class="event-sub it">Concerto natalizio · Coro Cantica Jubilate · Colosseum Symphony Orchestra</p></div></div>
-        <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">14</span><span class="event-month it">DIC 2025</span><span class="event-month en-s" style="display:none">DEC 2025</span></div><div class="event-body"><p class="event-label it">Direttore di Coro — Voci di Luce · II edizione</p><h3 class="event-title" style="font-style:italic">Concerto Gospel per la Solidarietà</h3><p class="event-sub it">Basilica di San Giuseppe al Trionfale · Roma · Lega del Filo d'oro · Con Roberta Ammendola</p></div></div>
+        <div class="event-row" style="opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">14</span><span class="event-month it">DIC 2025</span></div><div class="event-body"><p class="event-label it">Direttore di Coro — Voci di Luce · II edizione</p><h3 class="event-title" style="font-style:italic">Concerto Gospel per la Solidarietà</h3><p class="event-sub it">Basilica di San Giuseppe al Trionfale · Roma · Lega del Filo d'oro · Con Roberta Ammendola</p></div></div>
         <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">1</span><span class="event-month it">NOV 2025</span></div><div class="event-body"><p class="event-label it">Direttore di Coro — Mediterranean Choral Festival of Albania</p><h3 class="event-title" style="font-style:italic">Coro Gocce di Luce — UICI Roma</h3><p class="event-sub it">Cattedrale di San Stefano · Shkodra, Albania · con cori da Bulgaria, Grecia, Israele e Albania</p></div></div>
         <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">6</span><span class="event-month it">LUG 2025</span></div><div class="event-body"><p class="event-label it">Direttore d'Orchestra</p><h3 class="event-title" style="font-style:italic">La Traviata — G. Verdi</h3><p class="event-sub it">Piazza San Biagio · Sacrofano · Colosseum Chamber Orchestra · Regia: Fratelli Picone<br>Violetta: Naho Yokohama · Alfredo: Fabrizio Giovinazzi · Germont: Marco Severin</p></div></div>
         <div class="event-row" style="border-top:none;opacity:.6"><div class="event-date-box" style="background:var(--dg)"><span class="event-day">9</span><span class="event-month it">MAG 2025</span></div><div class="event-body"><p class="event-label">Teatro dell'Opera di Roma</p><h3 class="event-title" style="font-style:italic">Tosca — G. Puccini</h3><p class="event-sub it">Recite: 9, 11, 13 mag 2025 · Ruolo: Un Carceriere · Dir: James Conlon · Tosca: Anna Pirozzi · Scarpia: Ariunbaatar Ganbaatar</p></div></div>
