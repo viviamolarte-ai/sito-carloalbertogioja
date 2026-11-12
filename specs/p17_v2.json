@@ -1,0 +1,6 @@
+{"post": "post17_v2", "deco": true, "slides": [
+ {"type": "cover", "image": "photos/p04_fornitori.jpg", "eyebrow": "Consigli per gli sposi", "title": "Prima di scegliere un fornitore"},
+ {"type": "list", "eyebrow": "Da chiedere sempre", "title": "5 domande", "items": ["È libero nella nostra data?", "Cosa è incluso, esattamente?", "Chi ci sarà il giorno del matrimonio?", "Come si coordina con gli altri fornitori?", "Cosa succede in caso di imprevisti?"]},
+ {"type": "photo", "image": "photos/p07_carlo_marco.jpg", "focus": "50% 0%", "img_height": 700, "eyebrow": "Con AllYouCanWedding", "title": "Un solo interlocutore", "text": "Coordiniamo noi tutti i servizi e rispondiamo per tutti: voi parlate con una persona sola."},
+ {"type": "cta", "eyebrow": "E voi?", "title": "Iniziamo insieme", "text": "Quale domanda aggiungereste alla lista? Scrivetecelo nei commenti.", "cta": "Un unico referente per ogni servizio."}
+]}

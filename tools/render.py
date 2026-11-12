@@ -11,6 +11,12 @@ Tipi di slide (tutti i campi testo sono facoltativi tranne "title"):
   question fondo prugna, domanda grande e opzioni          campi: eyebrow, title, options[]
   cta      fondo avorio, chiusura con contatto             campi: eyebrow, title, text, cta, contact
 
+Arricchimenti (facoltativi, non cambiano le slide esistenti):
+  "deco": true (sulla spec o sulla singola slide) aggiunge cornice sottile, rametto botanico e, sul fondo
+           prugna, una luce morbida; sulle cta anche le fedi intrecciate.
+  "image" su list/cta/question/text: fascia fotografica in alto (campi: image, focus, band_height, default 430).
+  "images": [a, b] su cover: due foto affiancate (es. chiesa | giardino).
+
 "image" è un percorso locale o un URL https. Le slide di un carosello ricevono la numerazione "n / N";
 la cover di un carosello mostra "Scorri →".
 """
@@ -61,7 +67,47 @@ h1,h2{font-family:Disp,Georgia,serif;font-weight:600;line-height:1.08;letter-spa
 .ctab{margin-top:30px;border-top:2px solid var(--sage);padding-top:44px;display:grid;gap:14px}
 .ctab strong{font-weight:600;font-size:52px;line-height:1.2}
 .ctab span{font-size:40px;font-weight:600;color:var(--plum)}
+.cover.split{background:#1a0f17}
+.cover.split .halves{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover.split .halves div{background-size:cover;background-position:center}
+.frame{position:absolute;inset:36px;border:2px solid rgba(126,140,118,.45);border-radius:6px;pointer-events:none;z-index:3}
+.dark .frame{border-color:rgba(231,201,216,.35)}
+.dark.deco{background:radial-gradient(circle at 85% 12%,rgba(231,201,216,.18),rgba(231,201,216,0) 45%),radial-gradient(circle at 10% 95%,rgba(126,140,118,.22),rgba(126,140,118,0) 50%),var(--plum)}
+.list.deco,.cta.deco{background:radial-gradient(circle at 90% 8%,rgba(231,201,216,.55),rgba(231,201,216,0) 40%),radial-gradient(circle at 5% 100%,rgba(126,140,118,.18),rgba(126,140,118,0) 45%),var(--ivory)}
+.sprig{position:absolute;right:46px;top:46px;width:300px;height:300px;z-index:1;pointer-events:none}
+.sprig.bl{right:auto;top:auto;left:30px;bottom:110px;transform:rotate(180deg);width:240px;height:240px}
+.rings{position:absolute;right:90px;bottom:150px;width:240px;z-index:1;opacity:.9}
+.band{position:absolute;left:0;right:0;top:0;background-size:cover}
+.band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(246,242,236,0),var(--ivory))}
+.dark .band::after{background:linear-gradient(180deg,rgba(94,52,80,0),var(--plum))}
+.hasband h2{font-size:96px!important}
+.hasband .items{gap:22px}.hasband .items div{font-size:42px}
 """
+
+def sprig(color, cls="sprig"):
+    import math
+    leaves = []
+    # stelo curvo da (270,20) a (40,280) con foglie alternate
+    pts = [(270 - 230 * t, 20 + 260 * t - 70 * math.sin(math.pi * t)) for t in [i / 10 for i in range(11)]]
+    d = "M" + " L".join("%.1f,%.1f" % p for p in pts)
+    for k in range(1, 10):
+        x, y = pts[k]
+        x0, y0 = pts[k - 1]
+        ang = math.degrees(math.atan2(y - y0, x - x0))
+        for side in ((1,) if k == 9 else (1, -1)):
+            a = ang + side * 55
+            sz = 30 - k * 1.6
+            cx, cy = x + math.cos(math.radians(a)) * sz, y + math.sin(math.radians(a)) * sz
+            leaves.append('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%.1f" transform="rotate(%.1f %.1f %.1f)"/>' % (cx, cy, sz, sz * 0.42, a, cx, cy))
+    berries = "".join('<circle cx="%.1f" cy="%.1f" r="7"/>' % (pts[k][0] + 18, pts[k][1] - 26) for k in (2, 5))
+    return ('<svg class="%s" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">'
+            '<path d="%s" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round"/>'
+            '<g fill="none" stroke="%s" stroke-width="2.6">%s</g><g fill="%s" opacity=".55">%s</g></svg>') % (cls, d, color, color, "".join(leaves), color, berries)
+
+RINGS = ('<svg class="rings" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="5">'
+         '<circle cx="72" cy="72" r="48" stroke="#7E8C76"/><circle cx="128" cy="72" r="48" stroke="#5E3450"/>'
+         '<path d="M118 14 l10 -10 l10 10 l-10 10z" fill="#E7C9D8" stroke="#5E3450" stroke-width="3"/></svg>')
+
 
 
 def ensure_fonts():
@@ -87,13 +133,40 @@ def img_url(src, workdir):
     return "file://" + os.path.abspath(src)
 
 
-def slide_html(s, i, n, workdir):
+def slide_html(s, i, n, workdir, deco_all=False):
+    h = _slide_html(s, i, n, workdir)
+    t = s.get("type", "text")
+    deco = s.get("deco", deco_all) and t not in ("cover", "photo")
+    if s.get("image") and t in ("list", "cta", "question", "text"):
+        bh = int(s.get("band_height", 430))
+        band = '<div class="band" style="height:%dpx;background-image:url(\'%s\');background-position:%s"></div>' % (bh, img_url(s["image"], workdir), s.get("focus", "center"))
+        h = h.replace('<div class="txt">', band + '<div class="txt" style="top:%dpx">' % (bh + 50), 1)
+        h = h.replace('class="s ', 'class="s hasband ', 1)
+    if deco:
+        dark = t in ("text", "question")
+        extra = '<div class="frame"></div>'
+        col = "#E7C9D8" if dark else "#7E8C76"
+        if t == "cta":
+            extra += sprig(col, "sprig bl") + RINGS
+        elif not s.get("image"):
+            extra += sprig(col)
+            if t not in ("question",):
+                extra += sprig(col, "sprig bl")
+        h = h.replace('class="s ', 'class="s deco ', 1)
+        h = h[:-6] + extra + "</div>"
+    return h
+
+
+def _slide_html(s, i, n, workdir):
     t = s.get("type", "text")
     foot = '<div class="mark">allyoucan.wedding</div>'
     if n > 1:
         foot += '<div class="pg">%s</div>' % ("Scorri →" if i == 1 and t == "cover" else "%d / %d" % (i, n))
     eye = '<div class="eye">%s</div>' % e(s.get("eyebrow")) if s.get("eyebrow") else ""
     text = "<p>%s</p>" % e(s.get("text")) if s.get("text") else ""
+    if t == "cover" and s.get("images"):
+        halves = "".join('<div style="background-image:url(\'%s\')"></div>' % img_url(x, workdir) for x in s["images"])
+        return '<div class="s cover split"><div class="halves">%s</div><div class="txt">%s<h1>%s</h1></div>%s</div>' % (halves, eye, e(s["title"]), foot)
     if t == "cover":
         return '<div class="s cover" style="background-image:url(\'%s\')"><div class="txt">%s<h1>%s</h1></div>%s</div>' % (
             img_url(s.get("image"), workdir), eye, e(s["title"]), foot)
@@ -120,7 +193,7 @@ def main(spec_path, out_dir):
     spec = json.load(open(spec_path, encoding="utf-8"))
     os.makedirs(out_dir, exist_ok=True)
     slides = spec["slides"]
-    body = "".join('<div id="s%d">%s</div>' % (i, slide_html(s, i, len(slides), out_dir)) for i, s in enumerate(slides, 1))
+    body = "".join('<div id="s%d">%s</div>' % (i, slide_html(s, i, len(slides), out_dir, spec.get("deco", False))) for i, s in enumerate(slides, 1))
     page = os.path.join(out_dir, "_render.html")
     with open(page, "w", encoding="utf-8") as f:
         f.write('<!doctype html><meta charset="utf-8"><style>%s</style>%s' % (CSS.replace("FONTS", "file://" + FONTS), body))
