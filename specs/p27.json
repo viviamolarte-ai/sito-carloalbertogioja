@@ -1,0 +1,45 @@
+{
+"post": "post27_v4",
+"deco": true,
+"theme": "capodanno_soft",
+"slides": [
+{
+"type": "text",
+"eyebrow": "Buon anno, sposi",
+"title": "Come comincia il vostro 2027?",
+"text": "Tra un valzer di Strauss e un «Libiam» di Verdi, il nuovo anno è già qui.",
+"theme": "capodanno"
+},
+{
+"type": "list",
+"eyebrow": "Dopo il brindisi",
+"title": "La lista di gennaio",
+"items": [
+"La data e il luogo della cerimonia",
+"La location del ricevimento",
+"La musica per il sì e per la festa",
+"Fotografo e video",
+"Fiori e allestimenti"
+]
+},
+{
+"type": "question",
+"eyebrow": "Scrivetecelo nei commenti",
+"title": "Il vostro 2027 comincia con…",
+"options": [
+"Un valzer, ballato male",
+"Un brindisi e il resto si vedrà",
+"«Ma quanti invitati sono?»",
+"La caccia alla location",
+"Cento foto salvate «per ispirazione»"
+]
+},
+{
+"type": "cta",
+"eyebrow": "Il vostro anno",
+"title": "Iniziamo insieme",
+"text": "Un unico referente per musica, foto, fiori e Wedding Website: partiamo dalla vostra data.",
+"cta": "Raccontateci il vostro 2027."
+}
+]
+}

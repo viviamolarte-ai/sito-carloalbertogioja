@@ -16,7 +16,7 @@ Arricchimenti (facoltativi, non cambiano le slide esistenti):
            prugna, una luce morbida; sulle cta anche le fedi intrecciate.
   "image" su list/cta/question/text: fascia fotografica in alto (campi: image, focus, band_height, default 430).
   "images": [a, b] su cover: due foto affiancate (es. chiesa | giardino).
-  "theme": "natale" (sulla spec o sulla slide, insieme a deco) sostituisce i rametti con palline appese,
+  "theme": "capodanno" = fuochi d'artificio dorati; "theme": "natale" (sulla spec o sulla slide, insieme a deco) sostituisce i rametti con palline appese,
            stelline e fiocchi di neve dorati e una cornice doppia oro: per i post delle feste.
 
 "image" è un percorso locale o un URL https. Le slide di un carosello ricevono la numerazione "n / N";
@@ -146,6 +146,54 @@ def xmas_svg(dark, kind=""):
     return baub + '<svg class="flakes" viewBox="0 0 1080 1350">%s</svg>' % "".join(fl)
 
 
+def fireworks_svg(dark, kind="", soft=False):
+    import math, random
+    gold = "#C9A96E"
+    pink = "#E7C9D8" if dark else "#B07A9A"
+    rnd = random.Random(11)
+    def burst(cx, cy, r, n, col, col2, w=2.2):
+        out = []
+        for k in range(n):
+            a = 2 * math.pi * k / n + rnd.uniform(-.05, .05)
+            r0 = r * .22
+            r1 = r * rnd.uniform(.78, 1.0)
+            x0, y0 = cx + math.cos(a) * r0, cy + math.sin(a) * r0
+            x1, y1 = cx + math.cos(a) * r1, cy + math.sin(a) * r1
+            out.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="%.1f" stroke-linecap="round" opacity=".8"/>' % (x0, y0, x1, y1, col, w))
+            xd, yd = cx + math.cos(a) * (r1 + 12), cy + math.sin(a) * (r1 + 12)
+            out.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s" opacity=".9"/>' % (xd, yd, w * 1.5, col2 if k % 2 else col))
+        for k in range(n):
+            a = 2 * math.pi * (k + .5) / n
+            rr = r * .55
+            out.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s" opacity=".55"/>' % (cx + math.cos(a) * rr, cy + math.sin(a) * rr, w * .9, col2))
+        out.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s"/>' % (cx, cy, w * 2.2, col))
+        return "".join(out)
+    import os as _os
+    A = "file://" + _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "assets"))
+    v = "dark" if dark else "light"
+    if soft:
+        gold = "#C9A96E"
+        star = '<path transform="translate(%d %d) scale(%.2f)" d="M0 -20 L4 -4 L20 0 L4 4 L0 20 L-4 4 L-20 0 L-4 -4Z" fill="%s" opacity="%.2f"/>'
+        g = star % (960, 120, 1.6, gold, .85) + star % (900, 175, .8, gold, .6) + star % (1000, 200, .55, gold, .5)
+        g += '<line x1="760" y1="120" x2="925" y2="120" stroke="%s" stroke-width="1.2" opacity=".55"/>' % gold
+        return '<svg class="flakes" viewBox="0 0 1080 1350">%s</svg>' % g
+    if kind in ("cta", "list"):
+        g = '<image href="%s/fw_big_%s.png" x="790" y="-70" width="330" height="330"/>' % (A, v)
+        g += '<image href="%s/fw_small_%s.png" x="690" y="-10" width="140" height="140" opacity=".9"/>' % (A, v)
+    else:
+        g = '<image href="%s/fw_big_%s.png" x="690" y="-40" width="430" height="430"/>' % (A, v)
+        g += '<image href="%s/fw_small_%s.png" x="590" y="20" width="190" height="190" opacity=".9"/>' % (A, v)
+    if kind not in ("question", "cta"):
+        g += '<image href="%s/fw_small_%s.png" x="900" y="330" width="150" height="150" opacity=".8"/>' % (A, v)
+    pts = [(1024, 700), (1000, 980), (880, 1236), (480, 1244), (660, 1228), (1024, 1120), (620, 70)]
+    if kind == "question":
+        pts = [q for q in pts if q[1] < 1150]
+    for k, (x, y) in enumerate(pts):
+        sz = rnd.choice([12, 15, 18]); op = rnd.choice([.45, .6, .75])
+        g += '<path transform="translate(%d %d) scale(%.2f)" d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5Z" fill="%s" opacity="%.2f"/>' % (x, y, sz / 22, gold if k % 2 else pink, op)
+    return '<svg class="flakes" viewBox="0 0 1080 1350">%s</svg>' % g
+
+
 RINGS = ('<svg class="rings" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="5">'
          '<circle cx="72" cy="72" r="48" stroke="#7E8C76"/><circle cx="128" cy="72" r="48" stroke="#5E3450"/>'
          '<path d="M118 14 l10 -10 l10 10 l-10 10z" fill="#E7C9D8" stroke="#5E3450" stroke-width="3"/></svg>')
@@ -199,6 +247,9 @@ def slide_html(s, i, n, workdir, deco_all=False):
                 extra += sprig(col, "sprig bl")
         if s.get("theme", deco_all_theme[0]) == "natale":
             extra = '<div class="frame"></div>' + xmas_svg(dark, t) + (RINGS if t == "cta" else "")
+            h = h.replace('class="s ', 'class="s xm ', 1)
+        if s.get("theme", deco_all_theme[0]) in ("capodanno", "capodanno_soft"):
+            extra = '<div class="frame"></div>' + fireworks_svg(dark, t, s.get("theme", deco_all_theme[0]) == "capodanno_soft") + (RINGS if t == "cta" else "")
             h = h.replace('class="s ', 'class="s xm ', 1)
         h = h.replace('class="s ', 'class="s deco ', 1)
         h = h[:-6] + extra + "</div>"
