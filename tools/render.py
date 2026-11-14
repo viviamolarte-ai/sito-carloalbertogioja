@@ -16,6 +16,8 @@ Arricchimenti (facoltativi, non cambiano le slide esistenti):
            prugna, una luce morbida; sulle cta anche le fedi intrecciate.
   "image" su list/cta/question/text: fascia fotografica in alto (campi: image, focus, band_height, default 430).
   "images": [a, b] su cover: due foto affiancate (es. chiesa | giardino).
+  "theme": "natale" (sulla spec o sulla slide, insieme a deco) sostituisce i rametti con palline appese,
+           stelline e fiocchi di neve dorati e una cornice doppia oro: per i post delle feste.
 
 "image" è un percorso locale o un URL https. Le slide di un carosello ricevono la numerazione "n / N";
 la cover di un carosello mostra "Scorri →".
@@ -78,6 +80,12 @@ h1,h2{font-family:Disp,Georgia,serif;font-weight:600;line-height:1.08;letter-spa
 .sprig.bl{right:auto;top:auto;left:30px;bottom:110px;transform:rotate(180deg);width:240px;height:240px}
 .rings{position:absolute;right:90px;bottom:150px;width:240px;z-index:1;opacity:.9}
 .band{position:absolute;left:0;right:0;top:0;background-size:cover}
+.xm .frame{border:2px solid rgba(201,169,110,.75);inset:30px}
+.xm .frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(201,169,110,.45);border-radius:4px}
+.xm.dark.deco{background:radial-gradient(circle at 80% 10%,rgba(201,169,110,.28),rgba(201,169,110,0) 42%),radial-gradient(circle at 12% 92%,rgba(231,201,216,.18),rgba(231,201,216,0) 48%),var(--plum)}
+.xm.list.deco,.xm.cta.deco{background:radial-gradient(circle at 88% 8%,rgba(201,169,110,.30),rgba(201,169,110,0) 40%),radial-gradient(circle at 6% 100%,rgba(231,201,216,.45),rgba(231,201,216,0) 45%),var(--ivory)}
+.baubles{position:absolute;right:50px;top:40px;width:300px;height:330px;z-index:1;pointer-events:none}
+.flakes{position:absolute;inset:0;z-index:1;pointer-events:none}
 .band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(246,242,236,0),var(--ivory))}
 .dark .band::after{background:linear-gradient(180deg,rgba(94,52,80,0),var(--plum))}
 .hasband h2{font-size:96px!important}
@@ -103,6 +111,40 @@ def sprig(color, cls="sprig"):
     return ('<svg class="%s" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">'
             '<path d="%s" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round"/>'
             '<g fill="none" stroke="%s" stroke-width="2.6">%s</g><g fill="%s" opacity=".55">%s</g></svg>') % (cls, d, color, color, "".join(leaves), color, berries)
+
+def xmas_svg(dark, kind=""):
+    gold = "#C9A96E"
+    ball2 = "#E7C9D8" if dark else "#5E3450"
+    def ball(x, length, r, col):
+        return ('<line x1="%d" y1="0" x2="%d" y2="%d" stroke="%s" stroke-width="2"/>'
+                '<rect x="%d" y="%d" width="16" height="12" rx="2" fill="%s"/>'
+                '<circle cx="%d" cy="%d" r="%d" fill="%s"/>'
+                '<path d="M%d %d q%d -%d %d 0" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none"/>') % (
+            x, x, length, gold, x - 8, length, gold, x, length + 12 + r, r, col, x - r * 0.55, length + 12 + r * 0.7, r * 0.3, r * 0.3, r * 0.6)
+    star = ('<svg class="baubles" viewBox="0 0 300 330" fill="none" stroke="%s" stroke-linecap="round">'
+            '<path d="M230 40 L234 78 L272 82 L234 86 L230 124 L226 86 L188 82 L226 78Z" fill="%s" fill-opacity=".9" stroke-width="1.5"/>'
+            '<line x1="230" y1="20" x2="230" y2="144" stroke-width="1.2" opacity=".6"/><line x1="168" y1="82" x2="292" y2="82" stroke-width="1.2" opacity=".6"/>'
+            '<line x1="196" y1="48" x2="264" y2="116" stroke-width="1" opacity=".45"/><line x1="264" y1="48" x2="196" y2="116" stroke-width="1" opacity=".45"/>'
+            '<circle cx="230" cy="82" r="58" stroke-width="1" opacity=".35"/></svg>') % (gold, gold)
+    baub = star + ("" if kind == "question" else sprig(gold, "sprig bl"))
+    import random
+    rnd = random.Random(7)
+    pts = [(1024, 600), (1024, 880), (880, 1236), (480, 1244), (660, 1228), (1024, 1120)]
+    if kind == "question":
+        pts = [q for q in pts if q[1] < 1150] + [(1024, 360)]
+    fl = []
+    for k, (x, y) in enumerate(pts):
+        sz = rnd.choice([12, 15, 18])
+        op = rnd.choice([.45, .6, .75])
+        if k % 2:
+            fl.append('<g transform="translate(%d %d)" stroke="%s" stroke-width="2.4" stroke-linecap="round" opacity="%.2f">'
+                      '<line x1="-%d" y1="0" x2="%d" y2="0"/><line x1="0" y1="-%d" x2="0" y2="%d"/>'
+                      '<line x1="-%d" y1="-%d" x2="%d" y2="%d"/><line x1="-%d" y1="%d" x2="%d" y2="-%d"/></g>' % (
+                          x, y, gold, op, sz, sz, sz, sz, sz * .7, sz * .7, sz * .7, sz * .7, sz * .7, sz * .7, sz * .7, sz * .7))
+        else:
+            fl.append('<path transform="translate(%d %d) scale(%.2f)" d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5Z" fill="%s" opacity="%.2f"/>' % (x, y, sz / 22, gold, op))
+    return baub + '<svg class="flakes" viewBox="0 0 1080 1350">%s</svg>' % "".join(fl)
+
 
 RINGS = ('<svg class="rings" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="5">'
          '<circle cx="72" cy="72" r="48" stroke="#7E8C76"/><circle cx="128" cy="72" r="48" stroke="#5E3450"/>'
@@ -133,6 +175,9 @@ def img_url(src, workdir):
     return "file://" + os.path.abspath(src)
 
 
+deco_all_theme = [None]
+
+
 def slide_html(s, i, n, workdir, deco_all=False):
     h = _slide_html(s, i, n, workdir)
     t = s.get("type", "text")
@@ -152,6 +197,9 @@ def slide_html(s, i, n, workdir, deco_all=False):
             extra += sprig(col)
             if t not in ("question",):
                 extra += sprig(col, "sprig bl")
+        if s.get("theme", deco_all_theme[0]) == "natale":
+            extra = '<div class="frame"></div>' + xmas_svg(dark, t) + (RINGS if t == "cta" else "")
+            h = h.replace('class="s ', 'class="s xm ', 1)
         h = h.replace('class="s ', 'class="s deco ', 1)
         h = h[:-6] + extra + "</div>"
     return h
@@ -193,6 +241,7 @@ def main(spec_path, out_dir):
     spec = json.load(open(spec_path, encoding="utf-8"))
     os.makedirs(out_dir, exist_ok=True)
     slides = spec["slides"]
+    deco_all_theme[0] = spec.get("theme")
     body = "".join('<div id="s%d">%s</div>' % (i, slide_html(s, i, len(slides), out_dir, spec.get("deco", False))) for i, s in enumerate(slides, 1))
     page = os.path.join(out_dir, "_render.html")
     with open(page, "w", encoding="utf-8") as f:
