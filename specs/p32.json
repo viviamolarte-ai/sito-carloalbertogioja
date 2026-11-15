@@ -1,0 +1,51 @@
+{
+"post": "post32_v1",
+"style": "immersivo",
+"slides": [
+{
+"type": "cover",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_cm/archi.jpg",
+"focus": "72% center",
+"title": "Tra archi e fiori"
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_cm/dettagli.jpg",
+"focus": "15% center",
+"eyebrow": "I dettagli",
+"title": "Tutto pronto",
+"text": "Scarpe, fiori e fedi."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_cm/abito.jpg",
+"focus": "center 30%",
+"eyebrow": "I preparativi",
+"title": "L'abito",
+"text": "Appeso alla luce, in attesa."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_cm/auto.jpg",
+"focus": "55% center",
+"eyebrow": "Dopo il sì",
+"title": "Il primo bacio",
+"text": "In decappottabile, verso la festa."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_cm/torta.jpg",
+"focus": "50% center",
+"eyebrow": "La festa",
+"title": "Sotto il pergolato",
+"text": "Verde e fiori bianchi anche per la torta."
+},
+{
+"type": "cta",
+"eyebrow": "Fiori e allestimenti",
+"title": "Iniziamo insieme",
+"text": "Raccontateci i vostri colori: fiori e allestimenti li pensiamo con voi.",
+"cta": "Fiori e allestimenti curati da noi."
+}
+]
+}
