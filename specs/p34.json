@@ -1,0 +1,51 @@
+{
+"post": "post34_v5",
+"deco": true,
+"theme": "capodanno_soft",
+"slides": [
+{
+"type": "text",
+"art": "photos/ai/befana/befana1.jpg",
+"eyebrow": "Gossip dell'Epifania",
+"title": "La Befana e Babbo Natale si sposano?",
+"text": "Voci dal Polo Nord: pare che abbiano già fissato la data.",
+"art_h": 800
+},
+{
+"type": "list",
+"art": "photos/ai/befana/befana2.jpg",
+"tone": "dark",
+"eyebrow": "Indiscrezioni",
+"title": "Il loro matrimonio",
+"items": [
+"Location: un camino molto capiente",
+"Arrivo della sposa: in scopa",
+"Bomboniere: carbone, ma dolce",
+"Primo ballo: un valzer sulla neve",
+"Viaggio di nozze: dal 7 gennaio"
+],
+"art_h": 700
+},
+{
+"type": "question",
+"art": "photos/ai/befana/befana3.jpg",
+"eyebrow": "Votate nei commenti",
+"title": "Chi organizza le nozze?",
+"options": [
+"Le renne, ma litigano sul menù",
+"Gli elfi, in ordine alfabetico",
+"La Befana: «Faccio da sola»",
+"Babbo Natale: «Ho già la lista»",
+"Noi, ovviamente"
+],
+"art_h": 640
+},
+{
+"type": "cta",
+"eyebrow": "Il vostro anno",
+"title": "Iniziamo insieme",
+"text": "Niente slitta né scopa: musica, foto, fiori, wedding website, wedding planner e tanto altro.",
+"cta": "Raccontateci il vostro 2027."
+}
+]
+}

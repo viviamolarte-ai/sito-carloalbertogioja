@@ -1,8 +1,51 @@
-{"post": "post33_v1", "style": "immersivo", "slides": [
-{"type": "cover", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/drone.jpg", "focus": "45% center", "title": "Pronti, partenza… sì!"},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/bouquet.jpg", "focus": "40% center", "eyebrow": "Lei", "title": "Il bouquet", "text": "Un ultimo respiro prima di uscire."},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/bretelle.jpg", "focus": "35% center", "eyebrow": "Lui", "title": "Gli ultimi ritocchi", "text": "Bretelle, risate e un amico accanto."},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/auto.jpg", "focus": "50% center", "eyebrow": "Verso il sì", "title": "In auto d'epoca", "text": "Piccola, bianca e piena di stile."},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/sorriso.jpg", "focus": "50% center", "eyebrow": "I ritratti", "title": "Finalmente insieme", "text": "Il primo sorriso da sposi."},
-{"type": "cta", "eyebrow": "Il vostro racconto", "title": "Iniziamo insieme", "text": "Dai preparativi alla festa: foto, video, musica e fiori con un unico referente.", "cta": "Seguito da noi, dall'inizio alla festa."}
-]}
+{
+"post": "post33_v3",
+"style": "immersivo",
+"slides": [
+{
+"type": "cover",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/drone.jpg",
+"focus": "45% center",
+"title": "Pronti, partenza… sì!"
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/bouquet.jpg",
+"focus": "40% center",
+"eyebrow": "Lei",
+"title": "Il bouquet",
+"text": "Un ultimo respiro prima di uscire."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/bretelle.jpg",
+"focus": "35% center",
+"eyebrow": "Lui",
+"title": "Gli ultimi ritocchi",
+"text": "Bretelle, risate e un amico accanto."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/auto.jpg",
+"focus": "50% center",
+"eyebrow": "Verso il sì",
+"title": "In auto d'epoca",
+"text": "Piccola, bianca e piena di stile."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_am/sorriso.jpg",
+"focus": "50% center",
+"eyebrow": "I ritratti",
+"title": "Finalmente insieme",
+"text": "Il primo sorriso da sposi."
+},
+{
+"type": "cta",
+"eyebrow": "Il vostro racconto",
+"title": "Iniziamo insieme",
+"text": "Dai preparativi alla festa: musica, foto, fiori, wedding website, wedding planner e tanto altro.",
+"cta": "Seguito da noi, dall'inizio alla festa."
+}
+]
+}

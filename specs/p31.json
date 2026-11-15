@@ -1,8 +1,51 @@
-{"post": "post31_v1", "style": "immersivo", "slides": [
-{"type": "cover", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/chiostro.jpg", "focus": "center 40%", "title": "Un sì in abbazia"},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/specchio.jpg", "focus": "center 30%", "eyebrow": "I preparativi", "title": "Lo specchio", "text": "L'ultimo sguardo prima di uscire."},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/navata.jpg", "focus": "40% center", "eyebrow": "La cerimonia", "title": "Tra le navate", "text": "Pietra antica e luce naturale."},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/anelli.jpg", "focus": "45% center", "eyebrow": "Il rito", "title": "Lo scambio degli anelli", "text": "Il momento più atteso."},
-{"type": "photo", "image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/arco.jpg", "focus": "62% center", "eyebrow": "I ritratti", "title": "Sotto gli archi", "text": "Un attimo solo per voi due."},
-{"type": "cta", "eyebrow": "Il vostro racconto", "title": "Iniziamo insieme", "text": "Abbazia, chiesa o villa: musica, foto e fiori pensati per il vostro luogo.", "cta": "Seguito da noi, dall'inizio alla festa."}
-]}
+{
+"post": "post31_v3",
+"style": "immersivo",
+"slides": [
+{
+"type": "cover",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/chiostro.jpg",
+"focus": "center 40%",
+"title": "Un sì in abbazia"
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/specchio.jpg",
+"focus": "center 30%",
+"eyebrow": "I preparativi",
+"title": "Lo specchio",
+"text": "L'ultimo sguardo prima di uscire."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/navata.jpg",
+"focus": "40% center",
+"eyebrow": "La cerimonia",
+"title": "Tra le navate",
+"text": "Pietra antica e luce naturale."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/anelli.jpg",
+"focus": "45% center",
+"eyebrow": "Il rito",
+"title": "Lo scambio degli anelli",
+"text": "Il momento più atteso."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_av/arco.jpg",
+"focus": "62% center",
+"eyebrow": "I ritratti",
+"title": "Sotto gli archi",
+"text": "Un attimo solo per voi due."
+},
+{
+"type": "cta",
+"eyebrow": "Il vostro racconto",
+"title": "Iniziamo insieme",
+"text": "Abbazia, chiesa o villa: musica, foto, fiori, wedding website, wedding planner e tanto altro.",
+"cta": "Seguito da noi, dall'inizio alla festa."
+}
+]
+}

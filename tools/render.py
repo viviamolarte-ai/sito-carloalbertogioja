@@ -95,6 +95,23 @@ h1,h2{font-family:Disp,Georgia,serif;font-weight:600;line-height:1.08;letter-spa
 .imm .items div{color:var(--ivory)}.imm .items div::before{color:#C9A96E}
 .imm .opts div{border-color:#C9A96E;color:var(--ivory)}
 .imm .frame{border:2px solid rgba(201,169,110,.6);inset:30px;z-index:3}
+
+.art{background:var(--ivory)}
+.art .bgart{position:absolute;left:0;top:0;width:1080px;background-size:cover;background-repeat:no-repeat;background-position:center top}
+.art .bgart::after{content:'';position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(180deg,rgba(246,242,236,0),#F6F2EC)}
+.art.darkart .bgart::after{background:linear-gradient(180deg,rgba(94,52,80,0),#5E3450)}
+.art .txt{position:absolute;left:80px;right:80px;bottom:140px;display:grid;gap:26px;z-index:2}
+.art h2{font-size:88px;color:var(--plum)}
+.art p{font-size:42px;line-height:1.3}
+.art .eye{color:var(--plum)}
+.art .items{gap:16px}.art .items div{font-size:40px}.art .items div::before{font-size:48px}
+.art .opts{gap:16px}.art .opts div{font-size:38px;padding:16px 34px;border-color:var(--plum);color:var(--plum)}
+.art.darkart{background:#5E3450;color:var(--ivory)}
+.art.darkart h2{color:var(--ivory)}.art.darkart .eye{color:#E4CB98}
+.art.darkart .items div{color:var(--ivory)}.art.darkart .items div::before{color:#C9A96E}
+.art.darkart .opts div{border-color:#C9A96E;color:var(--ivory)}
+.art.darkart .mark,.art.darkart .pg{color:rgba(246,242,236,.85)}
+.art .rule{background:#C9A96E}
 .sprig{position:absolute;right:46px;top:46px;width:300px;height:300px;z-index:1;pointer-events:none}
 .sprig.bl{right:auto;top:auto;left:30px;bottom:110px;transform:rotate(180deg);width:240px;height:240px}
 .rings{position:absolute;right:90px;bottom:150px;width:240px;z-index:1;opacity:.9}
@@ -245,6 +262,21 @@ def img_url(src, workdir):
 deco_all_theme = [None]
 
 
+def art_html(s, i, n, workdir):
+    t = s.get("type", "text")
+    foot = '<div class="mark">allyoucan.wedding</div>' + ('<div class="pg">%d / %d</div>' % (i, n) if n > 1 else "")
+    eye = '<div class="eye">%s</div>' % e(s.get("eyebrow")) if s.get("eyebrow") else ""
+    text = "<p>%s</p>" % e(s.get("text")) if s.get("text") else ""
+    if t == "list":
+        inner = '%s<h2>%s</h2><div class="items">%s</div>' % (eye, e(s["title"]), "".join("<div>%s</div>" % e(x) for x in s.get("items", [])))
+    elif t == "question":
+        inner = '%s<h2>%s</h2><div class="opts">%s</div>' % (eye, e(s["title"]), "".join("<div>%s</div>" % e(x) for x in s.get("options", [])))
+    else:
+        inner = '%s<h2>%s</h2><div class="rule"></div>%s' % (eye, e(s["title"]), text)
+    cls = "s art darkart" if s.get("tone") == "dark" else "s art"
+    return '<div class="%s"><div class="bgart" style="background-image:url(\'%s\');height:%dpx;background-position:%s"></div><div class="txt">%s</div>%s</div>' % (cls, img_url(s["art"], workdir), int(s.get("art_h", 720)), s.get("art_focus", "center top"), inner, foot)
+
+
 imm_state = {"on": False, "bg": None, "bgfocus": "center"}
 
 
@@ -283,6 +315,8 @@ def immersive_html(s, i, n, workdir):
 
 
 def slide_html(s, i, n, workdir, deco_all=False):
+    if s.get("art"):
+        return art_html(s, i, n, workdir)
     if imm_state["on"]:
         return immersive_html(s, i, n, workdir)
     h = _slide_html(s, i, n, workdir)
