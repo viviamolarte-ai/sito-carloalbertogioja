@@ -16,7 +16,7 @@ Arricchimenti (facoltativi, non cambiano le slide esistenti):
            prugna, una luce morbida; sulle cta anche le fedi intrecciate.
   "image" su list/cta/question/text: fascia fotografica in alto (campi: image, focus, band_height, default 430).
   "images": [a, b] su cover: due foto affiancate (es. chiesa | giardino).
-  "theme": "capodanno" = fuochi d'artificio dorati; "theme": "natale" (sulla spec o sulla slide, insieme a deco) sostituisce i rametti con palline appese,
+  "style": "immersivo" = foto a tutto schermo con sfumatura prugna, slide di testo con la foto di copertina tenue come sfondo ("bg" per cambiarla); "theme": "capodanno" = fuochi d'artificio dorati; "theme": "natale" (sulla spec o sulla slide, insieme a deco) sostituisce i rametti con palline appese,
            stelline e fiocchi di neve dorati e una cornice doppia oro: per i post delle feste.
 
 "image" è un percorso locale o un URL https. Le slide di un carosello ricevono la numerazione "n / N";
@@ -76,6 +76,25 @@ h1,h2{font-family:Disp,Georgia,serif;font-weight:600;line-height:1.08;letter-spa
 .dark .frame{border-color:rgba(231,201,216,.35)}
 .dark.deco{background:radial-gradient(circle at 85% 12%,rgba(231,201,216,.18),rgba(231,201,216,0) 45%),radial-gradient(circle at 10% 95%,rgba(126,140,118,.22),rgba(126,140,118,0) 50%),var(--plum)}
 .list.deco,.cta.deco{background:radial-gradient(circle at 90% 8%,rgba(231,201,216,.55),rgba(231,201,216,0) 40%),radial-gradient(circle at 5% 100%,rgba(126,140,118,.18),rgba(126,140,118,0) 45%),var(--ivory)}
+
+.badge{position:absolute;top:64px;left:50%;transform:translateX(-50%);z-index:4;border:1.5px solid rgba(201,169,110,.9);background:rgba(30,16,26,.35);color:#E4CB98;font:600 22px Fig;letter-spacing:.28em;padding:12px 26px;border-radius:4px;white-space:nowrap}
+.imm{background:#2b1726;color:var(--ivory)}
+.imm .bg{position:absolute;inset:0;background-size:cover}
+.imm .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,23,38,.15) 0%,rgba(43,23,38,.05) 30%,rgba(60,30,52,.75) 58%,rgba(70,36,60,.97) 72%,#4A2840 100%)}
+.imm .txt{position:absolute;left:80px;right:80px;bottom:150px;z-index:2;display:grid;gap:24px}
+.imm .eye{color:#E4CB98}
+.imm h2{font-size:92px;color:var(--ivory)}
+.imm p{font-size:42px;line-height:1.3;color:rgba(246,242,236,.92)}
+.imm .rule{background:#C9A96E}
+.imm .mark,.imm .pg{color:rgba(246,242,236,.85);z-index:3}
+.imm.soft .bg{opacity:.22;filter:blur(2px) saturate(.7)}
+.imm.soft .ov{background:radial-gradient(circle at 80% 10%,rgba(201,169,110,.20),rgba(201,169,110,0) 45%),linear-gradient(180deg,rgba(74,40,64,.55),rgba(74,40,64,.9))}
+.imm.soft .txt{top:260px;bottom:auto;gap:34px}
+.imm.soft h2{font-size:116px}
+.imm .ctab{border-top-color:#C9A96E}.imm .ctab span{color:#E4CB98}
+.imm .items div{color:var(--ivory)}.imm .items div::before{color:#C9A96E}
+.imm .opts div{border-color:#C9A96E;color:var(--ivory)}
+.imm .frame{border:2px solid rgba(201,169,110,.6);inset:30px;z-index:3}
 .sprig{position:absolute;right:46px;top:46px;width:300px;height:300px;z-index:1;pointer-events:none}
 .sprig.bl{right:auto;top:auto;left:30px;bottom:110px;transform:rotate(180deg);width:240px;height:240px}
 .rings{position:absolute;right:90px;bottom:150px;width:240px;z-index:1;opacity:.9}
@@ -226,7 +245,46 @@ def img_url(src, workdir):
 deco_all_theme = [None]
 
 
+imm_state = {"on": False, "bg": None, "bgfocus": "center"}
+
+
+def immersive_html(s, i, n, workdir):
+    t = s.get("type", "text")
+    foot = '<div class="mark">allyoucan.wedding</div>' + ('<div class="pg">%s</div>' % ("Scorri →" if i == 1 else "%d / %d" % (i, n)) if n > 1 else "")
+    badge = '<div class="badge">✦ ALLYOUCANWEDDING ✦</div>'
+    eye = '<div class="eye">%s</div>' % e(s.get("eyebrow")) if s.get("eyebrow") else ""
+    text = "<p>%s</p>" % e(s.get("text")) if s.get("text") else ""
+    if t == "cover":
+        return '<div class="s cover" style="background-image:url(\'%s\');background-position:%s">%s<div class="txt">%s<h1>%s</h1></div>%s</div>' % (
+            img_url(s.get("image"), workdir), s.get("focus", "center"), badge, eye, e(s["title"]), foot)
+    if t == "photo" and s.get("fit"):
+        u = img_url(s.get("image"), workdir)
+        return ('<div class="s imm"><div class="bg" style="background-image:url(\'%s\');filter:blur(30px) brightness(.8);transform:scale(1.15)"></div>'
+                '<div class="bg" style="background-image:url(\'%s\');background-size:%s;background-repeat:no-repeat;background-position:center 60px"></div><div class="ov"></div>%s'
+                '<div class="txt">%s<h2>%s</h2><div class="rule"></div>%s</div>%s</div>') % (
+            u, u, s.get("fit"), badge, eye, e(s["title"]), text, foot)
+    if t == "photo":
+        return ('<div class="s imm"><div class="bg" style="background-image:url(\'%s\');background-position:%s"></div><div class="ov"></div>%s'
+                '<div class="txt">%s<h2>%s</h2><div class="rule"></div>%s</div>%s</div>') % (
+            img_url(s.get("image"), workdir), s.get("focus", "center 30%"), badge, eye, e(s["title"]), text, foot)
+    bg = s.get("bg", imm_state["bg"])
+    inner = ""
+    if t == "cta":
+        inner = '%s<h2>%s</h2>%s<div class="ctab"><strong>%s</strong><span>%s</span></div>' % (eye, e(s["title"]), text, e(s.get("cta", "")), e(s.get("contact", "Scriveteci a info@allyoucan.wedding")))
+    elif t == "list":
+        inner = '%s<h2>%s</h2><div class="items">%s</div>' % (eye, e(s["title"]), "".join("<div>%s</div>" % e(x) for x in s.get("items", [])))
+    elif t == "question":
+        inner = '%s<h2>%s</h2><div class="opts">%s</div>' % (eye, e(s["title"]), "".join("<div>%s</div>" % e(x) for x in s.get("options", [])))
+    else:
+        inner = '%s<h2>%s</h2><div class="rule"></div>%s' % (eye, e(s["title"]), text)
+    rings = RINGS if t == "cta" else ""
+    return ('<div class="s imm soft"><div class="bg" style="background-image:url(\'%s\');background-position:%s"></div><div class="ov"></div><div class="frame"></div>%s'
+            '<div class="txt">%s</div>%s%s</div>') % (img_url(bg, workdir), s.get("bgfocus", imm_state["bgfocus"]), badge, inner, rings, foot)
+
+
 def slide_html(s, i, n, workdir, deco_all=False):
+    if imm_state["on"]:
+        return immersive_html(s, i, n, workdir)
     h = _slide_html(s, i, n, workdir)
     t = s.get("type", "text")
     deco = s.get("deco", deco_all) and t not in ("cover", "photo")
@@ -293,6 +351,9 @@ def main(spec_path, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     slides = spec["slides"]
     deco_all_theme[0] = spec.get("theme")
+    imm_state["on"] = spec.get("style") == "immersivo"
+    imm_state["bg"] = spec.get("bg") or next((x.get("image") for x in slides if x.get("image")), None)
+    imm_state["bgfocus"] = spec.get("bgfocus", "center")
     body = "".join('<div id="s%d">%s</div>' % (i, slide_html(s, i, len(slides), out_dir, spec.get("deco", False))) for i, s in enumerate(slides, 1))
     page = os.path.join(out_dir, "_render.html")
     with open(page, "w", encoding="utf-8") as f:

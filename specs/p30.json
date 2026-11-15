@@ -1,0 +1,57 @@
+{
+"post": "post30_v3",
+"slides": [
+{
+"type": "cover",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_gm/anello_mare.jpg",
+"focus": "38% center",
+"title": "Un sì in riva al mare"
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_gm/navata.jpg",
+"focus": "center 60%",
+"img_height": 840,
+"eyebrow": "La cerimonia",
+"title": "Sotto gli ulivi",
+"text": "Un tappeto di petali verso il sì."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_gm/sabbia.jpg",
+"focus": "center 50%",
+"img_height": 840,
+"eyebrow": "Il rito",
+"title": "Il rito della sabbia",
+"text": "Due colori, un solo vaso."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_gm/risata.jpg",
+"focus": "62% center",
+"img_height": 840,
+"eyebrow": "I ritratti",
+"title": "Una risata vera",
+"text": "Il momento più bello è quello non previsto."
+},
+{
+"type": "photo",
+"image": "photos/originali/fotografi/gianluca_politi/matrimonio_gm/tramonto.jpg",
+"focus": "center 50%",
+"img_height": 840,
+"eyebrow": "Il tramonto",
+"title": "L'ultima luce",
+"text": "Il mare, il sole che scende e voi due."
+},
+{
+"type": "cta",
+"eyebrow": "Il vostro racconto",
+"title": "Iniziamo insieme",
+"text": "Cerimonia all'aperto, rito simbolico, musica e fiori: lo costruiamo con voi.",
+"cta": "Seguito da noi, dall'inizio alla festa.",
+"deco": true
+}
+],
+"style": "immersivo",
+"bg": "photos/originali/fotografi/gianluca_politi/matrimonio_gm/mare.jpg"
+}
