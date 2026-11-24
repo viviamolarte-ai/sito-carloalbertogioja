@@ -19,11 +19,12 @@ def wrap(d,text,font,maxw):
     lines.append(cur); return lines
 def base(n):
     im=Image.new('RGB',(W,H),NAVY); d=ImageDraw.Draw(im,'RGBA')
-    # linee del campo, appena visibili
-    c=(69,213,165,28)
-    d.ellipse([W-330,H-640,W+330,H+20],outline=c,width=4)
-    d.line([(W-330,0),(W-330,H)],fill=c,width=4)
-    d.rectangle([W-150,H-760,W+10,H-100],outline=c,width=4)
+    # tabellone a punti luminosi (rubrica campionato)
+    import math
+    for gy in range(0,H,28):
+        for gx in range(0,W,28):
+            a=int(55*max(0,1-math.hypot(gx-W,gy)/1250))+8
+            d.ellipse([gx+11,gy+11,gx+17,gy+17],fill=(69,213,165,a))
     d.line([(L,H-112),(W-L,H-112)],fill=(69,213,165,90),width=2); d.rectangle([L,H-113,L+60,H-110],fill=MINT)
     d.text((L,H-90),"@calcioallday",font=K(26),fill=CREAM)
     s=f"{n}/{N}"; d.text((W-L-d.textlength(s,font=K(26)),H-90),s,font=K(26),fill=MINT)

@@ -128,6 +128,12 @@ LOGO_C = Image.open(os.path.join(HERE, 'logo-cream.png'))
 
 def canvas(h=1350, n=None, total=None, url='calcioallday.it/pagelle'):
     im = Image.new('RGB', (1080, h), NAVY); d = ImageDraw.Draw(im, 'RGBA')
+    # tabellone a punti luminosi (rubrica campionato), più acceso in alto a destra
+    import math
+    for gy in range(0, h, 28):
+        for gx in range(0, 1080, 28):
+            a = int(55 * max(0, 1 - math.hypot(gx - 1080, gy) / 1250)) + 8
+            d.ellipse([gx + 11, gy + 11, gx + 17, gy + 17], fill=(69, 213, 165, a))
     # barre del logo in basso a destra (stesso segno delle copertine del sito)
     k = 0.32
     for x, w, col in ((930, 8, (69, 213, 165, 90)), (968, 34, (69, 213, 165, 235)), (1016, 34, (247, 242, 232, 215))):
@@ -135,6 +141,8 @@ def canvas(h=1350, n=None, total=None, url='calcioallday.it/pagelle'):
         d.polygon([(x, h), (x + w, h), (x + w + k * 520, y0), (x + k * 520, y0)], fill=col)
     lg = LOGO_C.resize((300, int(300 * LOGO_C.height / LOGO_C.width)), Image.LANCZOS)
     im.paste(lg, (L, 92), lg)
+    f = K(26); tw = d.textlength('SERIE A', font=f)
+    d.rounded_rectangle([1080 - L - tw - 36, 96, 1080 - L, 146], radius=25, fill=MINT); d.text((1080 - L - tw - 18, 105), 'SERIE A', font=f, fill=NAVY)
     d.line([(L, h - 112), (860, h - 112)], fill=(69, 213, 165, 90), width=2)
     d.rectangle([L, h - 113, L + 60, h - 110], fill=MINT)
     d.text((L, h - 90), url, font=K(28), fill=CREAM)
