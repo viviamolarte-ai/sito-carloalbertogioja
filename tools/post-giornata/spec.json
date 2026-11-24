@@ -1,0 +1,123 @@
+{
+ "cover_kicker": "SERIE A · 12ª GIORNATA, DOMENICA E LUNEDÌ",
+ "cover_title": [
+  "INTER, UN 4-4",
+  "CHE PESA."
+ ],
+ "row_h": 106,
+ "row_font": 52,
+ "row_score": 64,
+ "results": [
+  [
+   "Juventus",
+   4,
+   0,
+   "Venezia"
+  ],
+  [
+   "Bologna",
+   1,
+   1,
+   "Udinese"
+  ],
+  [
+   "Sassuolo",
+   0,
+   2,
+   "Genoa"
+  ],
+  [
+   "Milan",
+   5,
+   1,
+   "Frosinone"
+  ],
+  [
+   "Atalanta",
+   4,
+   4,
+   "Inter"
+  ],
+  [
+   "Monza",
+   3,
+   0,
+   "Fiorentina"
+  ]
+ ],
+ "highlight": 4,
+ "stories": [
+  {
+   "kicker": "ATALANTA–INTER",
+   "title": [
+    "TRE GOL",
+    "DI ESPOSITO",
+    "NON BASTANO."
+   ],
+   "score": "4–4",
+   "teams": "Atalanta–Inter",
+   "body": "Preferito a Lautaro, Pio Esposito porta l'Inter sul 4-2. Poi la doppietta di De Ketelaere e il rigore di Kessié allo scadere: Inter a tre punti dalla Lazio."
+  },
+  {
+   "kicker": "MILAN–FROSINONE",
+   "title": [
+    "IL MILAN",
+    "RIPASSA",
+    "IL COMO."
+   ],
+   "score": "5–1",
+   "teams": "Milan–Frosinone",
+   "body": "All'intervallo era 2-1. Nella ripresa Jashari, Cissé e Pulisic chiudono i conti e il Milan sale a 27, di nuovo davanti al Como. Alla Juve basta il secondo tempo per il 4-0 al Venezia: è sesta."
+  },
+  {
+   "kicker": "MONZA–FIORENTINA",
+   "title": [
+    "VARELA,",
+    "IL MONZA",
+    "RESPIRA."
+   ],
+   "score": "3–0",
+   "teams": "Monza–Fiorentina",
+   "body": "Rigore e colpo di tacco di Varela, poi Robinson. Il Monza chiude una serie di quattro sconfitte e sale a 10. Per la Fiorentina è la settima sconfitta in dodici giornate."
+  }
+ ],
+ "table": [
+  [
+   1,
+   "Lazio",
+   32
+  ],
+  [
+   2,
+   "Roma",
+   30
+  ],
+  [
+   3,
+   "Inter",
+   29
+  ],
+  [
+   4,
+   "Milan",
+   27
+  ],
+  [
+   5,
+   "Como",
+   26
+  ]
+ ],
+ "table_note": "In coda: Monza e Lecce 10, Fiorentina 9, Parma e Sassuolo 8, Udinese e Venezia 6.",
+ "cta_title": [
+  "VENERDÌ",
+  "RIPARTE",
+  "LA SERIE A."
+ ],
+ "cta_body": "Si comincia con Venezia–Bologna. Pagelle, tabellini e classifica della 12ª giornata su calcioallday.it",
+ "box": [
+  "Il 4-4 di Bergamo",
+  "Più colpa dell'Inter o merito della Dea?"
+ ],
+ "cta_big": "20:45"
+}
