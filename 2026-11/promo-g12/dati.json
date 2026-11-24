@@ -1,0 +1,487 @@
+{
+ "round": 12,
+ "module": "3-4-3",
+ "top11": [
+  {
+   "name": "Lucas Perri",
+   "team": "Torino",
+   "role": "P",
+   "vote": 7.0
+  },
+  {
+   "name": "Jacobo Ramón",
+   "team": "Como",
+   "role": "D",
+   "vote": 8.0
+  },
+  {
+   "name": "Wesley",
+   "team": "Roma",
+   "role": "D",
+   "vote": 8.0
+  },
+  {
+   "name": "Yan Couto",
+   "team": "Como",
+   "role": "D",
+   "vote": 7.5
+  },
+  {
+   "name": "Charles De Ketelaere",
+   "team": "Atalanta",
+   "role": "C",
+   "vote": 7.5
+  },
+  {
+   "name": "Lucas da Cunha",
+   "team": "Como",
+   "role": "C",
+   "vote": 7.5
+  },
+  {
+   "name": "Scott McTominay",
+   "team": "Napoli",
+   "role": "C",
+   "vote": 7.5
+  },
+  {
+   "name": "Adrien Rabiot",
+   "team": "Milan",
+   "role": "C",
+   "vote": 7.5
+  },
+  {
+   "name": "Donyell Malen",
+   "team": "Roma",
+   "role": "A",
+   "vote": 9.0
+  },
+  {
+   "name": "Francesco Pio Esposito",
+   "team": "Inter",
+   "role": "A",
+   "vote": 8.0
+  },
+  {
+   "name": "Milutin Osmajić",
+   "team": "Genoa",
+   "role": "A",
+   "vote": 8.0
+  }
+ ],
+ "stars": [
+  {
+   "name": "Donyell Malen",
+   "team": "Roma",
+   "vote": 9.0,
+   "fact": "Quattro gol in Parma–Roma 1-5."
+  },
+  {
+   "name": "Francesco Pio Esposito",
+   "team": "Inter",
+   "vote": 8.0,
+   "fact": "Tripletta in Atalanta–Inter 4-4."
+  },
+  {
+   "name": "Milutin Osmajić",
+   "team": "Genoa",
+   "vote": 8.0,
+   "fact": "Doppietta in Sassuolo–Genoa 0-2."
+  }
+ ],
+ "best": {
+  "name": "Donyell Malen",
+  "team": "Roma",
+  "vote": 9.0,
+  "fact": "Quattro gol in Parma–Roma 1-5."
+ },
+ "worst": {
+  "name": "Gabriele Calvani",
+  "team": "Frosinone",
+  "vote": 4.5,
+  "ties": 3,
+  "fact": "Un autogol in Milan–Frosinone 5-1."
+ },
+ "cards": [
+  {
+   "team": "Atalanta",
+   "slug": "atalanta",
+   "anchor": "pagelle-atalanta-inter",
+   "votes": [
+    [
+     "Charles De Ketelaere",
+     7.5
+    ],
+    [
+     "Nicola Zalewski",
+     7.0
+    ],
+    [
+     "Eljif Elmas",
+     6.5
+    ]
+   ]
+  },
+  {
+   "team": "Bologna",
+   "slug": "bologna",
+   "anchor": "pagelle-bologna-udinese",
+   "votes": [
+    [
+     "Nicolò Cambiaghi",
+     6.5
+    ],
+    [
+     "Łukasz Skorupski",
+     6.5
+    ],
+    [
+     "Nadir Zortea",
+     6.0
+    ]
+   ]
+  },
+  {
+   "team": "Cagliari",
+   "slug": "cagliari",
+   "anchor": "pagelle-como-1907-cagliari",
+   "votes": [
+    [
+     "Elia Caprile",
+     6.5
+    ],
+    [
+     "Nicola Grandu",
+     6.5
+    ],
+    [
+     "Daniel Maldini",
+     6.0
+    ]
+   ]
+  },
+  {
+   "team": "Como",
+   "slug": "como-1907",
+   "anchor": "pagelle-como-1907-cagliari",
+   "votes": [
+    [
+     "Jacobo Ramón",
+     8.0
+    ],
+    [
+     "Lucas da Cunha",
+     7.5
+    ],
+    [
+     "Yan Couto",
+     7.5
+    ]
+   ]
+  },
+  {
+   "team": "Fiorentina",
+   "slug": "fiorentina",
+   "anchor": "pagelle-monza-fiorentina",
+   "votes": [
+    [
+     "David de Gea",
+     6.0
+    ],
+    [
+     "Beto",
+     6.0
+    ],
+    [
+     "Franco Mastantuono",
+     5.5
+    ]
+   ]
+  },
+  {
+   "team": "Frosinone",
+   "slug": "frosinone",
+   "anchor": "pagelle-milan-frosinone",
+   "votes": [
+    [
+     "Patrizio Masini",
+     6.5
+    ],
+    [
+     "Giorgi Kvernadze",
+     6.0
+    ],
+    [
+     "Alessio Zerbin",
+     6.0
+    ]
+   ]
+  },
+  {
+   "team": "Genoa",
+   "slug": "genoa",
+   "anchor": "pagelle-sassuolo-genoa",
+   "votes": [
+    [
+     "Milutin Osmajić",
+     8.0
+    ],
+    [
+     "Leo Østigård",
+     7.0
+    ],
+    [
+     "Hamed Traorè",
+     6.5
+    ]
+   ]
+  },
+  {
+   "team": "Inter",
+   "slug": "inter",
+   "anchor": "pagelle-atalanta-inter",
+   "votes": [
+    [
+     "Francesco Pio Esposito",
+     8.0
+    ],
+    [
+     "Marcus Thuram",
+     7.0
+    ],
+    [
+     "Petar Sučić",
+     6.5
+    ]
+   ]
+  },
+  {
+   "team": "Juventus",
+   "slug": "juventus",
+   "anchor": "pagelle-juventus-venezia-fc",
+   "votes": [
+    [
+     "Nick Woltemade",
+     7.5
+    ],
+    [
+     "Juan Cabal",
+     7.0
+    ],
+    [
+     "Teun Koopmeiners",
+     7.0
+    ]
+   ]
+  },
+  {
+   "team": "Lazio",
+   "slug": "lazio",
+   "anchor": "pagelle-lazio-lecce",
+   "votes": [
+    [
+     "Tijjani Noslin",
+     7.5
+    ],
+    [
+     "Davide Frattesi",
+     7.0
+    ],
+    [
+     "Gustav Isaksen",
+     7.0
+    ]
+   ]
+  },
+  {
+   "team": "Lecce",
+   "slug": "lecce",
+   "anchor": "pagelle-lazio-lecce",
+   "votes": [
+    [
+     "Konan N’Dri",
+     6.0
+    ],
+    [
+     "Tiago Gabriel",
+     6.0
+    ],
+    [
+     "Wladimiro Falcone",
+     6.0
+    ]
+   ]
+  },
+  {
+   "team": "Milan",
+   "slug": "milan",
+   "anchor": "pagelle-milan-frosinone",
+   "votes": [
+    [
+     "Adrien Rabiot",
+     7.5
+    ],
+    [
+     "Christian Pulisic",
+     7.0
+    ],
+    [
+     "Alphadjo Cissé",
+     7.0
+    ]
+   ]
+  },
+  {
+   "team": "Monza",
+   "slug": "monza",
+   "anchor": "pagelle-monza-fiorentina",
+   "votes": [
+    [
+     "Gustavo Varela",
+     8.0
+    ],
+    [
+     "Jay Robinson",
+     7.5
+    ],
+    [
+     "Matteo Pessina",
+     7.0
+    ]
+   ]
+  },
+  {
+   "team": "Napoli",
+   "slug": "napoli",
+   "anchor": "pagelle-napoli-torino",
+   "votes": [
+    [
+     "Scott McTominay",
+     7.5
+    ],
+    [
+     "Noa Lang",
+     7.0
+    ],
+    [
+     "Amir Rrahmani",
+     6.5
+    ]
+   ]
+  },
+  {
+   "team": "Parma",
+   "slug": "parma",
+   "anchor": "pagelle-parma-roma",
+   "votes": [
+    [
+     "Nesta Elphège",
+     6.5
+    ],
+    [
+     "Mandela Keita",
+     6.0
+    ],
+    [
+     "Ousmane Diallo",
+     6.0
+    ]
+   ]
+  },
+  {
+   "team": "Roma",
+   "slug": "roma",
+   "anchor": "pagelle-parma-roma",
+   "votes": [
+    [
+     "Donyell Malen",
+     9.0
+    ],
+    [
+     "Wesley",
+     8.0
+    ],
+    [
+     "Rodrigo Mora",
+     7.0
+    ]
+   ]
+  },
+  {
+   "team": "Sassuolo",
+   "slug": "sassuolo",
+   "anchor": "pagelle-sassuolo-genoa",
+   "votes": [
+    [
+     "Armand Laurienté",
+     6.0
+    ],
+    [
+     "Ignace Van der Brempt",
+     6.0
+    ],
+    [
+     "Kristian Thorstvedt",
+     6.0
+    ]
+   ]
+  },
+  {
+   "team": "Torino",
+   "slug": "torino",
+   "anchor": "pagelle-napoli-torino",
+   "votes": [
+    [
+     "Ardian Ismajli",
+     7.0
+    ],
+    [
+     "Lucas Perri",
+     7.0
+    ],
+    [
+     "Alessio Cacciamani",
+     6.5
+    ]
+   ]
+  },
+  {
+   "team": "Udinese",
+   "slug": "udinese",
+   "anchor": "pagelle-bologna-udinese",
+   "votes": [
+    [
+     "Nicolò Zaniolo",
+     7.0
+    ],
+    [
+     "Christian Kabasele",
+     6.5
+    ],
+    [
+     "James Abankwah",
+     6.5
+    ]
+   ]
+  },
+  {
+   "team": "Venezia",
+   "slug": "venezia-fc",
+   "anchor": "pagelle-juventus-venezia-fc",
+   "votes": [
+    [
+     "John Yeboah",
+     6.5
+    ],
+    [
+     "Antoine Hainaut",
+     5.5
+    ],
+    [
+     "Filip Stanković",
+     5.5
+    ]
+   ]
+  }
+ ]
+}
